@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google-adsense-account" content="ca-pub-1250732129482944">
+    <title>na Yo bey khuam Pen Suan tua | Lao Karaoke</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+	<style>
+    :root {
+        --primary-color: #4a6bff;
+        --secondary-color: #f8f9fa;
+        --accent-color: #ff7e5f;
+        --text-color: #333;
+        --light-text: #6c757d;
+        --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: #f5f7ff;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .container {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: white;
+        border-radius: 10px;
+        box-shadow: var(--box-shadow);
+        text-align: left; /* เปลี่ยนจาก center เป็น left */
+    }
+    
+    h1 {
+        color: var(--primary-color);
+        text-align: center; /* ยังคงจัดกึ่งกลางเฉพาะหัวข้อหลัก */
+        margin-bottom: 2rem;
+        font-size: 2.2rem;
+        position: relative;
+        padding-bottom: 10px;
+    }
+    
+    h1:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: var(--accent-color);
+    }
+    
+    h2 {
+        color: var(--primary-color);
+        margin-top: 1.5rem;
+        font-size: 1.5rem;
+        border-left: 4px solid var(--accent-color);
+        padding-left: 10px;
+        text-align: left; /* จัดชิดซ้าย */
+        margin-left: 0; /* เอา margin-left ออก */
+    }
+    
+    .about-section {
+        padding: 0;
+    }
+    
+    p, li {
+        font-size: 1.05rem;
+        color: var(--text-color);
+        text-align: left; /* จัดชิดซ้าย */
+    }
+    
+    ol, ul {
+        padding-left: 1.5rem;
+        text-align: left; /* จัดชิดซ้าย */
+    }
+    
+    li {
+        margin-bottom: 0.5rem;
+        text-align: left; /* จัดชิดซ้าย */
+    }
+    
+    .button-group {
+        text-align: center; /* ปุ่มยังคงอยู่กึ่งกลาง */
+        margin-top: 2rem;
+    }
+    
+    /* ส่วนที่เหลือเหมือนเดิม */
+    .back-button {
+        display: inline-block;
+        padding: 0.7rem 1.5rem;
+        background: var(--primary-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: 2px solid var(--primary-color);
+    }
+    
+    .back-button:hover {
+        background: transparent;
+        color: var(--primary-color);
+        transform: translateY(-3px);
+    }
+    
+    footer {
+        background: #f5f5f5; /* สีเทาอ่อน */
+        color: #333; /* สีตัวหนังสือเข้ม */
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 3rem;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.05); /* เงาเบาๆด้านบน */
+    }
+
+    .social-icons {
+        margin-bottom: 1.5rem;
+    }
+
+    .social-icon {
+        color: #555; /* สีเทาเข้ม */
+        margin: 0 12px;
+        font-size: 1.3rem;
+        transition: all 0.3s ease;
+        background: rgba(255,255,255,0.7);
+        padding: 12px;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .social-icon:hover {
+        color: #4a6bff; /* สีน้ำเงินเมื่อโฮเวอร์ */
+        transform: translateY(-3px);
+        background: white;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    footer {
+        background: transparent; /* ไม่มีพื้นหลัง */
+        color: #333; /* สีตัวหนังสือเข้ม */
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 3rem;
+    }
+
+    .social-icons {
+        margin-bottom: 1.5rem;
+    }
+
+    .social-icon {
+        margin: 0 12px;
+        font-size: 1.3rem;
+        transition: all 0.3s ease;
+        padding: 10px;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Facebook - สีฟ้า */
+    .social-icon.facebook {
+        color: #1877f2; /* สี Facebook หลัก */
+        background: rgba(24, 119, 242, 0.1);
+    }
+
+    /* WhatsApp - สีเขียว */
+    .social-icon.whatsapp {
+        color: #25d366; /* สี WhatsApp หลัก */
+        background: rgba(37, 211, 102, 0.1);
+    }
+
+    /* Info - สีดำ */
+    .social-icon.info {
+        color: #000000; /* สีดำ */
+        background: rgba(0, 0, 0, 0.05);
+    }
+
+    /* เอฟเฟกต์เมื่อโฮเวอร์ */
+    .social-icon:hover {
+        transform: translateY(-3px) scale(1.1);
+    }
+
+    .social-icon.facebook:hover {
+        background: rgba(24, 119, 242, 0.2);
+    }
+
+    .social-icon.whatsapp:hover {
+        background: rgba(37, 211, 102, 0.2);
+    }
+
+    .social-icon.info:hover {
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    footer p {
+        color: #666;
+        font-size: 0.95rem;
+        margin-top: 1.5rem;
+    }
+
+    #visitor-counter {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    #visitor-counter {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    .social-icon {
+        color: white;
+        margin: 0 10px;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+        color: var(--accent-color);
+        transform: translateY(-3px);
+    }
+    
+    @media (max-width: 768px) {
+        .container {
+            margin: 1rem;
+            padding: 1.5rem;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>na Yo bey khuam Pen Suan tua</h1>
+        
+        <h2>1. khor Moun T hao kep kum</h2>
+        <p>website khong hao Ard ja kep kum khor Moun tor Pai ni:</p>
+        <ul>
+            <li>khor Moun T tharn  porn Khao nai bb form  (zen : khor khuam T torng karn Pae )</li>
+            <li>khor Moun karn Zai ngarn  (zen : vela Khao bg , Nar T Khao bg )</li>
+            <li>(Cookies) Phuea Pup poung pa Sop karn karn Zai ngarn</li>
+        </ul>
+
+        <h2>2. karn nam Zai khor Moun</h2>
+        <p>khor Moun T kep kum ja thuek nam Zai Phuea:</p>
+        <ul>
+            <li>hai br Li karn lae Pup poung website</li>
+            <li>vi Khc karn Zai ngarn website</li>
+            <li>sa dang Kho sa na hai mc som  (thar mi karn Zai Google AdSense)</li>
+        </ul>
+
+        <h2>3. karn Share khor Moun</h2>
+        <p>khor Moun khong tharn  ja br thuek Share kub phark Suan t Sarm Doi br mi karn ah Nu  yart.</p>
+
+        <h2>4.Cookies</h2>
+        <p>website ni Zai Cookies Phuea Pup poung pa Sop karn khong tharn  .</p>
+
+        <h2>5. karn pien pang na Yo bey</h2>
+        <p>na Yo bey ni Ard ja thuek Pup poung dai . karn pien pang ja thuek la bu vai nai nar ni</p>
+
+        <h2>6. tid tor hao</h2>
+        <p>har mi kham tharm kw kub na Yo bey khuam Pen Suan tua , ka lu na tid tor pharn. <a href="contact.html">Nar tid tor hao</a>.</p>
+    </div>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/share/1CbJTRfNMc/?mibextid=wwXIfr" target="_blank" class="social-icon facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://wa.me/2029988148" target="_blank" class="social-icon whatsapp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="about.html" class="social-icon info">
+                <i class="fas fa-info-circle"></i>
+            </a>
+        </div>
+		       <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a> | 
+    <a href="contact.html">contact</a> |
+    <a href="ogg.html">pha sa oke man Y</a>
+</div>
+        <p>&copy;sa Nguan Sit  phut tha na Doi: Mr.ChanthaChone PIMMASONE</p>
+    </footer>
+</body>
+</html>

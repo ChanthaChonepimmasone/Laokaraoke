@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tid tor hao | Lao Karaoke</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    .contact-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin: 40px 0;
+}
+
+.contact-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: all 0.4s ease;
+    border-top: 5px solid;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+
+.contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+}
+
+.contact-icon {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover .contact-icon {
+    transform: scale(1.1);
+}
+
+.contact-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.contact-card p {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* สไตล์การ์ดเฉพาะ */
+.facebook-card { 
+    border-color: #1877f2;
+    background: linear-gradient(to bottom right, #f8fafe, #ffffff);
+}
+
+.whatsapp-card { 
+    border-color: #25d366;
+    background: linear-gradient(to bottom right, #f0fdf4, #ffffff);
+}
+
+.tiktok-card { 
+    border-color: #000000;
+    background: linear-gradient(to bottom right, #f5f5f5, #ffffff);
+}
+
+/* ปุ่มติดต่อ */
+.contact-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+.facebook-btn {
+    background: #1877f2;
+    color: white;
+    border-color: #1877f2;
+}
+
+.whatsapp-btn {
+    background: #25d366;
+    color: white;
+    border-color: #25d366;
+}
+
+.tiktok-btn {
+    background: #000000;
+    color: white;
+    border-color: #000000;
+}
+
+.contact-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* FAQ Section */
+.faq-section {
+    margin: 50px 0;
+    background: #f9faff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.faq-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #4a6bff;
+    font-size: 1.8rem;
+}
+
+.faq-section h2 i {
+    margin-right: 10px;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.faq-question {
+    padding: 18px 25px;
+    background: white;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.faq-question i {
+    transition: all 0.3s ease;
+}
+
+.faq-answer {
+    padding: 0 25px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    background: white;
+    line-height: 1.7;
+    color: #555;
+}
+
+.faq-item.active .faq-answer {
+    padding: 0 25px 25px;
+    max-height: 500px;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-methods {
+        grid-template-columns: 1fr;
+    }
+    
+    .faq-section {
+        padding: 20px;
+    }
+    
+    .faq-question {
+        padding: 15px 20px;
+        font-size: 1rem;
+    }
+    
+    .contact-card {
+        padding: 20px;
+    }
+}
+
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>tid tor hao</h1>
+        <div class="faq-section">
+        <!-- ส่วนข้อมูลติดต่อแบบใหม่ -->
+        <div class="contact-methods">
+            <!-- Facebook -->
+            <div class="contact-card facebook-card">
+                <div class="contact-icon" style="color: #1877f2;">
+                    <i class="fab fa-facebook"></i>
+                </div>
+                <h3>Facebook</h3>
+                <p>tid tor pharn Messenger lue  Nar fb</p>
+                <a href="https://www.facebook.com/share/1CbJTRfNMc/?mibextid=wwXIfr" target="_blank" class="contact-btn facebook-btn">
+                    Pai T Nar fb
+                </a>
+            </div>
+            
+            <!-- WhatsApp -->
+            <div class="contact-card whatsapp-card">
+                <div class="contact-icon" style="color: #25d366;">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3>WhatsApp</h3>
+                <p>sg khor khuam ha Phuak hao dai thun t</p>
+                <a href="https://wa.me/2029988148" target="_blank" class="contact-btn whatsapp-btn">
+                    sg khor khuam
+                </a>
+            </div>
+            
+            <!-- TikTok -->
+            <div class="contact-card tiktok-card">
+                <div class="contact-icon" style="color: #000000;">
+                    <i class="fab fa-tiktok"></i>
+                </div>
+                <h3>TikTok</h3>  
+                <p>follow Phuak hao nai TikTok </p>
+                <a href="https://www.tiktok.com/@cctv88845?_t=ZS-8ydlyYxeWBj&_r=1" target="_blank" class="contact-btn tiktok-btn">
+                    Pai T Nar TikTok
+                </a>
+            </div>
+        </div>
+
+     
+            <h2><i class="far fa-question-circle"></i> kham tharm T pob Lueay 2</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>website niZai br sia kha br Li karn br ?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>tharn  sa mart Zai ngarn website Lao Karaoke dai free  100% br mi kha Zai jaiy dh 2 .</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>khoi sa mart sa ner kham Nae nam dai br?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>nae Nrn ! tharn  sa mart sg kham Nae nam pharn Zong tharng tid tor khong Phuak hao  lue  pharn fb page.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>mi course Sorn br?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>pa jou Bun Phuak hao y br mi course Sorn Doi Kong , tae website ni Pen kheauang mue Zuay nai karn hn pha sa oke ..</p>
+                </div>
+            </div>
+        </div>
+<script>
+document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+        const item = question.parentNode;
+        item.classList.toggle('active');
+        
+        const icon = question.querySelector('i');
+        if (item.classList.contains('active')) {
+            icon.classList.remove('fa-chevron-down');
+            icon.classList.add('fa-chevron-up');
+        } else {
+            icon.classList.remove('fa-chevron-up');
+            icon.classList.add('fa-chevron-down');
+        }
+    });
+});
+</script>
+    <!-- ส่วน footer เดิม -->
+</body>
+</html>

@@ -1,0 +1,14 @@
+[[redirects]]
+  from = "/contact"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/success"
+  to = "/success.html"
+  status = 200
+
+# การตั้งค่า Forms
+[build.environment]
+  # เปิดใช้งาน Forms
+  NETLIFY_FORMS = "true"

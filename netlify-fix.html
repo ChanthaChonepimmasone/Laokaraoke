@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แก้ปัญหา Netlify - Lao Karaoke</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            color: #3498db;
+            margin: 20px 0 10px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .problem-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .problem-solution {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .problem {
+            border-top: 5px solid #e74c3c;
+        }
+        
+        .solution {
+            border-top: 5px solid #2ecc71;
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .code {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: monospace;
+        }
+        
+        .demo-section {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        .lao-karaoke-demo {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            background: #f9f9f9;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #2980b9;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: #2c3e50;
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #28a745;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>แก้ปัญหา Netlify SSL Error</h1>
+            <p>สำหรับเว็บไซต์ Lao Karaoke บน elegant-kitsune-e735a8.netlify.app</p>
+        </header>
+        
+        <div class="warning">
+            <strong>ข้อควรรู้:</strong> ข้อผิดพลาด ERR_SSL_PROTOCOL_ERROR มักเกิดขึ้นชั่วคราว และอาจหายไปเองหลังจากรอสักครู่
+        </div>
+        
+        <div class="problem-solution">
+            <div class="card problem">
+                <h2>สาเหตุของปัญหา</h2>
+                <ul>
+                    <li>ใบรับรอง SSL ของ Netlify กำลังอยู่ในกระบวนการออกหรือต่ออายุ</li>
+                    <li>การตั้งค่า DNS ยังไม่ชี้ไปยัง Netlify อย่างถูกต้อง</li>
+                    <li>มีการโหลดทรัพยากรที่ไม่ปลอดภัย (HTTP) ในหน้า HTTPS</li>
+                    <li>ปัญหาเครือข่ายชั่วคราวหรือการบล็อกโดยไฟร์วอลล์</li>
+                    <li>การตั้งค่าเบราว์เซอร์หรือแคชที่ล้าสมัย</li>
+                </ul>
+            </div>
+            
+            <div class="card solution">
+                <h2>วิธีแก้ไข</h2>
+                <ul>
+                    <li>รอ 5-10 นาที แล้วลองเข้าถึงเว็บอีกครั้ง</li>
+                    <li>ล้างแคชและคุกกี้ของเบราว์เซอร์</li>
+                    <li>ตรวจสอบการตั้งค่า Custom Domain ใน Netlify Dashboard</li>
+                    <li>ตรวจสอบว่าไม่มีทรัพยากรภายนอกที่โหลดผ่าน HTTP</li>
+                    <li>ลองใช้เบราว์เซอร์อื่นหรือโหมด隐身</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>ตัวอย่างการทำงานของ Lao Karaoke</h2>
+            <p>นี่คือตัวอย่างการจำลองการทำงานของเว็บไซต์ Lao Karaoke ที่ควรจะทำงานเมื่อปัญหา SSL ถูกแก้ไขแล้ว:</p>
+            
+            <div class="lao-karaoke-demo">
+                <h3>lao ↔ Karaoke</h3>
+                <textarea id="demoInput" placeholder="Phim khor khuam pha sa lao lue Karaoke">ສະບາຍດີ ໂລກ</textarea>
+                
+                <div>
+                    <button onclick="translateText()">Pae</button>
+                    <button onclick="clearText()">larng</button>
+                </div>
+                
+                <div id="demoOutput" style="min-height: 100px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; margin-top: 15px; background: white;">
+                    ผลลัพธ์จะแสดงที่นี่
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>การตรวจสอบสถานะ SSL ของ Netlify</h2>
+            <p>คุณสามารถตรวจสอบสถานะ SSL ของโดเมน netlify.app ของคุณได้โดย:</p>
+            
+            <ol>
+                <li>เข้าสู่ระบบ Netlify และไปที่ Dashboard</li>
+                <li>เลือกเว็บไซต์ของคุณ</li>
+                <li>ไปที่ <strong>Site settings</strong> > <strong>Domain management</strong> > <strong>Domains</strong></li>
+                <li>ตรวจสอบว่าโดเมนของคุณมีสถานะ "SSL" เป็น "Active"</li>
+            </ol>
+            
+            <div class="code">
+                // ตัวอย่างการแก้ปัญหา Mixed Content ในโค้ด<br>
+                // แทนที่การเรียกใช้ทรัพยากรแบบ HTTP ด้วย HTTPS<br>
+                &lt;script src="<strong>https</strong>://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"&gt;&lt;/script&gt;<br><br>
+                
+                // หรือลบโปรโตคอลออกทั้งหมด<br>
+                &lt;link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"&gt;
+            </div>
+        </div>
+        
+        <div class="success">
+            <strong>เคล็ดลับ:</strong> Netlify มักจะออกใบรับรอง SSL ให้โดยอัตโนมัติสำหรับโดเมนย่อยของ netlify.app โดยปกติปัญหา SSL จะหายไปภายในไม่กี่นาทีถึงไม่กี่ชั่วโมง
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 2023 Lao Karaoke - โดย Mr.ChanthaChone PIMMASONE</p>
+        <p>หากปัญหายังคงมีอยู่หลังจากลองวิธีทั้งหมดแล้ว โปรดติดต่อ support@netlify.com</p>
+    </div>
+
+    <script>
+        // ฟังก์ชันจำลองการทำงานของ Lao Karaoke
+        function translateText() {
+            const inputText = document.getElementById('demoInput').value;
+            const outputDiv = document.getElementById('demoOutput');
+            
+            outputDiv.innerHTML = '<p>กำลังประมวลผล...</p>';
+            
+            // จำลองการหน่วงเวลาในการแปล
+            setTimeout(() => {
+                if (inputText.includes('ສະບາຍດີ')) {
+                    outputDiv.innerHTML = '<p>สวัสดีโลก</p>';
+                } else if (inputText.includes('สวัสดี')) {
+                    outputDiv.innerHTML = '<p>ສະບາຍດີ</p>';
+                } else {
+                    outputDiv.innerHTML = '<p>ไม่พบข้อความที่สามารถแปลได้</p><p>ลองป้อนข้อความภาษาไทยหรือภาษาลาว</p>';
+                }
+            }, 1000);
+        }
+        
+        function clearText() {
+            document.getElementById('demoInput').value = '';
+            document.getElementById('demoOutput').innerHTML = 'ผลลัพธ์จะแสดงที่นี่';
+        }
+        
+        // จำลองการทำงานเมื่อหน้าเว็บโหลด
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Lao Karaoke Demo ทำงานแล้ว');
+        });
+    </script>
+</body>
+</html>

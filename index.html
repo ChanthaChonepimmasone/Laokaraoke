@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+<style>
+/* ตัวแปรสี */
+:root {
+  --primary: #2c3e50; /* สีน้ำเงินเข้ม */
+  --secondary: rgb(0, 0, 0); /* สีแดง */
+  --light: #ecf0f1; /* สีเทาอ่อน */
+  --accent: #5473ff; /* สีน้ำเงิน */
+  --text: #5c5c5c; /* สีข้อความหลัก */
+  --text-light: #ffffff; /* สีข้อความบนพื้นสีเข้ม */
+}
+
+/* พื้นฐาน */
+body {
+  font-family: 'Noto Sans Lao', sans-serif;
+  background-color: #f5f5f5;
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 100%;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: var(--primary);
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--light);
+}
+
+/* ช่องป้อนข้อความ */
+#inputText {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Noto Sans Lao', sans-serif;
+  margin-bottom: 15px;
+  resize: none;
+  min-height: 120px;
+  box-sizing: border-box;
+}
+
+#inputText:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+/* เมนูเลือก */
+.direction-select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  background-color: white;
+  color: var(--text);
+  cursor: pointer;
+  font-family: 'Noto Sans Lao', sans-serif;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 15px;
+}
+
+/* ปุ่มต่างๆ */
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#translateBtn {
+  background-color: var(--accent);
+  color: white;
+}
+
+#translateBtn:active {
+  background-color: #2980b9;
+  transform: scale(0.98);
+}
+
+#clearBtn {
+  background-color: var(--secondary);
+  color: white;
+}
+
+#clearBtn:active {
+  background-color: #c0392b;
+  transform: scale(0.98);
+}
+
+.copy-btn {
+  width: 100%;
+  background-color: var(--primary);
+  color: rgb(146, 146, 146);
+  margin-top: 10px;
+}
+
+.copy-btn:active {
+  background-color: #1a252f;
+  transform: scale(0.98);
+}
+
+/* ผลลัพธ์ */
+.output {
+  min-height: 120px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 1rem;
+  font-family: 'Noto Sans Lao', sans-serif;
+  margin-bottom: 15px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.loading {
+  text-align: center;
+  color: var(--accent);
+  font-weight: bold;
+  display: none;
+  margin: 15px 0;
+}
+
+/* ส่วนท้าย */
+footer {
+  background-color: var(--primary);
+  color: var(--text-light);
+  padding: 20px 15px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.footer-links {
+  margin: 15px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.footer-links a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* ไอคอนโซเชียล */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.social-icon:active {
+  transform: scale(0.95);
+}
+
+.facebook {
+  background-color: #3b5998;
+}
+
+.whatsapp {
+  background-color: #25D366;
+}
+
+.info {
+  background-color: var(--accent);
+}
+
+.user {
+  background-color: #9b59b6;
+}
+
+/* วิธีการใช้ */
+.how-to-use {
+  background-color: rgb(133, 133, 133);
+  padding: 20px 15px;
+  margin-top: 20px;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+}
+
+.how-to-use h2 {
+  text-align: center;
+  color: var(--primary);
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.step {
+  text-align: center;
+  padding: 15px;
+  background-color: var(--light);
+  border-radius: 8px;
+}
+
+.step i {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.step h3 {
+  color: var(--primary);
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+}
+
+.step p {
+  font-size: 0.9rem;
+  color: #000000;
+  margin: 0;
+}
+
+/* สำหรับหน้าจอขนาดใหญ่ขึ้น */
+@media (min-width: 768px) {
+  .container {
+    max-width: 600px;
+    padding: 20px;
+  }
+  
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .button-group {
+    gap: 15px;
+  }
+}
+
+/* New style for top links */
+.top-links {
+  background-color: var(--primary);
+  color: var(--text-light);
+  padding: 10px 15px;
+  text-align: center;
+}
+
+.top-links .footer-links {
+  margin: 10px 0;
+}
+
+.top-links .footer-links a {
+  color: var(--text-light);
+}
+/* เพิ่มกฎ CSS สำหรับข้อความใน footer */
+footer p {
+  color: white !important;  /* กำหนดให้ข้อความใน footer เป็นสีขาว */
+  margin: 5px 0;          /* เพิ่มระยะห่างระหว่างบรรทัด */
+}
+
+/* หรือถ้าต้องการเฉพาะบางส่วน */
+#visitor-counter p {
+  color: rgb(255, 255, 255) !important;
+}
+
+/* ปุ่มแชร์ */
+.share-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+.share-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+.facebook { background-color: #3b5998; }
+.whatsapp { background-color: #25D366; }
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lao Karaoke</title>
+    <meta name="description" content="Lao Karaoke">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://elegant-kitsune-e735a8.netlify.app/">
+    <meta property="og:title" content="Lao Karaoke - ແປລາວ ↔ Karaoke">
+    <meta property="og:description" content="ເວັບແປພາສາລາວເປັນ Karaoke ແລະ ແປກັບຄືນ">
+    <meta property="og:image" content="images/karaoke.jpeg">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://elegant-kitsune-e735a8.netlify.app/">
+    <meta name="twitter:title" content="Lao Karaoke - ແປລາວ ↔ Karaoke">
+    <meta name="twitter:description" content="ເວັບແປພາສາລາວເປັນ Karaoke ແລະ ແປກັບຄືນ">
+    <meta name="twitter:image" content="images/karaoke.jpeg">
+    
+    <!-- AMP Links -->
+    <link rel="amphtml" href="https://elegant-kitsune-e735a8.netlify.app/index.amp.html">
+<!-- เพิ่มในส่วน <head> -->
+<link rel="canonical" href="https://yourwebsite.com/" />
+<meta name="robots" content="index, follow">
+	
+</head>
+<body>
+    <!-- Moved footer links to top -->
+    <div class="top-links">
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="contact.html">contact</a>
+            <a href="about.html">About Us</a>
+            <a href="ogg.html">pha sa oke man Y</a>
+            <a href="john.html">khor Moun Phu phut tha na</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>lao ↔ Karaoke</h1>
+        <textarea id="inputText" placeholder="Phim khor khuam pha sa lao  lue Karaoke" rows="5"></textarea>
+        <select id="direction" class="direction-select">
+            <option value="lao-to-karaoke">lao ➜ Karaoke</option>
+            <option value="karaoke-to-lao">Karaoke ➜ lao</option>
+        </select>
+        <div class="button-group">
+            <button id="translateBtn">Pae</button>
+            <button id="clearBtn">larng</button>
+        </div>
+        <div id="loading" class="loading">kum lung Pae ...</div>
+        <div id="output" class="output"></div>
+        <button id="copyBtn" class="copy-btn">khut lork</button>
+<div class="share-buttons">
+    <button class="share-btn facebook" onclick="shareOnFacebook()">
+        <i class="fab fa-facebook"></i> zac nai Facebook
+    </button>
+    <button class="share-btn whatsapp" onclick="shareOnWhatsApp()">
+        <i class="fab fa-whatsapp"></i> zac nai WhatsApp
+    </button>
+</div>
+    </div>
+
+    <footer>
+    <div id="visitor-counter">
+        <div class="social-icons">
+    <a href="https://www.facebook.com/share/1CbJTRfNMc/?mibextid=wwXIfr" target="_blank" class="social-icon facebook">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://wa.me/2029988148" target="_blank" class="social-icon whatsapp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="about.html" class="social-icon info">
+        <i class="fas fa-info-circle"></i>
+    </a>
+    <a href="john.html" class="social-icon user">
+        <i class="fas fa-user"></i>
+    </a>
+</div>
+ <div id="visitor-counter">
+        <div class="social-icons">
+            <!-- ไอคอนโซเชียลมีเดีย -->
+        </div>
+        <p style="color: rgb(255, 0, 0);">&copy;kham dh Phit  lue  Pae  br ork sa mart thuk z ma brk dai dr</p>
+        <p style="color: white;">&copy;sa Nguan Sit  phut tha na Doi: Mr.ChanthaChone PIMMASONE</p>
+    </div>
+<div class="stats">
+    <p>jam nuan karn Khao Zai: <span id="visitorCount">0</span> khung</p>
+</div>
+</footer>
+    
+    <div class="how-to-use">
+        <h2>vi t Zai ngarn</h2>
+        <div class="steps">
+            <div class="step">
+                <i class="fas fa-keyboard"></i>
+                <h3>1. porn khor khuam</h3>
+                <p>Phim khor khuam pha sa lao  lue  kha La oke Long nai Zong khor khuam</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-exchange-alt"></i>
+                <h3>2. lueak thit tharng karn Pae</h3>
+                <p>lueak torng karn Pae jark lao Pen kha La oke  lue  Kong kun kharm</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-language"></i>
+                <h3>3. Click poum  "Pae"</h3>
+                <p>Kod poum  "Pae " Phuea h karn pien pha sa</p>
+            </div>
+            <div class="step">
+                <i class="fas fa-copy"></i>
+                <h3>4. khut lork phon dai hub</h3>
+                <p>Zai poum  "khut lork " Phuea  nam Pai Zai tor</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        // ย้ายการทำงานของ onclick มาไว้ที่นี่
+        document.getElementById('translateBtn').addEventListener('click', translateText);
+        document.getElementById('clearBtn').addEventListener('click', clearText);
+        document.getElementById('copyBtn').addEventListener('click', copyOutput);
+
+        // ฟังก์ชันสำหรับแชร์บนโซเชียลมีเดีย
+        function shareOnFacebook() {
+            window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(window.location.href));
+        }
+        function shareOnWhatsApp() {
+            window.open('https://wa.me/?text='+encodeURIComponent('ແຊຣ໌ຈາກ Lao Karaoke: ' + window.location.href));
+        }
+
+        // ตัวอย่างการนับจำนวนผู้เยี่ยมชม
+        let visitors = localStorage.getItem('visitors') || 0;
+        visitors++;
+        localStorage.setItem('visitors', visitors);
+        document.getElementById('visitorCount').textContent = visitors;
+    </script>
+</body>
+</html>
