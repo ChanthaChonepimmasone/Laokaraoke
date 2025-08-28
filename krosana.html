@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ຄິດໄລ່ລາຄາໂຄສະນາ - Lao Karaoke</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #00198a;
+            --accent: #000e8d;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --text: #5c5c5c;
+            --text-light: #ffffff;
+            --bg-light: #f5f5f5;
+            --border: #ddd;
+        }
+
+        body {
+            font-family: 'Saysettha OT', 'Noto Sans Lao', sans-serif;
+            background-color: #f9f9f9;
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.2rem;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+
+        .card-title {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--bg-light);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Times New Roman', 'Saysettha OT', 'Noto Sans Lao', serif;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 14, 141, 0.2);
+        }
+
+        .calculator-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .price-summary {
+            background: linear-gradient(135deg, #f5f7ff, #e8eaf6);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .price-label {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin: 10px 0;
+        }
+
+        .price-note {
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-top: 15px;
+            opacity: 0.8;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn-contact {
+            background-color: var(--success);
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .btn-contact:hover {
+            background-color: #219653;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            background-color: var(--bg-light);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.2s ease;
+        }
+
+        .contact-method:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .calculator-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-methods {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-method {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ການຄິດໄລ່ລາຄາໂຄສະນາ</h1>
+            <p class="description">ຄິດໄລ່ລາຄາໂຄສະນາໃນເວັບໄຊທ໌ Lao Karaoke ຕາມປະເພດ ແລະ ໄລຍະເວລາທີ່ທ່ານຕ້ອງການ</p>
+        </header>
+
+        <div class="card">
+            <h2 class="card-title">ເລືອກປະເພດໂຄສະນາ</h2>
+            
+            <div class="calculator-options">
+                <div class="form-group">
+                    <label for="adType">ປະເພດໂຄສະນາ</label>
+                    <select id="adType">
+                        <option value="banner">ໂຄສະນາແບນສິນຄ້າ</option>
+                        <option value="sidebar">ໂຄສະນາເພສ Facebook,TioTik ແລະ ອື່ນໆ</option>
+                        <option value="intext">ໂຄສະນາຮ້ານ</option>
+						<option value="sponsored">ໂຄສະນາຮັບບໍລິການຕ່າງໆ</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="adDuration">ໄລຍະເວລາ</label>
+                    <select id="adDuration">
+                        <option value="7">1 ອາທິດ</option>
+                        <option value="14">2 ອາທິດ</option>
+                        <option value="30" selected>1 ເດືອນ</option>
+                        <option value="60">2 ເດືອນ</option>
+                        <option value="90">3 ເດືອນ</option>
+                        <option value="180">6 ເດືອນ</option>
+                        <option value="365">1 ປີ</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="calculator-options">
+                <div class="form-group">
+                    <label for="adSize">ຂະໜາດໂຄສະນາ</label>
+                    <select id="adSize">
+                        <option value="small">ຂະໜາດນ້ອຍ</option>
+                        <option value="medium" selected>ຂະໜາດກາງ</option>
+                        <option value="large">ຂະໜາດໃຫຍ່</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="adPosition">ຕຳແໜ່ງໂຄສະນາ</label>
+                    <select id="adPosition">
+                        <option value="top">ດ້ານເທິງ</option>
+                        <option value="middle">ກາງໜ້າ</option>
+                        <option value="bottom">ດ້ານລຸ່ມ</option>
+                        <option value="sidebar">ແຖບຂ້າງ</option>
+                        <option value="floating">ລອຍໄດ້</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">ລາຄາປະມານ</h2>
+            
+            <div class="price-summary">
+                <p class="price-label">ລາຄາທັງໝົດສຳລັບໄລຍະເວລາທີ່ເລືອກ</p>
+                <div class="price-amount" id="totalPrice">350,000 ກີບ</div>
+                <p class="price-note">ລາຄານີ້ແມ່ນລາຄາປະມານ ອາດມີການປັບຕາມຄວາມຕ້ອງການສະເພາະຂອງທ່ານ</p>
+            </div>
+            
+            <a href="https://wa.me/2029988148?text=ສົນໃຈໂຄສະນາໃນເວັບໄຊທ໌ Lao Karaoke" class="btn btn-contact">
+                <i class="fab fa-whatsapp"></i> ຕິດຕໍ່ສອບຖາມລາຍລະອຽດ
+            </a>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">ຂໍ້ມູນຕິດຕໍ່</h2>
+            
+            <div class="contact-info">
+                <p>ສາມາດຕິດຕໍ່ພວກເຮົາໄດ້ຜ່ານຊ່ອງທາງຕ່າງໆ ດ້ານລຸ່ມນີ້:</p>
+                
+                <div class="contact-methods">
+                    <a href="mailto:jonepms216@gmail.com" class="contact-method">
+                        <i class="fas fa-envelope"></i> ອີເມວ
+                    </a>
+                    
+                    <a href="https://wa.me/2029988148" class="contact-method">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    
+                    <a href="https://www.facebook.com/share/1CbJTRfNMc/?mibextid=wwXIfr" class="contact-method">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </a>
+                </div>
+                
+                <p style="margin-top: 20px;">ພວກເຮົາຍິນດີຕອບຄຳຖາມ ແລະ ໃຫ້ຄຳແນະນຳກ່ຽວກັບໂຄສະນາໃນເວັບໄຊທ໌ຂອງພວກເຮົາ</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Lao Karaoke - ພັດທະນາໂດຍ: PMS.COM</p>
+    </footer>
+
+    <script>
+        // ການຄິດໄລ່ລາຄາໂຄສະນາ
+        const prices = {
+            banner: { small: 200000, medium: 300000, large: 450000, xlarge: 600000 },
+            sidebar: { small: 150000, medium: 250000, large: 350000, xlarge: 500000 },
+            popup: { small: 250000, medium: 400000, large: 550000, xlarge: 700000 },
+            intext: { small: 100000, medium: 180000, large: 250000, xlarge: 350000 },
+            sponsored: { small: 120000, medium: 200000, large: 300000, xlarge: 400000 }
+        };
+
+        const positionMultipliers = {
+            top: 1.5,
+            middle: 1.2,
+            bottom: 1.0,
+            sidebar: 1.0,
+            floating: 1.8
+        };
+
+        function calculatePrice() {
+            const adType = document.getElementById('adType').value;
+            const adDuration = parseInt(document.getElementById('adDuration').value);
+            const adSize = document.getElementById('adSize').value;
+            const adPosition = document.getElementById('adPosition').value;
+            
+            // ຄິດໄລ່ລາຄາພື້ນຖານ
+            let basePrice = prices[adType][adSize];
+            
+            // ປັບລາຄາຕາມຕຳແໜ່ງ
+            basePrice *= positionMultipliers[adPosition];
+            
+            // ຄິດໄລ່ລາຄາຕາມໄລຍະເວລາ
+            const weeks = adDuration / 7;
+            let totalPrice = basePrice * weeks;
+            
+            // ຫຼຸດລາຄາຖ້າໄລຍະເວລາຍາວ
+            if (weeks >= 8) { // 2 ເດືອນຂຶ້ນໄປ
+                totalPrice *= 0.9; // ຫຼຸດ 10%
+            }
+            if (weeks >= 12) { // 3 ເດືອນຂຶ້ນໄປ
+                totalPrice *= 0.85; // ຫຼຸດ 15%
+            }
+            if (weeks >= 24) { // 6 ເດືອນຂຶ້ນໄປ
+                totalPrice *= 0.8; // ຫຼຸດ 20%
+            }
+            
+            // ເລັກນ້ອຍສຸດ 1 ອາທິດ
+            if (weeks < 1) {
+                totalPrice = basePrice;
+            }
+            
+            // ປັບແຕ່ງຮູບແບບຕົວເລກ
+            document.getElementById('totalPrice').textContent = Math.round(totalPrice).toLocaleString('lo-LA') + ' ກີບ';
+        }
+
+        // ຕິດຕາມການປ່ຽນແປງຂໍ້ມູນ
+        document.getElementById('adType').addEventListener('change', calculatePrice);
+        document.getElementById('adDuration').addEventListener('change', calculatePrice);
+        document.getElementById('adSize').addEventListener('change', calculatePrice);
+        document.getElementById('adPosition').addEventListener('change', calculatePrice);
+
+        // ຄຳນວນລາຄາເມື່ອເປີດໜ້າ
+        window.addEventListener('load', calculatePrice);
+    </script>
+</body>
+</html>
