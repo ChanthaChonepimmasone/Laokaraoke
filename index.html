@@ -564,7 +564,7 @@
     <div id="output" class="output"></div>
     <button id="copyBtn" class="copy-btn"><i class="fas fa-copy"></i> ຄັດລອກ</button>
 
-  
+   
   </div>
 
   <!-- โฆษณาติดต่อ -->
@@ -601,70 +601,21 @@
     </div>
   </footer>
 
-  <script>
-    // ฟังก์ชันสำหรับการแปล (ตัวอย่าง)
-    function translateText() {
-      const inputText = document.getElementById('inputText').value;
-      const direction = document.getElementById('direction').value;
-      const outputElement = document.getElementById('output');
-      const loadingElement = document.getElementById('loading');
-      const copyBtn = document.getElementById('copyBtn');
-      
-      // แสดงการโหลด
-      loadingElement.style.display = 'block';
-      outputElement.textContent = '';
-      
-      // จำลองการโหลด
-      setTimeout(() => {
-        loadingElement.style.display = 'none';
-        
-        // ตัวอย่างการแปล
-        if (direction === 'lao-to-karaoke') {
-          outputElement.textContent = inputText + '';
-        } else {
-          outputElement.textContent = inputText + '';
-        }
-        
-        outputElement.classList.add('fade-in');
-        copyBtn.style.display = 'block';
-        
-        // ลบคลาส fade-in หลังจาก animation เสร็จ
-        setTimeout(() => {
-          outputElement.classList.remove('fade-in');
-        }, 500);
-      }, 1500);
-    }
-    
-    function clearText() {
-      document.getElementById('inputText').value = '';
-      document.getElementById('output').textContent = '';
-      document.getElementById('copyBtn').style.display = 'none';
-    }
-    
-    function copyOutput() {
-      const outputText = document.getElementById('output').textContent;
-      navigator.clipboard.writeText(outputText).then(() => {
-        const copyBtn = document.getElementById('copyBtn');
-        const originalText = copyBtn.innerHTML;
-        copyBtn.innerHTML = '<i class="fas fa-check"></i> ຄັດລອກແລ້ວ';
-        setTimeout(() => {
-          copyBtn.innerHTML = originalText;
-        }, 2000);
-      });
-    }
-    
-    function shareOnFacebook() {
-      window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(window.location.href));
-    }
-    
-    function shareOnWhatsApp() {
-      window.open('https://wa.me/?text='+encodeURIComponent('ແຊຣ໌ຈາກ Lao Karaoke: ' + window.location.href));
-    }
+  
+    <script src="script.js"></script>
+    <script>
+        // ย้ายการทำงานของ onclick มาไว้ที่นี่
+        document.getElementById('translateBtn').addEventListener('click', translateText);
+        document.getElementById('clearBtn').addEventListener('click', clearText);
+        document.getElementById('copyBtn').addEventListener('click', copyOutput);
 
-    // เพิ่ม event listeners
-    document.getElementById('translateBtn').addEventListener('click', translateText);
-    document.getElementById('clearBtn').addEventListener('click', clearText);
-    document.getElementById('copyBtn').addEventListener('click', copyOutput);
-  </script>
+
+        function shareOnFacebook() {
+            window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(window.location.href));
+        }
+        function shareOnWhatsApp() {
+            window.open('https://wa.me/?text='+encodeURIComponent('ແຊຣ໌ຈາກ Lao Karaoke: ' + window.location.href));
+        }
+    </script>
 </body>
 </html>
