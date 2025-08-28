@@ -360,7 +360,31 @@
     }
     .facebook { background-color: #3b5998; }
     .whatsapp { background-color: #25D366; }
-    </style>
+    
+    /* สไตล์ใหม่สำหรับลิงก์คำนวณราคา */
+    .price-link {
+      display: block;
+      text-align: center;
+      margin: 20px 0;
+    }
+    
+    .price-link a {
+      display: inline-block;
+      background-color: var(--success);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    
+    .price-link a:hover {
+      background-color: #219653;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+  </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lao Karaoke</title>
@@ -395,6 +419,8 @@
             <a href="contact.html">contact</a>
             <a href="about.html">About Us</a>
             <a href="ogg.html">ພາສາໂອເກະແມ່ນຫຍັງ</a>
+            <!-- เพิ่มลิงก์ไปยังหน้าราคาโฆษณา -->
+            <a href="krosana.html">ຄິດໄລ່ລາຄາໂຄສະນາ</a>
         </div>
     </div>
 
@@ -413,8 +439,8 @@
         <div id="output" class="output"></div>
         <button id="copyBtn" class="copy-btn">ຄັດລອກ</button>
 
-      
-    </div>
+        <!-- เพิ่มลิงก์ไปยังหน้าราคาโฆษณา -->
+       
 
     <!-- โฆษณาติดต่อ -->
     <div class="ad-container">
@@ -427,7 +453,12 @@
                     <i class="fab fa-whatsapp"></i> whatsapp
                 </a></p>
             </div>
-           
+            <div class="price-link">
+            <a href="krosana.html">
+                <i class="fas fa-calculator"></i> ຄິດໄລ່ລາຄາໂຄສະນາໃນເວັບໄຊທ໌ນີ້
+            </a>
+        </div>
+    </div>
         </div>
     </div>
 
@@ -460,7 +491,29 @@
         function shareOnWhatsApp() {
             window.open('https://wa.me/?text='+encodeURIComponent('ແຊຣ໌ຈາກ Lao Karaoke: ' + window.location.href));
         }
+        
+        // ฟังก์ชันพื้นฐานสำหรับการแปล (ตัวอย่าง)
+        function translateText() {
+            document.getElementById('loading').style.display = 'block';
+            setTimeout(function() {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('output').textContent = "ຜົນການແປຂອງທ່ານຈະປາກົດຢູ່ນີ້";
+                document.getElementById('copyBtn').style.display = 'block';
+            }, 1000);
+        }
+        
+        function clearText() {
+            document.getElementById('inputText').value = '';
+            document.getElementById('output').textContent = '';
+            document.getElementById('copyBtn').style.display = 'none';
+        }
+        
+        function copyOutput() {
+            const outputText = document.getElementById('output').textContent;
+            navigator.clipboard.writeText(outputText).then(() => {
+                alert('ຄຳແປຖືກຄັດລອກແລ້ວ!');
+            });
+        }
     </script>
 </body>
 </html>
-
