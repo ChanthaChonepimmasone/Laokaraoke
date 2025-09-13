@@ -21,6 +21,7 @@ const fullKaraokeToLao = {
         "ໝູ່": "Mou",
 		"ໂກ": "ko",
 "ໂກ່": "koh",
+	"ລຸຍ": "Lui",
 "phai": "ໃຜ",
 "bard": "ບາດ",
 "ໂກ້": "koh",
@@ -6157,4 +6158,5 @@ function copyOutput() {
             console.error("Failed to copy text:", err);
         });
 }
+
 
