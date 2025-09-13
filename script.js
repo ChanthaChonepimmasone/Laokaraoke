@@ -6066,6 +6066,9 @@ const fullKaraokeToLao = {
 "ເເຟນ": "Fan",
 "pord": "ປອດ",
 "pord phai": "ປອດໄພ",
+	"ລຸກ": "louk",
+"ແນ້": "nae",
+"ເເລ້ວ": "leo",
 "u": "ຢູ່",
   "d": "ດີ",
   "t": "ທີ່",
@@ -6154,3 +6157,4 @@ function copyOutput() {
             console.error("Failed to copy text:", err);
         });
 }
+
