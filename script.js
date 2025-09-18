@@ -6088,9 +6088,7 @@ const fullKaraokeToLao = {
         "ຢູ່": "u",
 	"O": "ໂອ",
           "h": "ເຮັດ",
-		  "k": "ເຄ",;
-	
-	
+		  "k": "ເຄ",
 };
 function karaokeToLao(text) {
     let lowerText = text.toLowerCase();
@@ -6163,6 +6161,7 @@ function copyOutput() {
             console.error("Failed to copy text:", err);
         });
 }
+
 
 
 
