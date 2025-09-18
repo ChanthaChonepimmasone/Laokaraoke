@@ -6070,6 +6070,7 @@ const fullKaraokeToLao = {
 "pord phai": "ປອດໄພ",
 	"ລຸກ": "louk",
 "ແນ້": "nae",
+	"ໂອ": "O",
 "ເເລ້ວ": "leo",
 	"ໂອນ": "Aon",
 "u": "ຢູ່",
@@ -6162,6 +6163,7 @@ function copyOutput() {
             console.error("Failed to copy text:", err);
         });
 }
+
 
 
 
