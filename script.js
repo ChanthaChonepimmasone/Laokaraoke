@@ -6085,8 +6085,10 @@ const fullKaraokeToLao = {
         "ຫຍັງ": "Y",
 		"ຍັງ": "y",
         "ຢູ່": "u",
+	"O": "ໂອ",
           "h": "ເຮັດ",
-		  "k": "ເຄ",
+		  "k": "ເຄ",;
+	
 	
 };
 function karaokeToLao(text) {
@@ -6160,6 +6162,7 @@ function copyOutput() {
             console.error("Failed to copy text:", err);
         });
 }
+
 
 
 
