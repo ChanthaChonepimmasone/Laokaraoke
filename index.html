@@ -25,21 +25,15 @@
   <meta name="robots" content="index, follow">
   
   <style>
-    /* ตัวแปรสีใหม่ - โทนสีฟ้าและทองที่ให้ความรู้สึกหรูหรา */
+    /* ตัวแปรสีแบบเรียบง่าย */
     :root {
-      --primary: #1a365d;
-      --secondary: #2a4a7f;
-      --accent: #d4af37; /* สีทอง accent */
-      --success: #27ae60;
-      --warning: #e67e22;
+      --primary: #2c5282;
+      --secondary: #4299e1;
+      --accent: #ecc94b;
       --text: #2d3748;
       --text-light: #ffffff;
-      --bg-light: #f8fafc;
-      --gradient-start: #1a365d;
-      --gradient-end: #2a4a7f;
-      --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      --shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.15);
-      --radius: 12px;
+      --bg-light: #f7fafc;
+      --border: #e2e8f0;
     }
 
     /* พื้นฐาน */
@@ -79,17 +73,18 @@
       padding: 16px;
       margin: 0 auto;
       flex: 1;
+      max-width: 500px;
     }
 
     /* เมนูบน */
     .top-links {
-      background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+      background: var(--primary);
       color: var(--text-light);
-      padding: 12px 16px;
+      padding: 10px 16px;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: var(--shadow);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
 
     .top-links .footer-links {
@@ -97,7 +92,7 @@
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      gap: 12px;
+      gap: 8px;
       margin: 0;
       padding: 4px 0;
     }
@@ -108,53 +103,39 @@
 
     .top-links .footer-links a {
       white-space: nowrap;
-      font-size: 0.9rem;
-      padding: 6px 12px;
+      font-size: 0.85rem;
+      padding: 5px 10px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.15);
     }
 
     /* หัวข้อหลัก */
     h1 {
       color: var(--text-light);
       text-align: center;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       margin: 0 0 20px 0;
-      padding: 16px;
-      background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-
-    h1:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), transparent);
+      padding: 15px;
+      background: var(--primary);
+      border-radius: 8px;
     }
 
     /* ช่องป้อนข้อความ */
     #inputText {
       width: 100%;
-      padding: 16px;
-      border: 1px solid #e2e8f0;
-      border-radius: var(--radius);
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
       font-size: 1rem;
-      margin-bottom: 16px;
+      margin-bottom: 15px;
       resize: none;
       min-height: 120px;
-      transition: all 0.2s ease;
-      box-shadow: var(--shadow);
       background-color: white;
     }
 
     #inputText:focus {
       outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+      border-color: var(--secondary);
     }
 
     #inputText::placeholder {
@@ -164,45 +145,41 @@
     /* เมนูเลือก */
     .direction-select {
       width: 100%;
-      padding: 16px;
-      border: 1px solid #e2e8f0;
-      border-radius: var(--radius);
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
       font-size: 1rem;
-      margin-bottom: 16px;
+      margin-bottom: 15px;
       background-color: white;
       color: var(--text);
       cursor: pointer;
       appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23d4af37' stroke='%23d4af37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234299e1'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
       background-repeat: no-repeat;
       background-position: right 12px center;
       background-size: 16px;
-      box-shadow: var(--shadow);
-      transition: all 0.2s ease;
     }
 
     .direction-select:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+      border-color: var(--secondary);
     }
 
     /* ปุ่มต่างๆ */
     .button-group {
       display: flex;
-      gap: 12px;
-      margin-bottom: 16px;
+      gap: 10px;
+      margin-bottom: 15px;
     }
 
     button {
       flex: 1;
-      padding: 16px;
+      padding: 14px;
       border: none;
-      border-radius: var(--radius);
+      border-radius: 8px;
       font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: var(--shadow);
+      transition: opacity 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -210,199 +187,156 @@
     }
 
     #translateBtn {
-      background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+      background: var(--primary);
       color: white;
     }
 
-    #translateBtn:active {
-      transform: scale(0.98);
+    #translateBtn:hover {
+      opacity: 0.9;
     }
 
     #clearBtn {
-      background: linear-gradient(135deg, #000a96 0%, #001a8f 100%);
+      background: #4a5568;
       color: white;
     }
 
-    #clearBtn:active {
-      transform: scale(0.98);
+    #clearBtn:hover {
+      opacity: 0.9;
     }
 
     .copy-btn {
       width: 100%;
-      background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+      background: #38a169;
       color: white;
-      margin-top: 16px;
+      margin-top: 15px;
       display: none;
-      padding: 16px;
+      padding: 14px;
       font-weight: 600;
     }
 
-    .copy-btn:active {
-      transform: scale(0.98);
+    .copy-btn:hover {
+      opacity: 0.9;
     }
 
     /* ผลลัพธ์ */
     .output {
       min-height: 120px;
-      padding: 16px;
-      border: 1px solid #e2e8f0;
-      border-radius: var(--radius);
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
       background-color: white;
       font-size: 1rem;
-      margin-bottom: 16px;
+      margin-bottom: 15px;
       white-space: pre-wrap;
       word-break: break-word;
-      box-shadow: var(--shadow);
-      transition: all 0.2s ease;
     }
 
     .loading {
       text-align: center;
-      color: var(--accent);
+      color: var(--secondary);
       font-weight: bold;
       display: none;
-      margin: 16px 0;
-      font-size: 1.1rem;
-    }
-
-    /* ปุ่มแชร์ */
-    .share-buttons {
-      display: flex;
-      gap: 12px;
-      margin-top: 20px;
-    }
-    
-    .share-btn {
-      flex: 1;
-      padding: 12px;
-      border: none;
-      border-radius: var(--radius);
-      color: white;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      box-shadow: var(--shadow);
-      font-size: 0.9rem;
-    }
-    
-    .share-btn:active {
-      transform: scale(0.98);
-    }
-    
-    .facebook { 
-      background: linear-gradient(135deg, #3b5998 0%, #2d4373 100%);
-    }
-    
-    .whatsapp { 
-      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      margin: 15px 0;
+      font-size: 1rem;
     }
 
     /* โฆษณาติดต่อ */
     .ad-container {
       width: 100%;
-      margin: 24px 0;
+      margin: 20px 0;
       text-align: center;
-      background: #f8f9fa;
-      padding: 16px;
-      border-radius: var(--radius);
-      border: 1px solid #e9ecef;
+      background: #edf2f7;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
     }
 
     .ad-label {
       font-size: 0.8rem;
-      color: var(--accent);
+      color: var(--primary);
       margin-bottom: 8px;
       text-transform: uppercase;
       font-weight: bold;
-      letter-spacing: 0.5px;
     }
 
     .ad-unit {
       background: white;
-      border-radius: var(--radius);
-      padding: 16px;
-      margin: 12px 0;
-      box-shadow: var(--shadow);
+      border-radius: 8px;
+      padding: 15px;
+      margin: 10px 0;
       min-height: auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
     }
 
     .ad-text {
       color: var(--text);
       font-size: 0.9rem;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       text-align: center;
       line-height: 1.5;
     }
 
     .ad-contact-info {
-      margin-top: 12px;
+      margin-top: 10px;
       font-size: 0.9rem;
       color: var(--text);
       text-align: center;
     }
 
     .ad-contact-info a {
-      color: var(--accent);
+      color: var(--primary);
       text-decoration: none;
       font-weight: 600;
     }
 
     .ad-contact-info p {
-      margin: 8px 0;
+      margin: 6px 0;
     }
 
     .price-link {
-      margin-top: 12px;
+      margin-top: 10px;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
     }
 
     .price-link a {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      color: var(--accent);
+      gap: 5px;
+      color: var(--primary);
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.9rem;
-      padding: 8px 12px;
-      border-radius: 20px;
-      background: rgba(212, 175, 55, 0.1);
-      margin: 0 5px;
+      font-size: 0.85rem;
+      padding: 6px 10px;
+      border-radius: 6px;
+      background: rgba(66, 153, 225, 0.1);
     }
 
     /* ส่วนท้าย */
     footer {
-      background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+      background: var(--primary);
       color: var(--text-light);
-      padding: 24px 16px;
+      padding: 20px 16px;
       text-align: center;
       margin-top: auto;
     }
 
     .footer-links {
-      margin: 16px 0;
+      margin: 15px 0;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 12px;
+      gap: 8px;
     }
 
     .footer-links a {
       color: var(--text-light);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       opacity: 0.9;
-      padding: 6px 12px;
-      border-radius: 20px;
+      padding: 5px 10px;
+      border-radius: 4px;
       background: rgba(255, 255, 255, 0.1);
     }
 
@@ -410,40 +344,39 @@
     .social-icons {
       display: flex;
       justify-content: center;
-      gap: 16px;
-      margin-bottom: 20px;
+      gap: 12px;
+      margin-bottom: 15px;
     }
 
     .social-icon {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       color: white;
-      font-size: 1.2rem;
-      transition: all 0.2s ease;
-      box-shadow: var(--shadow);
+      font-size: 1.1rem;
+      transition: opacity 0.2s;
     }
 
-    .social-icon:active {
-      transform: scale(0.95);
+    .social-icon:hover {
+      opacity: 0.9;
     }
 
     .facebook {
-      background: linear-gradient(135deg, #3b5998 0%, #2d4373 100%);
+      background: #3b5998;
     }
 
     .whatsapp {
-      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      background: #25D366;
     }
 
     /* เพิ่มกฎ CSS สำหรับข้อความใน footer */
     footer p {
       color: white !important;
-      margin: 12px 0;
-      font-size: 0.9rem;
+      margin: 10px 0;
+      font-size: 0.85rem;
     }
 
     /* เอฟเฟกต์พิเศษสำหรับข้อความผลลัพธ์ */
@@ -452,21 +385,8 @@
     }
     
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* สำหรับหน้าจอขนาดใหญ่ขึ้น */
-    @media (min-width: 400px) {
-      .container {
-        max-width: 400px;
-      }
-    }
-
-    @media (min-width: 480px) {
-      h1 {
-        font-size: 1.75rem;
-      }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
@@ -479,7 +399,7 @@
       <a href="about.html">About Us</a>
       <a href="ogg.html">ພາສາໂອເກະ</a>
       <!-- เพิ่มลิงก์ Lao Tiktok Download -->
-      <a href="https://chanthachonepimmasone.github.io/LaoTiktokdownload/" target="_blank">ດາວໂຫຼດຮູບໃນ TikTok ບໍ່ຕິດຊື່ເຈົ້າຂອງຮູບ</a>
+      <a href="https://chanthachonepimmasone.github.io/LaoTiktokdownload/" target="_blank">ດາວໂຫຼດຮູບໃນ TikTok ແບບບໍ່ຕິດຊື່ເຈົ້າຂອງຮູບ</a>
     </div>
   </div>
 
@@ -501,8 +421,7 @@
     <!-- เพิ่มลิงก์ Lao Tiktok Download ในส่วนนี้ด้วย -->
     <div class="price-link" style="margin-top: 20px;">
       <a href="https://chanthachonepimmasone.github.io/LaoTiktokdownload/" target="_blank">
-        <i class="fab fa-tiktok"></i> ດາວໂຫຼດຮູບໃນ TikTok ບໍ່ຕິດຊື່ເຈົ້າຂອງຮູບ
-      </a>
+        <i class="fab fa-tiktok"></i> ດາວໂຫຼດຮູບໃນ TikTok ແບບບໍ່ຕິດຊື່ເຈົ້າຂອງຮູບ
     </div>
   </div>
 
@@ -521,10 +440,6 @@
         <a href="krosana.html">
           <i class="fas fa-calculator"></i> ຄິດໄລ່ລາຄາໂຄສະນາ
         </a>
-        <!-- เพิ่มลิงก์ Lao Tiktok Download ในส่วนโฆษณา -->
-        <a href="https://chanthachonepimmasone.github.io/LaoTiktokdownload/" target="_blank">
-          <i class="fab fa-tiktok"></i> ດາວໂຫຼດຮູບໃນ TikTok ບໍ່ຕິດຊື່ເຈົ້າຂອງຮູບ
-        </a>
       </div>
     </div>
   </div>
@@ -539,13 +454,8 @@
           <i class="fab fa-whatsapp"></i>
         </a>
       </div>
-      <p style="color: rgb(255, 223, 163) !important;">&copy;ຄຳໃດຜິດ ຫຼື ແປບໍ່ອອກສາມາດທັກແຊັດມາບອກໄດ້ເດີ່</p>
+      <p style="color: #ecc94b !important;">&copy;ຄຳໃດຜິດ ຫຼື ແປບໍ່ອອກສາມາດທັກແຊັດມາບອກໄດ້ເດີ່</p>
       <p>&copy;ສະຫງວນສິດ ພັດທະນາໂດຍ: PIMMASONE.COM</p>
-      <!-- เพิ่มลิงก์ Lao Tiktok Download ใน footer -->
-      <div class="footer-links">
-        <a href="https://chanthachonepimmasone.github.io/LaoTiktokdownload/" target="_blank">
-          <i class="fab fa-tiktok"></i> ດາວໂຫຼດຮູບໃນ TikTok ບໍ່ຕິດຊື່ເຈົ້າຂອງຮູບ
-        </a>
       </div>
     </div>
   </footer>
@@ -566,4 +476,3 @@
     </script>
 </body>
 </html>
-
