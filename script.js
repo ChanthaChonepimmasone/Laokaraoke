@@ -14,13 +14,15 @@ function updateVisitorCount() {
 }
 
 const fullKaraokeToLao = {
-  "ຄົນ": "khn",
+ "ຄົນ": "khn",
   "khn": "ຄົນ",
         "ເສົາ": "sao",
         "ໃສ": "Sai",
         "ໝູ່": "Mou",
+	"ໂອນ": "Aon",
 		"ໂກ": "ko",
 "ໂກ່": "koh",
+	"ລຸຍ": "Lui",
 "phai": "ໃຜ",
 "bard": "ບາດ",
 "ໂກ້": "koh",
@@ -5171,8 +5173,8 @@ const fullKaraokeToLao = {
 "Ky": "ກີ້",
 "Bo": "ໂບ",
 "Borm": "ບອມ",
-"torm": "ທອມ",
-"torm": "ທ້ອມ",
+"thorm": "ທອມ",
+"thorm": "ທ້ອມ",
 "Boum": "ບຸມ",
 "Phet": "ເພັດ",
 "Phin": "ພິນ",
@@ -5464,7 +5466,7 @@ const fullKaraokeToLao = {
 "Phern": "ເພີ່ນ",
 "Phern": "ເພີ້ນ",
 "muen": "ໝື່ນ",
-"torn": "ທ້ອນ",
+"thorn": "ທ້ອນ",
 "home": "ໂຮມ",
 "mae num": "ແມ່ນ້ຳ",
 "sueb": "ສືບ",
@@ -6051,7 +6053,26 @@ const fullKaraokeToLao = {
 "ປ່ອນ": "porn",
 "ບາຍ": "baiy",
 "ນຸຍາດ": "Nu  yart",
-   "ໂອນ": "Aon",
+"ແຄນ": "khan",
+"ແຄ່ນ": "khan",
+"ຫາກະ": "ha ka",
+"ເໜີ": "ner",
+"ເຫນີ": "ner",
+"ອັກ": "auk",
+"ແອັບ": "app",
+"ນັບ": "nub",
+"ທິບາຍ": "thi baiy",
+"ຫນ້າ": "Nar",
+"ປຽບ": "piep",
+"ເເລງ": "lang",
+"ເເຟນ": "Fan",
+"pord": "ປອດ",
+"pord phai": "ປອດໄພ",
+	"ລຸກ": "louk",
+"ແນ້": "nae",
+	"ໂອ": "O",
+"ເເລ້ວ": "leo",
+	"ໂອນ": "Aon",
 "u": "ຢູ່",
   "d": "ດີ",
   "t": "ທີ່",
@@ -6061,15 +6082,13 @@ const fullKaraokeToLao = {
   "pen": "ເປັນ",
   "z": "ແຊັດ",
   "c": "ຊິ",
-  "ໂອ": "O",
- 
  "ເຮັດ": "h",
         "ຫຍັງ": "Y",
 		"ຍັງ": "y",
         "ຢູ່": "u",
+	"O": "ໂອ",
           "h": "ເຮັດ",
 		  "k": "ເຄ",
-	
 };
 function karaokeToLao(text) {
     let lowerText = text.toLowerCase();
@@ -6142,3 +6161,4 @@ function copyOutput() {
             console.error("Failed to copy text:", err);
         });
 }
+
