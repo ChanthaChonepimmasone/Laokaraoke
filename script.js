@@ -4595,7 +4595,6 @@ const fullKaraokeToLao = {
   "touy": "ຕູ້ຍ",
   "tiw": "ຕິວ",
   "teo": "ແຕວ",
-  "ha": "ຮະ",
   "hi": "ຮິ",
   "hee": "ຮີ",
   "hou": "ຮູ",
@@ -4626,7 +4625,6 @@ const fullKaraokeToLao = {
   "herd": "ເຮີດ",
   "herd": "ເຫີດ",
   "huad": "ຮວດ",
-  "ha": "ຫະ",
   "hi": "ຫິ",
   "hee": "ຫີ",
   "hou": "ຫູ",
@@ -6114,7 +6112,6 @@ const fullKaraokeToLao = {
 "bye2": "ບາຍໆ",
 "bye": "ບາຍ",
 "tam": "ຕຳ",
-"ha": "ຫາ",
 "u": "ຢູ່",
   "d": "ດີ",
   "t": "ທີ່",
@@ -6203,6 +6200,7 @@ function copyOutput() {
             console.error("Failed to copy text:", err);
         });
 }
+
 
 
 
