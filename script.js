@@ -4179,7 +4179,6 @@ const fullKaraokeToLao = {
   "york": "ຢອກ",
   "daiy": "ດ້າຍ",
   "thue": "ຖື",
-  "ha": "ຮາ",
   "lee": "ຫຼີ",
   "haiy": "ຮ້າຍ",
   "si": "ສິ",
@@ -6200,6 +6199,7 @@ function copyOutput() {
             console.error("Failed to copy text:", err);
         });
 }
+
 
 
 
