@@ -5021,7 +5021,7 @@ const fullKaraokeToLao = {
 "Athong": "ອາທອງ",
 "Pin": "ປິນ",
 "Aao": "ເອົ້າ",
-"Ha": "ຮາ",
+"Haha": "ຮາທ",
 "jung": "ຈັງ",
 "larp": "ຫຼາບ",
 "harn": "ຫານ",
@@ -6200,6 +6200,7 @@ function copyOutput() {
             console.error("Failed to copy text:", err);
         });
 }
+
 
 
 
