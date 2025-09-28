@@ -6111,6 +6111,12 @@ const fullKaraokeToLao = {
 "bye2": "ບາຍໆ",
 "bye": "ບາຍ",
 "tam": "ຕຳ",
+	"Ai": "ອ້າຍ",
+	"haha": "ຮາຮາ",
+	"oh": "ໂອ່",
+	"nong": "ນ້ອງ",
+	"mai": "ໃໝ່",
+	"day": "ເດ",
 "u": "ຢູ່",
   "d": "ດີ",
   "t": "ທີ່",
@@ -6199,6 +6205,7 @@ function copyOutput() {
             console.error("Failed to copy text:", err);
         });
 }
+
 
 
 
