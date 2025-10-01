@@ -180,6 +180,8 @@ const fullKaraokeToLao = {
         "ນົງ": "nong",
         "ນ້ອງ": "norng",
         "ນຽງ": "nieng",
+	"ໝັງ": "Mung",
+	"ຫມັງ": "Mung",
         "ເນື່ອງ": "nueang",
         "ນຳ": "nam",
         "ນ້ຳ": "num",
@@ -6209,6 +6211,7 @@ function copyOutput() {
             console.error("Failed to copy text:", err);
         });
 }
+
 
 
 
