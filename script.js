@@ -6090,6 +6090,10 @@ const fullKaraokeToLao = {
 "vai jai": "ໄວ້ໃຈ",
 "vai nai": "ໄວ້ໃນ",
 "ຕ້ອງ": "trng",
+	"ໝັງ": "Mung",
+	"ຫມັງ": "Mung",
+	"ໜັງ": "nung",
+	"ຫນັງ": "nung",
 "vao": "ເວົ້າ",
 "br trng": "ບໍ່ຕ້ອງ",
 "yark laiy": "ຍາກຫຼາຍ",
@@ -6205,6 +6209,7 @@ function copyOutput() {
             console.error("Failed to copy text:", err);
         });
 }
+
 
 
 
