@@ -30,15 +30,20 @@
   <meta name="robots" content="index, follow">
   
   <style>
-    /* ตัวแปรสีแบบเรียบง่าย */
+    /* ตัวแปรสีแบบ Facebook */
     :root {
-      --primary: #2c5282;
-      --secondary: #4299e1;
-      --accent: #ecc94b;
-      --text: #2d3748;
-      --text-light: #ffffff;
-      --bg-light: #f7fafc;
-      --border: #e2e8f0;
+      --facebook-blue: #1877f2;
+      --facebook-dark-blue: #166fe5;
+      --facebook-green: #42b72a;
+      --facebook-dark-green: #36a420;
+      --facebook-gray-1: #f0f2f5;
+      --facebook-gray-2: #e4e6eb;
+      --facebook-gray-3: #d8dadf;
+      --facebook-gray-4: #65676b;
+      --facebook-gray-5: #4b4c4f;
+      --facebook-white: #ffffff;
+      --facebook-text: #1c1e21;
+      --facebook-text-light: #ffffff;
     }
 
     /* พื้นฐาน */
@@ -49,8 +54,8 @@
     
     body {
       font-family: 'Saysettha OT', 'Noto Sans Lao', sans-serif;
-      background: var(--bg-light);
-      color: var(--text);
+      background: var(--facebook-gray-1);
+      color: var(--facebook-text);
       margin: 0;
       padding: 0;
       line-height: 1.6;
@@ -83,13 +88,14 @@
 
     /* เมนูบน */
     .top-links {
-      background: var(--primary);
-      color: var(--text-light);
+      background: var(--facebook-white);
+      color: var(--facebook-text);
       padding: 10px 16px;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid var(--facebook-gray-2);
     }
 
     .top-links .footer-links {
@@ -109,64 +115,79 @@
     .top-links .footer-links a {
       white-space: nowrap;
       font-size: 0.85rem;
-      padding: 5px 10px;
-      border-radius: 4px;
-      background: rgba(255,255,255,0.15);
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: var(--facebook-gray-1);
+      color: var(--facebook-gray-5);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: 1px solid var(--facebook-gray-2);
+    }
+
+    .top-links .footer-links a:hover {
+      background: var(--facebook-gray-2);
+      color: var(--facebook-text);
     }
 
     /* หัวข้อหลัก */
     h1 {
-      color: var(--text-light);
+      color: var(--facebook-text-light);
       text-align: center;
       font-size: 1.4rem;
       margin: 0 0 20px 0;
       padding: 15px;
-      background: var(--primary);
+      background: var(--facebook-blue);
       border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      font-weight: 600;
     }
 
     /* ช่องป้อนข้อความ */
     #inputText {
       width: 100%;
       padding: 14px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
+      border: 1px solid var(--facebook-gray-3);
+      border-radius: 6px;
       font-size: 1rem;
       margin-bottom: 15px;
       resize: none;
       min-height: 120px;
-      background-color: white;
+      background-color: var(--facebook-white);
+      transition: all 0.2s ease;
     }
 
     #inputText:focus {
       outline: none;
-      border-color: var(--secondary);
+      border-color: var(--facebook-blue);
+      box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
     }
 
     #inputText::placeholder {
-      color: #a0aec0;
+      color: var(--facebook-gray-4);
     }
 
     /* เมนูเลือก */
     .direction-select {
       width: 100%;
       padding: 14px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
+      border: 1px solid var(--facebook-gray-3);
+      border-radius: 6px;
       font-size: 1rem;
       margin-bottom: 15px;
-      background-color: white;
-      color: var(--text);
+      background-color: var(--facebook-white);
+      color: var(--facebook-text);
       cursor: pointer;
       appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234299e1'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2365676b'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
       background-repeat: no-repeat;
       background-position: right 12px center;
       background-size: 16px;
+      transition: all 0.2s ease;
     }
 
     .direction-select:focus {
-      border-color: var(--secondary);
+      border-color: var(--facebook-blue);
+      box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
     }
 
     /* ปุ่มต่างๆ */
@@ -180,39 +201,43 @@
       flex: 1;
       padding: 14px;
       border: none;
-      border-radius: 8px;
+      border-radius: 6px;
       font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
-      transition: opacity 0.2s;
+      transition: all 0.2s ease;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
     }
 
+    button:hover {
+      transform: translateY(-1px);
+    }
+
     #translateBtn {
-      background: var(--primary);
-      color: white;
+      background: var(--facebook-blue);
+      color: var(--facebook-white);
     }
 
     #translateBtn:hover {
-      opacity: 0.9;
+      background: var(--facebook-dark-blue);
     }
 
     #clearBtn {
-      background: #4a5568;
-      color: white;
+      background: var(--facebook-gray-4);
+      color: var(--facebook-white);
     }
 
     #clearBtn:hover {
-      opacity: 0.9;
+      background: var(--facebook-gray-5);
     }
 
     .copy-btn {
       width: 100%;
-      background: #38a169;
-      color: white;
+      background: var(--facebook-green);
+      color: var(--facebook-white);
       margin-top: 15px;
       display: none;
       padding: 14px;
@@ -220,16 +245,16 @@
     }
 
     .copy-btn:hover {
-      opacity: 0.9;
+      background: var(--facebook-dark-green);
     }
 
     /* ผลลัพธ์ */
     .output {
       min-height: 120px;
       padding: 14px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background-color: white;
+      border: 1px solid var(--facebook-gray-3);
+      border-radius: 6px;
+      background-color: var(--facebook-white);
       font-size: 1rem;
       margin-bottom: 15px;
       white-space: pre-wrap;
@@ -238,7 +263,7 @@
 
     .loading {
       text-align: center;
-      color: var(--secondary);
+      color: var(--facebook-blue);
       font-weight: bold;
       display: none;
       margin: 15px 0;
@@ -250,30 +275,31 @@
       width: 100%;
       margin: 20px 0;
       text-align: center;
-      background: #edf2f7;
+      background: var(--facebook-white);
       padding: 15px;
       border-radius: 8px;
-      border: 1px solid var(--border);
+      border: 1px solid var(--facebook-gray-2);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
 
     .ad-label {
       font-size: 0.8rem;
-      color: var(--primary);
+      color: var(--facebook-gray-4);
       margin-bottom: 8px;
       text-transform: uppercase;
-      font-weight: bold;
+      font-weight: 600;
     }
 
     .ad-unit {
-      background: white;
-      border-radius: 8px;
+      background: var(--facebook-gray-1);
+      border-radius: 6px;
       padding: 15px;
       margin: 10px 0;
       min-height: auto;
     }
 
     .ad-text {
-      color: var(--text);
+      color: var(--facebook-text);
       font-size: 0.9rem;
       margin-bottom: 10px;
       text-align: center;
@@ -283,14 +309,19 @@
     .ad-contact-info {
       margin-top: 10px;
       font-size: 0.9rem;
-      color: var(--text);
+      color: var(--facebook-text);
       text-align: center;
     }
 
     .ad-contact-info a {
-      color: var(--primary);
+      color: var(--facebook-blue);
       text-decoration: none;
       font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .ad-contact-info a:hover {
+      text-decoration: underline;
     }
 
     .ad-contact-info p {
@@ -309,22 +340,29 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      color: var(--primary);
+      color: var(--facebook-white);
       text-decoration: none;
       font-weight: 600;
       font-size: 0.85rem;
-      padding: 6px 10px;
+      padding: 8px 16px;
       border-radius: 6px;
-      background: rgba(66, 153, 225, 0.1);
+      background: var(--facebook-blue);
+      transition: all 0.2s ease;
+    }
+
+    .price-link a:hover {
+      background: var(--facebook-dark-blue);
+      transform: translateY(-1px);
     }
 
     /* ส่วนท้าย */
     footer {
-      background: var(--primary);
-      color: var(--text-light);
+      background: var(--facebook-white);
+      color: var(--facebook-text);
       padding: 20px 16px;
       text-align: center;
       margin-top: auto;
+      border-top: 1px solid var(--facebook-gray-2);
     }
 
     .footer-links {
@@ -336,13 +374,19 @@
     }
 
     .footer-links a {
-      color: var(--text-light);
+      color: var(--facebook-gray-4);
       text-decoration: none;
       font-size: 0.85rem;
-      opacity: 0.9;
-      padding: 5px 10px;
-      border-radius: 4px;
-      background: rgba(255, 255, 255, 0.1);
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: var(--facebook-gray-1);
+      transition: all 0.2s ease;
+      border: 1px solid var(--facebook-gray-2);
+    }
+
+    .footer-links a:hover {
+      background: var(--facebook-gray-2);
+      color: var(--facebook-text);
     }
 
     /* ไอคอนโซเชียล */
@@ -362,15 +406,15 @@
       border-radius: 50%;
       color: white;
       font-size: 1.1rem;
-      transition: opacity 0.2s;
+      transition: all 0.2s ease;
     }
 
     .social-icon:hover {
-      opacity: 0.9;
+      transform: translateY(-2px);
     }
 
     .facebook {
-      background: #3b5998;
+      background: var(--facebook-blue);
     }
 
     .whatsapp {
@@ -379,7 +423,7 @@
 
     /* เพิ่มกฎ CSS สำหรับข้อความใน footer */
     footer p {
-      color: white !important;
+      color: var(--facebook-gray-4) !important;
       margin: 10px 0;
       font-size: 0.85rem;
     }
@@ -392,6 +436,29 @@
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
+    }
+
+    /* เพิ่มเอฟเฟกต์พิเศษแบบ Facebook */
+    .facebook-card {
+      background: var(--facebook-white);
+      border-radius: 8px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      border: 1px solid var(--facebook-gray-2);
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    /* ปรับปรุงลิงก์ Lazada */
+    .lazada-link {
+      display: block;
+      text-align: center;
+      margin: 16px 0;
+    }
+
+    .lazada-link img {
+      border-radius: 8px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      border: 1px solid var(--facebook-gray-2);
     }
   </style>
 </head>
@@ -407,40 +474,51 @@
       <a href="https://chanthachonepimmasone.github.io/LaoTiktokdownload/" target="_blank">ດາວໂຫຼດຮູບໃນ TikTok ແບບບໍ່ຕິດຊື່ເຈົ້າຂອງຮູບ</a>
     </div>
   </div>
-  <a href="https://www.facebook.com/share/1A6wwegUYL/?mibextid=wwXIfr" target="_blank">
-    <img src="laoit.png" alt="Lazada Thailand" width="370" height="65">
-</a>
+  
+  <div class="lazada-link">
+    <a href="https://www.facebook.com/share/1A6wwegUYL/?mibextid=wwXIfr" target="_blank">
+      <img src="laoit.png" alt="Lazada Thailand" width="370" height="65">
+    </a>
+  </div>
+  
   <div class="container">
     <h1>ແປລາວ ↔ Karaoke</h1>
-    <textarea id="inputText" placeholder="ພິມຂໍ້ຄວາມພາສາລາວ ຫຼື Karaoke" rows="5"></textarea>
-    <select id="direction" class="direction-select">
-      <option value="lao-to-karaoke">ລາວ ➜ Karaoke</option>
-      <option value="karaoke-to-lao">Karaoke ➜ ລາວ</option>
-    </select>
-    <div class="button-group">
-      <button id="translateBtn"><i class="fas fa-language"></i> ແປ</button>
-      <button id="clearBtn"><i class="fas fa-broom"></i> ລ້າງ</button>
-    </div>
-    <div id="loading" class="loading"><i class="fas fa-spinner fa-spin"></i> ກຳລັງແປ...</div>
-    <div id="output" class="output"></div>
-    <button id="copyBtn" class="copy-btn"><i class="fas fa-copy"></i> ຄັດລອກ</button>
-
-  
-  <!-- โฆษณาติดต่อ -->
-  <div class="ad-container">
-    <div class="ad-label">ຕິດຕໍ່ໂຄສະນາ</div>
-    <div class="ad-unit horizontal">
-      <span class="ad-text">ສົນໃຈໂຄສະນາໃນເວັບໄຊທ໌້ຂອງພວກເຮົາບໍ? ຕິດຕໍ່ມາທີ່</span>
-      <div class="ad-contact-info">
-        <p>ອີເມວ: <a href="mailto:jonepms216@gmail.com">jonepms216@gmail.com</a></p>
-        <p>whatsapp: <a href="https://wa.me/2029988148" target="_blank">
-          <i class="fab fa-whatsapp"></i> whatsapp
-        </a></p>
+    
+    <div class="facebook-card">
+      <textarea id="inputText" placeholder="ພິມຂໍ້ຄວາມພາສາລາວ ຫຼື Karaoke" rows="5"></textarea>
+      <select id="direction" class="direction-select">
+        <option value="lao-to-karaoke">ລາວ ➜ Karaoke</option>
+        <option value="karaoke-to-lao">Karaoke ➜ ລາວ</option>
+      </select>
+      <div class="button-group">
+        <button id="translateBtn"><i class="fas fa-language"></i> ແປ</button>
+        <button id="clearBtn"><i class="fas fa-broom"></i> ລ້າງ</button>
       </div>
-      <div class="price-link">
-        <a href="krosana.html">
-          <i class="fas fa-calculator"></i> ຄິດໄລ່ລາຄາໂຄສະນາ
-        </a>
+    </div>
+    
+    <div id="loading" class="loading"><i class="fas fa-spinner fa-spin"></i> ກຳລັງແປ...</div>
+    
+    <div class="facebook-card">
+      <div id="output" class="output"></div>
+      <button id="copyBtn" class="copy-btn"><i class="fas fa-copy"></i> ຄັດລອກ</button>
+    </div>
+
+    <!-- โฆษณาติดต่อ -->
+    <div class="ad-container">
+      <div class="ad-label">ຕິດຕໍ່ໂຄສະນາ</div>
+      <div class="ad-unit">
+        <span class="ad-text">ສົນໃຈໂຄສະນາໃນເວັບໄຊທ໌້ຂອງພວກເຮົາບໍ? ຕິດຕໍ່ມາທີ່</span>
+        <div class="ad-contact-info">
+          <p>ອີເມວ: <a href="mailto:jonepms216@gmail.com">jonepms216@gmail.com</a></p>
+          <p>whatsapp: <a href="https://wa.me/2029988148" target="_blank">
+            <i class="fab fa-whatsapp"></i> whatsapp
+          </a></p>
+        </div>
+        <div class="price-link">
+          <a href="krosana.html">
+            <i class="fas fa-calculator"></i> ຄິດໄລ່ລາຄາໂຄສະນາ
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -455,30 +533,24 @@
           <i class="fab fa-whatsapp"></i>
         </a>
       </div>
-      <p style="color: #ecc94b !important;">&copy;ຄຳໃດຜິດ ຫຼື ແປບໍ່ອອກສາມາດທັກແຊັດມາບອກໄດ້ເດີ່</p>
+      <p style="color: var(--facebook-gray-4) !important;">&copy;ຄຳໃດຜິດ ຫຼື ແປບໍ່ອອກສາມາດທັກແຊັດມາບອກໄດ້ເດີ່</p>
       <p>&copy;ສະຫງວນສິດ ພັດທະນາໂດຍ: PIMMASONE.COM</p>
-      </div>
     </div>
   </footer>
-<script src="script.js"></script>
-    <script>
-        // ย้ายการทำงานของ onclick มาไว้ที่นี่
-        document.getElementById('translateBtn').addEventListener('click', translateText);
-        document.getElementById('clearBtn').addEventListener('click', clearText);
-        document.getElementById('copyBtn').addEventListener('click', copyOutput);
 
-        function shareOnFacebook() {
-            window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(window.location.href));
-        }
-        function shareOnWhatsApp() {
-            window.open('https://wa.me/?text='+encodeURIComponent('ແຊຣ໌ຈາກ Lao Karaoke: ' + window.location.href));
-        }
-    </script>
+  <script src="script.js"></script>
+  <script>
+    // ย้ายการทำงานของ onclick มาไว้ที่นี่
+    document.getElementById('translateBtn').addEventListener('click', translateText);
+    document.getElementById('clearBtn').addEventListener('click', clearText);
+    document.getElementById('copyBtn').addEventListener('click', copyOutput);
+
+    function shareOnFacebook() {
+      window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(window.location.href));
+    }
+    function shareOnWhatsApp() {
+      window.open('https://wa.me/?text='+encodeURIComponent('ແຊຣ໌ຈາກ Lao Karaoke: ' + window.location.href));
+    }
+  </script>
 </body>
 </html>
-
-
-
-
-
-
