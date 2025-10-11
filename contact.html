@@ -7,205 +7,616 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-    .contact-methods {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    margin: 40px 0;
-}
-
-.contact-card {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-    text-align: center;
-    transition: all 0.4s ease;
-    border-top: 5px solid;
-    position: relative;
-    overflow: hidden;
-}
-
-.contact-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
-}
-
-.contact-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
-}
-
-.contact-icon {
-    font-size: 2.8rem;
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
-}
-
-.contact-card:hover .contact-icon {
-    transform: scale(1.1);
-}
-
-.contact-card h3 {
-    font-size: 1.4rem;
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.contact-card p {
-    color: #666;
-    margin-bottom: 20px;
-    line-height: 1.6;
-}
-
-/* สไตล์การ์ดเฉพาะ */
-.facebook-card { 
-    border-color: #1877f2;
-    background: linear-gradient(to bottom right, #f8fafe, #ffffff);
-}
-
-.whatsapp-card { 
-    border-color: #25d366;
-    background: linear-gradient(to bottom right, #f0fdf4, #ffffff);
-}
-
-.tiktok-card { 
-    border-color: #000000;
-    background: linear-gradient(to bottom right, #f5f5f5, #ffffff);
-}
-
-/* ปุ่มติดต่อ */
-.contact-btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 25px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    border: 2px solid;
-    font-size: 0.95rem;
-    letter-spacing: 0.5px;
-}
-
-.facebook-btn {
-    background: #1877f2;
-    color: white;
-    border-color: #1877f2;
-}
-
-.whatsapp-btn {
-    background: #25d366;
-    color: white;
-    border-color: #25d366;
-}
-
-.tiktok-btn {
-    background: #000000;
-    color: white;
-    border-color: #000000;
-}
-
-.contact-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* FAQ Section */
-.faq-section {
-    margin: 50px 0;
-    background: #f9faff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.faq-section h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #4a6bff;
-    font-size: 1.8rem;
-}
-
-.faq-section h2 i {
-    margin-right: 10px;
-}
-
-.faq-item {
-    margin-bottom: 15px;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    transition: all 0.3s ease;
-}
-
-.faq-item:hover {
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.faq-question {
-    padding: 18px 25px;
-    background: white;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.1rem;
-    color: #333;
-}
-
-.faq-question i {
-    transition: all 0.3s ease;
-}
-
-.faq-answer {
-    padding: 0 25px;
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.4s ease;
-    background: white;
-    line-height: 1.7;
-    color: #555;
-}
-
-.faq-item.active .faq-answer {
-    padding: 0 25px 25px;
-    max-height: 500px;
-}
-
-.faq-item.active .faq-question i {
-    transform: rotate(180deg);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .contact-methods {
-        grid-template-columns: 1fr;
-    }
+        /* ตัวแปรสีแบบ Facebook */
+        :root {
+          --facebook-blue: #1877f2;
+          --facebook-dark-blue: #166fe5;
+          --facebook-green: #42b72a;
+          --facebook-dark-green: #36a420;
+          --facebook-gray-1: #f0f2f5;
+          --facebook-gray-2: #e4e6eb;
+          --facebook-gray-3: #d8dadf;
+          --facebook-gray-4: #65676b;
+          --facebook-gray-5: #4b4c4f;
+          --facebook-white: #ffffff;
+          --facebook-text: #1c1e21;
+          --facebook-text-light: #ffffff;
+          --facebook-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+          --facebook-shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
     
-    .faq-section {
-        padding: 20px;
-    }
+        /* พื้นฐาน */
+        * {
+          box-sizing: border-box;
+          -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+          font-family: 'Saysettha OT', 'Noto Sans Lao', sans-serif;
+          background: var(--facebook-gray-1);
+          color: var(--facebook-text);
+          margin: 0;
+          padding: 0;
+          line-height: 1.6;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+        }
     
-    .faq-question {
-        padding: 15px 20px;
-        font-size: 1rem;
-    }
+        /* กำหนดฟอนต์ภาษาอังกฤษเป็น Times New Roman */
+        #inputText, 
+        .direction-select,
+        button,
+        .output,
+        h1 {
+          font-family: 'Times New Roman', 'Saysettha OT', 'Noto Sans Lao', serif;
+        }
     
-    .contact-card {
-        padding: 20px;
-    }
-}
-
-</style>
+        /* กำหนดเฉพาะภาษาลาวให้ใช้ Saysettha OT */
+        .lao-text {
+          font-family: 'Saysettha OT', 'Noto Sans Lao', sans-serif;
+        }
+    
+        .container {
+          width: 100%;
+          padding: 16px;
+          margin: 0 auto;
+          flex: 1;
+          max-width: 500px;
+        }
+    
+        /* เมนูบน */
+        .top-links {
+          background: var(--facebook-white);
+          color: var(--facebook-text);
+          padding: 10px 16px;
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+          border-bottom: 1px solid var(--facebook-gray-2);
+        }
+    
+        .top-links .footer-links {
+          display: flex;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+          gap: 8px;
+          margin: 0;
+          padding: 4px 0;
+        }
+    
+        .top-links .footer-links::-webkit-scrollbar {
+          display: none;
+        }
+    
+        .top-links .footer-links a {
+          white-space: nowrap;
+          font-size: 0.85rem;
+          padding: 6px 12px;
+          border-radius: 6px;
+          background: var(--facebook-gray-1);
+          color: var(--facebook-gray-5);
+          text-decoration: none;
+          transition: all 0.2s ease;
+          border: 1px solid var(--facebook-gray-2);
+        }
+    
+        .top-links .footer-links a:hover {
+          background: var(--facebook-gray-2);
+          color: var(--facebook-text);
+        }
+    
+        /* หัวข้อหลัก */
+        h1 {
+          color: var(--facebook-text-light);
+          text-align: center;
+          font-size: 1.4rem;
+          margin: 0 0 20px 0;
+          padding: 15px;
+          background: var(--facebook-blue);
+          border-radius: 8px;
+          box-shadow: var(--facebook-shadow);
+          font-weight: 600;
+          position: relative;
+          overflow: hidden;
+        }
+    
+        h1::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+          transition: left 0.5s;
+        }
+    
+        h1:hover::after {
+          left: 100%;
+        }
+    
+        /* ช่องป้อนข้อความ */
+        #inputText {
+          width: 100%;
+          padding: 14px;
+          border: 1px solid var(--facebook-gray-3);
+          border-radius: 6px;
+          font-size: 1rem;
+          margin-bottom: 15px;
+          resize: none;
+          min-height: 120px;
+          background-color: var(--facebook-white);
+          transition: all 0.2s ease;
+        }
+    
+        #inputText:focus {
+          outline: none;
+          border-color: var(--facebook-blue);
+          box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+        }
+    
+        #inputText::placeholder {
+          color: var(--facebook-gray-4);
+        }
+    
+        /* เมนูเลือก */
+        .direction-select {
+          width: 100%;
+          padding: 14px;
+          border: 1px solid var(--facebook-gray-3);
+          border-radius: 6px;
+          font-size: 1rem;
+          margin-bottom: 15px;
+          background-color: var(--facebook-white);
+          color: var(--facebook-text);
+          cursor: pointer;
+          appearance: none;
+          background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2365676b'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+          background-repeat: no-repeat;
+          background-position: right 12px center;
+          background-size: 16px;
+          transition: all 0.2s ease;
+        }
+    
+        .direction-select:focus {
+          border-color: var(--facebook-blue);
+          box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+        }
+    
+        /* ปุ่มต่างๆ */
+        .button-group {
+          display: flex;
+          gap: 10px;
+          margin-bottom: 15px;
+        }
+    
+        button {
+          flex: 1;
+          padding: 14px;
+          border: none;
+          border-radius: 6px;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          position: relative;
+          overflow: hidden;
+        }
+    
+        button::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 5px;
+          height: 5px;
+          background: rgba(255, 255, 255, 0.5);
+          opacity: 0;
+          border-radius: 100%;
+          transform: scale(1, 1) translate(-50%);
+          transform-origin: 50% 50%;
+        }
+    
+        button:focus:not(:active)::after {
+          animation: ripple 1s ease-out;
+        }
+    
+        button:hover {
+          transform: translateY(-1px);
+          box-shadow: var(--facebook-shadow-hover);
+        }
+    
+        #translateBtn {
+          background: var(--facebook-blue);
+          color: var(--facebook-white);
+        }
+    
+        #translateBtn:hover {
+          background: var(--facebook-dark-blue);
+        }
+    
+        #clearBtn {
+          background: var(--facebook-gray-4);
+          color: var(--facebook-white);
+        }
+    
+        #clearBtn:hover {
+          background: var(--facebook-gray-5);
+        }
+    
+        .copy-btn {
+          width: 100%;
+          background: var(--facebook-green);
+          color: var(--facebook-white);
+          margin-top: 15px;
+          display: none;
+          padding: 14px;
+          font-weight: 600;
+        }
+    
+        .copy-btn:hover {
+          background: var(--facebook-dark-green);
+        }
+    
+        /* ผลลัพธ์ */
+        .output {
+          min-height: 120px;
+          padding: 14px;
+          border: 1px solid var(--facebook-gray-3);
+          border-radius: 6px;
+          background-color: var(--facebook-white);
+          font-size: 1rem;
+          margin-bottom: 15px;
+          white-space: pre-wrap;
+          word-break: break-word;
+          transition: all 0.3s ease;
+        }
+    
+        .loading {
+          text-align: center;
+          color: var(--facebook-blue);
+          font-weight: bold;
+          display: none;
+          margin: 15px 0;
+          font-size: 1rem;
+        }
+    
+        /* โฆษณาติดต่อ */
+        .ad-container {
+          width: 100%;
+          margin: 20px 0;
+          text-align: center;
+          background: var(--facebook-white);
+          padding: 15px;
+          border-radius: 8px;
+          border: 1px solid var(--facebook-gray-2);
+          box-shadow: var(--facebook-shadow);
+          transition: transform 0.2s ease;
+        }
+    
+        .ad-container:hover {
+          transform: translateY(-3px);
+        }
+    
+        .ad-label {
+          font-size: 0.8rem;
+          color: var(--facebook-gray-4);
+          margin-bottom: 8px;
+          text-transform: uppercase;
+          font-weight: 600;
+        }
+    
+        .ad-unit {
+          background: var(--facebook-gray-1);
+          border-radius: 6px;
+          padding: 15px;
+          margin: 10px 0;
+          min-height: auto;
+        }
+    
+        .ad-text {
+          color: var(--facebook-text);
+          font-size: 0.9rem;
+          margin-bottom: 10px;
+          text-align: center;
+          line-height: 1.5;
+        }
+    
+        .ad-contact-info {
+          margin-top: 10px;
+          font-size: 0.9rem;
+          color: var(--facebook-text);
+          text-align: center;
+        }
+    
+        .ad-contact-info a {
+          color: var(--facebook-blue);
+          text-decoration: none;
+          font-weight: 600;
+          transition: color 0.2s ease;
+        }
+    
+        .ad-contact-info a:hover {
+          text-decoration: underline;
+        }
+    
+        .ad-contact-info p {
+          margin: 6px 0;
+        }
+    
+        .price-link {
+          margin-top: 10px;
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+    
+        .price-link a {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          color: var(--facebook-white);
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 0.85rem;
+          padding: 8px 16px;
+          border-radius: 6px;
+          background: var(--facebook-blue);
+          transition: all 0.2s ease;
+        }
+    
+        .price-link a:hover {
+          background: var(--facebook-dark-blue);
+          transform: translateY(-1px);
+        }
+    
+        /* ส่วนท้าย */
+        footer {
+          background: var(--facebook-white);
+          color: var(--facebook-text);
+          padding: 20px 16px;
+          text-align: center;
+          margin-top: auto;
+          border-top: 1px solid var(--facebook-gray-2);
+        }
+    
+        .footer-links {
+          margin: 15px 0;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 8px;
+        }
+    
+        .footer-links a {
+          color: var(--facebook-gray-4);
+          text-decoration: none;
+          font-size: 0.85rem;
+          padding: 6px 12px;
+          border-radius: 6px;
+          background: var(--facebook-gray-1);
+          transition: all 0.2s ease;
+          border: 1px solid var(--facebook-gray-2);
+        }
+    
+        .footer-links a:hover {
+          background: var(--facebook-gray-2);
+          color: var(--facebook-text);
+        }
+    
+        /* ไอคอนโซเชียล */
+        .social-icons {
+          display: flex;
+          justify-content: center;
+          gap: 12px;
+          margin-bottom: 15px;
+        }
+    
+        .social-icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          color: white;
+          font-size: 1.1rem;
+          transition: all 0.2s ease;
+          box-shadow: var(--facebook-shadow);
+        }
+    
+        .social-icon:hover {
+          transform: translateY(-2px);
+          box-shadow: var(--facebook-shadow-hover);
+        }
+    
+        .facebook {
+          background: var(--facebook-blue);
+        }
+    
+        .whatsapp {
+          background: #25D366;
+        }
+    
+        /* เพิ่มกฎ CSS สำหรับข้อความใน footer */
+        footer p {
+          color: var(--facebook-gray-4) !important;
+          margin: 10px 0;
+          font-size: 0.85rem;
+        }
+    
+        /* เอฟเฟกต์พิเศษสำหรับข้อความผลลัพธ์ */
+        .output.fade-in {
+          animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+    
+        /* เพิ่มเอฟเฟกต์พิเศษแบบ Facebook */
+        .facebook-card {
+          background: var(--facebook-white);
+          border-radius: 8px;
+          box-shadow: var(--facebook-shadow);
+          border: 1px solid var(--facebook-gray-2);
+          padding: 16px;
+          margin-bottom: 16px;
+          transition: transform 0.2s ease;
+        }
+    
+        .facebook-card:hover {
+          transform: translateY(-2px);
+        }
+    
+        /* ปรับปรุงลิงก์ Lazada */
+        .lazada-link {
+          display: block;
+          text-align: center;
+          margin: 16px 0;
+        }
+    
+        .lazada-link img {
+          border-radius: 8px;
+          box-shadow: var(--facebook-shadow);
+          border: 1px solid var(--facebook-gray-2);
+          transition: transform 0.2s ease;
+        }
+    
+        .lazada-link img:hover {
+          transform: translateY(-2px);
+        }
+    
+        /* เนื้อหาส่วนเพิ่มเติม */
+        .service-description, .content-section, .conclusion {
+          background: var(--facebook-white);
+          border-radius: 8px;
+          padding: 20px;
+          margin: 20px 0;
+          box-shadow: var(--facebook-shadow);
+          border: 1px solid var(--facebook-gray-2);
+        }
+    
+        .service-description h2, .content-section h2, .conclusion h3 {
+          color: var(--facebook-blue);
+          margin-top: 0;
+          border-bottom: 1px solid var(--facebook-gray-2);
+          padding-bottom: 10px;
+        }
+    
+        .feature-list {
+          padding-left: 20px;
+        }
+    
+        .feature-list li {
+          margin-bottom: 10px;
+          position: relative;
+        }
+    
+        .feature-list li::before {
+          content: "✓";
+          color: var(--facebook-green);
+          font-weight: bold;
+          position: absolute;
+          left: -20px;
+        }
+    
+        .example-list {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 10px;
+          margin-top: 15px;
+        }
+    
+        .example-item {
+          background: var(--facebook-gray-1);
+          padding: 12px;
+          border-radius: 6px;
+          border-left: 4px solid var(--facebook-blue);
+        }
+    
+        .lao-example {
+          font-weight: bold;
+          color: var(--facebook-blue);
+        }
+    
+        .karaoke-example {
+          font-style: italic;
+          color: var(--facebook-green);
+        }
+    
+        /* เอฟเฟกต์ Ripple สำหรับปุ่ม */
+        @keyframes ripple {
+          0% {
+            transform: scale(0, 0);
+            opacity: 1;
+          }
+          20% {
+            transform: scale(25, 25);
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
+            transform: scale(40, 40);
+          }
+        }
+    
+        /* Responsive Design */
+        @media (max-width: 480px) {
+          .container {
+            padding: 12px;
+          }
+          
+          h1 {
+            font-size: 1.2rem;
+            padding: 12px;
+          }
+          
+          .button-group {
+            flex-direction: column;
+          }
+          
+          .example-list {
+            grid-template-columns: 1fr;
+          }
+        }
+    
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+          :root {
+            --facebook-gray-1: #18191a;
+            --facebook-gray-2: #242526;
+            --facebook-gray-3: #3a3b3c;
+            --facebook-gray-4: #b0b3b8;
+            --facebook-gray-5: #e4e6eb;
+            --facebook-white: #242526;
+            --facebook-text: #e4e6eb;
+            --facebook-text-light: #e4e6eb;
+          }
+        }
+      </style>
 </head>
 <body>
+    <div class="top-links">
+        <div class="footer-links">
+          <a href="index.html">ໜ້າຫຼັກ</a>
+        <a href="blog.html">Blog</a>
+        <a href="faq.html">FAQ</a>
+        <a href="privacy.html">Privacy Policy</a>
+    <a href="contact.html">contact</a>
+    <a href="about.html">About Us</a>
+    <a href="ogg.html">ພາສາໂອເກະ</a>
+        </div>
+      </div>
     <div class="container">
         <h1>tid tor hao</h1>
         <div class="faq-section">
