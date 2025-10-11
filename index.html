@@ -44,6 +44,8 @@
       --facebook-white: #ffffff;
       --facebook-text: #1c1e21;
       --facebook-text-light: #ffffff;
+      --facebook-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      --facebook-shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.15);
     }
 
     /* พื้นฐาน */
@@ -138,8 +140,25 @@
       padding: 15px;
       background: var(--facebook-blue);
       border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--facebook-shadow);
       font-weight: 600;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    h1:hover::after {
+      left: 100%;
     }
 
     /* ช่องป้อนข้อความ */
@@ -195,6 +214,7 @@
       display: flex;
       gap: 10px;
       margin-bottom: 15px;
+      flex-direction: row; /* เปลี่ยนเป็นแนวนอน */
     }
 
     button {
@@ -210,10 +230,31 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    button::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 5px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.5);
+      opacity: 0;
+      border-radius: 100%;
+      transform: scale(1, 1) translate(-50%);
+      transform-origin: 50% 50%;
+    }
+
+    button:focus:not(:active)::after {
+      animation: ripple 1s ease-out;
     }
 
     button:hover {
       transform: translateY(-1px);
+      box-shadow: var(--facebook-shadow-hover);
     }
 
     #translateBtn {
@@ -259,6 +300,7 @@
       margin-bottom: 15px;
       white-space: pre-wrap;
       word-break: break-word;
+      transition: all 0.3s ease;
     }
 
     .loading {
@@ -279,7 +321,12 @@
       padding: 15px;
       border-radius: 8px;
       border: 1px solid var(--facebook-gray-2);
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--facebook-shadow);
+      transition: transform 0.2s ease;
+    }
+
+    .ad-container:hover {
+      transform: translateY(-3px);
     }
 
     .ad-label {
@@ -407,10 +454,12 @@
       color: white;
       font-size: 1.1rem;
       transition: all 0.2s ease;
+      box-shadow: var(--facebook-shadow);
     }
 
     .social-icon:hover {
       transform: translateY(-2px);
+      box-shadow: var(--facebook-shadow-hover);
     }
 
     .facebook {
@@ -442,10 +491,15 @@
     .facebook-card {
       background: var(--facebook-white);
       border-radius: 8px;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--facebook-shadow);
       border: 1px solid var(--facebook-gray-2);
       padding: 16px;
       margin-bottom: 16px;
+      transition: transform 0.2s ease;
+    }
+
+    .facebook-card:hover {
+      transform: translateY(-2px);
     }
 
     /* ปรับปรุงลิงก์ Lazada */
@@ -457,20 +511,141 @@
 
     .lazada-link img {
       border-radius: 8px;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--facebook-shadow);
       border: 1px solid var(--facebook-gray-2);
+      transition: transform 0.2s ease;
+    }
+
+    .lazada-link img:hover {
+      transform: translateY(-2px);
+    }
+
+    /* เนื้อหาส่วนเพิ่มเติม */
+    .service-description, .content-section, .conclusion {
+      background: var(--facebook-white);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: var(--facebook-shadow);
+      border: 1px solid var(--facebook-gray-2);
+    }
+
+    .service-description h2, .content-section h2, .conclusion h3 {
+      color: var(--facebook-blue);
+      margin-top: 0;
+      border-bottom: 1px solid var(--facebook-gray-2);
+      padding-bottom: 10px;
+    }
+
+    .feature-list {
+      padding-left: 20px;
+    }
+
+    .feature-list li {
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      color: var(--facebook-green);
+      font-weight: bold;
+      position: absolute;
+      left: -20px;
+    }
+
+    .example-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .example-item {
+      background: var(--facebook-gray-1);
+      padding: 12px;
+      border-radius: 6px;
+      border-left: 4px solid var(--facebook-blue);
+    }
+
+    .lao-example {
+      font-weight: bold;
+      color: var(--facebook-blue);
+    }
+
+    .karaoke-example {
+      font-style: italic;
+      color: var(--facebook-green);
+    }
+
+    /* เอฟเฟกต์ Ripple สำหรับปุ่ม */
+    @keyframes ripple {
+      0% {
+        transform: scale(0, 0);
+        opacity: 1;
+      }
+      20% {
+        transform: scale(25, 25);
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: scale(40, 40);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 480px) {
+      .container {
+        padding: 12px;
+      }
+      
+      h1 {
+        font-size: 1.2rem;
+        padding: 12px;
+      }
+      
+      /* ปรับปุ่มให้แสดงเป็นแนวนอนในมือถือ */
+      .button-group {
+        flex-direction: row; /* เปลี่ยนเป็นแนวนอน */
+        gap: 8px; /* ลดระยะห่างระหว่างปุ่มเล็กน้อย */
+      }
+      
+      button {
+        font-size: 0.9rem; /* ลดขนาดฟอนต์เล็กน้อย */
+        padding: 12px 8px; /* ปรับ padding ให้เหมาะสม */
+      }
+      
+      .example-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Dark Mode Support */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --facebook-gray-1: #18191a;
+        --facebook-gray-2: #242526;
+        --facebook-gray-3: #3a3b3c;
+        --facebook-gray-4: #b0b3b8;
+        --facebook-gray-5: #e4e6eb;
+        --facebook-white: #242526;
+        --facebook-text: #e4e6eb;
+        --facebook-text-light: #e4e6eb;
+      }
     }
   </style>
 </head>
 <body>
   <div class="top-links">
     <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="contact.html">contact</a>
-      <a href="about.html">About Us</a>
-      <a href="ogg.html">ພາສາໂອເກະ</a>
-    
+      <a href="index.html">ໜ້າຫຼັກ</a>
+    <a href="blog.html">Blog</a>
+    <a href="faq.html">FAQ</a>
+    <a href="privacy.html">Privacy Policy</a>
+<a href="contact.html">contact</a>
+<a href="about.html">About Us</a>
+<a href="ogg.html">ພາສາໂອເກະ</a>
     </div>
   </div>
   
@@ -521,7 +696,86 @@
       </div>
     </div>
   </div>
+  
+  <!-- ສ່ວນອະທິບາຍບໍລິການ -->
+  <div class="service-description">
+    <h2>ບໍລິການແປພາສາລາວ ເປັນ ພາສາຄາຣາໂອເກະ</h2>
+    <p>ສຳລັບຄົນມັກພິມພາສາຄາຣາໂອເກະ ມາເລີຍ! ໂປຣແກຣມແປພາສາຄາຣາໂອເກະຟຣີ</p>
+    <p>ໂປຣແກຣມສຳລັບປ່ຽນຕົວອັກສອນລາວເປັນຕົວອັກສອນໂຣມັນ ເພື່ອຈະໃຫ້ຮູ້ວ່າພາສາລາວຄຳທີ່ເຮົາສົນໃຈນັ້ນ ຖ້າຂຽນດ້ວຍຕົວອັກສອນອັງກິດ ຕ້ອງສະກົດແບບໃດ? ນຳໃຊ້ງ່າຍໆ ບໍ່ຍາກເລີຍ</p>
+    <p><strong>ຕົວຢ່າງ:</strong> ເຮົາຕ້ອງການຮູ້ວ່າ ຄຳວ່າ "ແປພາສາງ່າຍ" ຖ້າຂຽນດ້ວຍຕົວອັກສອນໂຣມັນ ຈະສະກົດແບບໃດ? ເຮົາກໍ່ພິມຄຳວ່າ "ແປພາສາງ່າຍ" ເຂົ້າໄປໃນໂປຣແກຣມ ໂປຣແກຣມກໍ່ຈະປ່ຽນອອກມາເປັນຄຳວ່າ "Pae Pha sa Ngaiy"</p>
+    <h3>ປະໂຫຍດຂອງໂປຣແກຣມນີ້:</h3>
+    <ul class="feature-list">
+      <li>ໃຊ້ໃນການສະກົດຊື່ ນາມສະກຸນ ເປັນຕົວອັກສອນໂຣມັນ ຈະໄດ້ຖືກຕ້ອງຕາມຫຼັກນິຍົມ</li>
+      <li>ໃຊ້ໃນການສະກົດຊື່ໂດເມນເນມ ສຳລັບຄົນທີ່ຕ້ອງການຈົດໂດເມນເນມພາສາລາວ ແຕ່ຕ້ອງການໃຊ້ຕົວອັກສອນໂຣມັນ</li>
+      <li>ອື່ນໆ ອີກຫຼາຍ ທີ່ກ່ຽວຂ້ອງກັບການປ່ຽນຕົວອັກສອນລາວເປັນໂຣມັນ</li>
+    </ul>
+  </div>
+  
+  <!-- เนื้อหาเพิ่มเติมเกี่ยวกับภาษาคาราโอเกะ -->
+  <div class="content-section">
+    <h2>ມາຮູ້ຈັກກັນວ່າພາສາຄາຣາໂອເກະແມ່ນຫຍັງ?</h2>
+    <p>ພາສາທີ່ໄວລຸ້ນຍຸກໃໝ່ນິຍົມໃຊ້ພິມແຊັດ ຜູ້ໃຫຍ່ຮູ້ໄວ້ຈະໄດ້ບໍ່ງົງວ່າໄວລຸ້ນເຂົາແຊັດຫຍັງກັນ ມາຄາຍຂໍ້ສົງໃສກັນໄດ້ທີ່ນີ້</p>
+    <h3>ພາສາຄາຣາໂອເກະແມ່ນຫຍັງ?</h3>
+    <p><strong>ພາສາຄາຣາໂອເກະ</strong> ແມ່ນການພິມໂດຍໃຊ້ຕົວອັກສອນອັງກິດ ທີ່ຖອດສຽງຈາກໃນພາສາລາວ ໂດຍບໍ່ໄດ້ຄຳນຶງເຖິງຄວາມໝາຍພາສາອັງກິດ ຄ້າຍຄືຕອນທີ່ເຮົາໄປຮ້ອງເພງຄາຣາໂອເກະທີ່ຮ້ານຄາຣາໂອເກະ ແລະ ມີຊັບພາສາຄາຣາໂອເກະໃຫ້ຄົນຕ່າງຊາດຫຼືຄົນລາວທີ່ອ່ານພາສາລາວບໍ່ໄດ້ສາມາດຮ້ອງຕາມໄດ້</p>
+    <h3>ສາເຫດທີ່ນິຍົມໃຊ້ພາສາຄາຣາໂອເກະ</h3>
+    <ul class="feature-list">
+      <li><strong>ຄວາມມັກສ່ວນຕົວ</strong> - ເປັນທີ່ນິຍົມໃນກຸ່ມໄວລຸ້ນ</li>
+      <li><strong>ເພີ່ມຄວາມມ່ວນຊື່ນ</strong> - ເຮັດໃຫ້ການສື່ສານມີສີສັນຫຼາຍຂຶ້ນ</li>
+      <li><strong>ປ້ອງກັນການແປພາສາ</strong> - ບໍ່ໃຫ້ຄົນຕ່າງຊາດບັນທຶກຂໍ້ຄວາມແລ້ວເອົາໄປແປພາສາ</li>
+    </ul>
+  </div>
 
+  <!-- ตัวอย่างภาษาคาราโอเกะ -->
+  <div class="content-section">
+    <h2>ຕົວຢ່າງພາສາຄາຣາໂອເກະແບບຕ່າງໆ</h2>
+
+    <h3>📱 ພາສາຄາຣາໂອເກະໃຊ້ໄດ້ທຸກມື້</h3>
+    <div class="example-list">
+      <div class="example-item">
+        <span class="lao-example">ສະບາຍດີ</span> → <span class="karaoke-example">sa baiy d</span>
+      </div>
+      <div class="example-item">
+        <span class="lao-example">ກິນເຂົ້າລະຫວາ?</span> → <span class="karaoke-example">Kin Khao la wa?</span>
+      </div>
+      <div class="example-item">
+        <span class="lao-example">ເຮັດຫຍັງຢູ່</span> → <span class="karaoke-example">h y u</span>
+      </div>
+    </div>
+
+    <h3>💖 ພາສາຄາຣາໂອເກະແບບຄົນມີຄວາມຮັກ</h3>
+    <div class="example-list">
+      <div class="example-item">
+        <span class="lao-example">hux khue kao dr</span> → <span class="karaoke-example">ຮັກຄືເກົ່າເດີ</span>
+      </div>
+      <div class="example-item">
+        <span class="lao-example">ຄິດຮອດ</span> → <span class="karaoke-example">khit hrt</span>
+      </div>
+      <div class="example-item">
+        <span class="lao-example">ຮັກທີ່ສຸດ</span> → <span class="karaoke-example">hux T Soud</span>
+      </div>
+    </div>
+
+    <h3>😊 ພາສາຄາຣາໂອເກະແບບອ່ອຍໆ</h3>
+    <div class="example-list">
+      <div class="example-item">
+        <span class="lao-example">ໂສດຫຼາຍຄືນນີ້</span> → <span class="karaoke-example">sod laiy khuen ni</span>
+      </div>
+      <div class="example-item">
+        <span class="lao-example">ຢາກເປັນຄົນຂອງເຈົ້າ</span> → <span class="karaoke-example">yark Pen khn khong Jao</span>
+      </div>
+      <div class="example-item">
+        <span class="lao-example">A:ມີໂອບໍ</span> → <span class="karaoke-example">mi O br</span><br>
+        <span class="lao-example">B:ໂອຫຍັງ</span> → <span class="karaoke-example">O Y</span><br>
+        <span class="lao-example">A:ໂອກາດທີ່ເຮົາຈະຮັກກັນ</span> → <span class="karaoke-example">O Kart T hao ja hux kun</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="conclusion">
+    <h3>ສະຫຼຸບ</h3>
+    <p><strong>ພາສາຄາຣາໂອເກະ</strong> ຈຶ່ງປຽບດັ່ງຕົວກາງໃນການສື່ສານບໍ່ແຕກຕ່າງຈາກພາສາອື່ນໆ ທີ່ໃຊ້ໃນຊີວິດປະຈຳວັນ ຖ້າໃຜຢາກແຊັດບໍ່ໜ້າເບື້ອ ສາມາດລອງພິມເປັນພາສາຄາຣາໂອເກະແທນໄດ້ ຮັບປະກັນວ່າເພີ່ມຄວາມໜ້າສົນໃຈ ແລະ ສີສັນໃນຂໍ້ຄວາມແຊັດໄດ້ຫຼາຍຂຶ້ນ</p>
+  </div>
+  
   <footer>
     <div id="visitor-counter">
       <div class="social-icons">
@@ -536,7 +790,6 @@
       <p>&copy;ສະຫງວນສິດ ພັດທະນາໂດຍ: PIMMASONE.COM</p>
     </div>
   </footer>
-
   <script src="script.js"></script>
   <script>
     // ย้ายการทำงานของ onclick มาไว้ที่นี่
@@ -553,4 +806,3 @@
   </script>
 </body>
 </html>
-
