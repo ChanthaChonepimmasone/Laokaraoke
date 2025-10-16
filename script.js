@@ -6123,6 +6123,26 @@ const fullKaraokeToLao = {
 	"nong": "ນ້ອງ",
 	"mai": "ໃໝ່",
 	"day": "ເດ",
+	"hup": "ຮັບ",
+"nae": "ແນ່",
+"haiy": "ຮ້າຍ",
+"yark pen": "ຢາກເປັນ",
+"yark dai": "ຢາກໄດ້",
+"yark mi": "ຢາກມີ",
+"yark ao": "ຢາກເອົາ",
+"mueay": "ເມື່ອຍ",
+"tham": "ທຳ",
+"da": "ດາ",
+"lieng": "ລ້ຽງ",
+"eng": "ເອງ",
+"laeng": "ແລງ",
+"Arp num": "ອາບນ້ຳ",
+"Arp nam": "ອາບນ້ຳ",
+"sh": "ໃສ",
+"vai2": "ໄວໆ",
+"Men": "ເໝັນ",
+"trng": "ຕ້ອງ",
+	"ບາກ": "Bark",
 "u": "ຢູ່",
   "d": "ດີ",
   "t": "ທີ່",
@@ -6211,6 +6231,7 @@ function copyOutput() {
             console.error("Failed to copy text:", err);
         });
 }
+
 
 
 
