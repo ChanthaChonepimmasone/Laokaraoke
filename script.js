@@ -1,4 +1,3 @@
-
 function updateVisitorCount() {
     if (!localStorage.getItem('visitors')) {
         localStorage.setItem('visitors', '0');
@@ -14,6 +13,7 @@ function updateVisitorCount() {
 }
 
 const fullKaraokeToLao = {
+"ຄົນ": "khn",
  "ຄົນ": "khn",
   "khn": "ຄົນ",
         "ເສົາ": "sao",
@@ -139,7 +139,6 @@ const fullKaraokeToLao = {
         "ຮູ້": "hu",
         "ບໍ": "br",
         "ຈັກ": "jux",
-        "ໂມງ": "m",
         "ກັບ": "kup",
         "ໃຜ": "Phai",
         "ຮັກ": "hux",
@@ -3795,7 +3794,6 @@ const fullKaraokeToLao = {
   "bb": "ແບບ",
   "zue": "ຊື້",
   "hai": "ໃຫ້",
-  "ngao": "ເຫງົາ",
   "aok": "ອົກ",
   "huk": "ຫັກ",
   "sad": "ເສົ້າ",
@@ -5835,7 +5833,6 @@ const fullKaraokeToLao = {
   "hao": "ເຫົາ",
   "phao": "ເຜົາ",
   "fao": "ເຝົາ",
-  "ngao": "ເງົາ",
   "yao": "ເຍົາ",
   "nao": "ເນົາ",
   "thao": "ເທົາ",
@@ -6072,10 +6069,8 @@ const fullKaraokeToLao = {
 	"ໂອ": "O",
 "ເເລ້ວ": "leo",
 	"ໂອນ": "Aon",
-		"arp nam": "ອາບນ້້ຳ",
 "ph day": "ເພີ່ນເດ",
 "br hu day": "ບໍຮູ້ເດ",
-"m": "ໂມງ",
 "h y": "ເຮັດຫຍັງ",
 "pen y": "ເປັນຫຍັງ",
 "ka dai": "ກະໄດ້",
@@ -6136,13 +6131,49 @@ const fullKaraokeToLao = {
 "lieng": "ລ້ຽງ",
 "eng": "ເອງ",
 "laeng": "ແລງ",
-"Arp num": "ອາບນ້ຳ",
 "Arp nam": "ອາບນ້ຳ",
+"Arp num": "ອາບນ້ຳ",
 "sh": "ໃສ",
 "vai2": "ໄວໆ",
 "Men": "ເໝັນ",
 "trng": "ຕ້ອງ",
 	"ບາກ": "Bark",
+  "aok huk": "ອົກຫັກ",
+"Mou": "ໝູ່",
+"ດູດີ": "dou d",
+"ling": "ຫຼິງ",
+"lhg": "ເລື່ອງ",
+"som": "ສົມ",
+"Khue wa": "ຄືວ່າ",
+"Khue wah": "ຄືວ່າ",
+"Ka wa": "ກະວ່າ",
+"Noiy": "ໜ້ອຍ",
+"Yark nrn": "ຢາກນອນ",
+"zu": "ຊູ",
+"zy": "ຊີ",
+"Br yark": "ບໍ່ຢາກ",
+"khr": "ຂໍ",
+"Khuen d": "ຄືນດີ",
+"Khuen ma": "ຄືນມາ",
+"Khuen kup": "ຄືນກັບ",
+"Khuen kub": "ຄືນກັບ",
+"Khuen ni": "ຄືນນີ້",
+"Khuen krn": "ຄືນກ່ອນ",
+"Khuen varn": "ຄືນວານ",
+"Khuen ngern": "ຄືນເງິນ",
+"Khuen mun": "ຄືນມັນ",
+"Khuen ku": "ຄືນກູ",
+"kart ": "ກາດ",
+"O": "ໂອ",
+"Okart": "ໂອກາດ",
+"lw": "ແລ້ວ",
+"song": "ສົງ",
+"khrng": "ຂອງ",
+"khrng khuan": "ຂອງຂວັນ",
+"war": "ວ່າ",
+"khai": "ໄຂ່",
+"za nom": "ຊານົມ",
+"nom": "ນົມ",
 "u": "ຢູ່",
   "d": "ດີ",
   "t": "ທີ່",
@@ -6157,87 +6188,134 @@ const fullKaraokeToLao = {
 		"ຍັງ": "y",
         "ຢູ່": "u",
 	"O": "ໂອ",
+  "H": "ເຮັດ",
           "h": "ເຮັດ",
 		  "k": "ເຄ",
+      "m": "ໂມງ",
 };
 function karaokeToLao(text) {
-    let lowerText = text.toLowerCase();
-    let keys = Object.keys(fullKaraokeToLao).sort((a, b) => b.length - a.length);
-    let result = '';
-    let i = 0;
+  const direction = document.getElementById('direction').value;
+  
+  if (direction === 'karaoke-to-lao') {
+      // แปลงจาก Karaoke เป็น Lao - ติดกันทั้งหมด (ไม่รักษาช่องว่าง)
+      let lowerText = text.toLowerCase();
+      let keys = Object.keys(fullKaraokeToLao).sort((a, b) => b.length - a.length);
+      let result = '';
+      let i = 0;
 
-    while (i < lowerText.length) {
-        let matched = false;
+      while (i < lowerText.length) {
+          let matched = false;
 
-        for (let key of keys) {
-            if (lowerText.slice(i, i + key.length) === key) {
-                result += fullKaraokeToLao[key] + ' ';
-                i += key.length;
-                matched = true;
-                break;
-            }
-        }
+          // ข้ามช่องว่างและอักขระพิเศษ
+          if (lowerText[i] === ' ' || lowerText[i] === '\t' || lowerText[i] === '\n') {
+              i++;
+              continue;
+          }
 
-        if (!matched) {
-            result += lowerText[i];
-            i++;
-        }
-    }
+          for (let key of keys) {
+              if (lowerText.slice(i, i + key.length) === key) {
+                  result += fullKaraokeToLao[key];
+                  i += key.length;
+                  matched = true;
+                  break;
+              }
+          }
 
-    return result.trim();
+          if (!matched) {
+              result += lowerText[i];
+              i++;
+          }
+      }
+
+      return result;
+  } else {
+      // แปลงจาก Lao เป็น Karaoke - เพิ่มช่องว่างระหว่างคำ
+      let keys = Object.keys(fullKaraokeToLao).sort((a, b) => b.length - a.length);
+      let result = '';
+      let i = 0;
+
+      while (i < text.length) {
+          let matched = false;
+
+          // รักษาช่องว่างจาก input
+          if (text[i] === ' ' || text[i] === '\t' || text[i] === '\n') {
+              result += text[i];
+              i++;
+              continue;
+          }
+
+          for (let key of keys) {
+              if (text.slice(i, i + key.length) === key) {
+                  // เพิ่มช่องว่างก่อนคำ (ยกเว้นคำแรก)
+                  if (result.length > 0 && result[result.length - 1] !== ' ') {
+                      result += ' ';
+                  }
+                  result += fullKaraokeToLao[key];
+                  i += key.length;
+                  matched = true;
+                  break;
+              }
+          }
+
+          if (!matched) {
+              // เพิ่มช่องว่างก่อนอักขระ (ยกเว้นอักขระแรก)
+              if (result.length > 0 && result[result.length - 1] !== ' ') {
+                  result += ' ';
+              }
+              result += text[i];
+              i++;
+          }
+      }
+
+      return result;
+  }
 }
 
 function translateText() {
-    const inputText = document.getElementById('inputText').value.trim();
-    const outputDiv = document.getElementById('output');
-    const loading = document.getElementById('loading');
-    const copyBtn = document.getElementById('copyBtn');
+  const inputText = document.getElementById('inputText').value.trim();
+  const outputDiv = document.getElementById('output');
+  const loading = document.getElementById('loading');
+  const copyBtn = document.getElementById('copyBtn');
 
-    if (!inputText) return;
+  if (!inputText) return;
 
-    loading.style.display = 'block';
-    outputDiv.innerHTML = '';
-    copyBtn.style.display = 'none';
+  loading.style.display = 'block';
+  outputDiv.innerHTML = '';
+  copyBtn.style.display = 'none';
 
-    setTimeout(() => {
-        const result = karaokeToLao(inputText);
+  setTimeout(() => {
+      const result = karaokeToLao(inputText);
 
-        outputDiv.innerText = result;
-        loading.style.display = 'none';
-        copyBtn.style.display = 'block';
-    }, 200);
+      outputDiv.innerText = result;
+      loading.style.display = 'none';
+      copyBtn.style.display = 'block';
+      
+      // เพิ่มเอฟเฟกต์ fade-in
+      outputDiv.classList.add('fade-in');
+      setTimeout(() => outputDiv.classList.remove('fade-in'), 300);
+  }, 200);
 }
 
 function clearText() {
-    document.getElementById('inputText').value = '';
-    document.getElementById('output').innerText = '';
-    document.getElementById('copyBtn').style.display = 'none';
+  document.getElementById('inputText').value = '';
+  document.getElementById('output').innerText = '';
+  document.getElementById('copyBtn').style.display = 'none';
 }
 
 function copyOutput() {
-    const outputText = document.getElementById("output").textContent;
-    navigator.clipboard.writeText(outputText)
-        .then(() => {
-            const copyBtn = document.getElementById("copyBtn");
-            if (copyBtn) {
-                const originalText = copyBtn.textContent;
-                copyBtn.textContent = "ຄັດລອກແລ້ວ!";
-                setTimeout(() => {
-                    copyBtn.textContent = originalText;
-                }, 2000);
-            }
-        })
-        .catch(err => {
-            console.error("Failed to copy text:", err);
-        });
+  const outputText = document.getElementById("output").textContent;
+  navigator.clipboard.writeText(outputText)
+      .then(() => {
+          const copyBtn = document.getElementById("copyBtn");
+          if (copyBtn) {
+              const originalText = copyBtn.textContent;
+              copyBtn.textContent = "ຄັດລອກແລ້ວ!";
+              setTimeout(() => {
+                  copyBtn.textContent = originalText;
+              }, 2000);
+          }
+      })
+      .catch(err => {
+          console.error("Failed to copy text:", err);
+      });
 }
-
-
-
-
-
-
-
-
-
-
