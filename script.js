@@ -14,6 +14,7 @@ function updateVisitorCount() {
 
 const fullKaraokeToLao = {
 "ຊິບ": "zib",
+	"ຊີບ": "zip",
  "ຄົນ": "khn",
   "khn": "ຄົນ",
         "ເສົາ": "sao",
@@ -6319,3 +6320,4 @@ function copyOutput() {
           console.error("Failed to copy text:", err);
       });
 }
+
