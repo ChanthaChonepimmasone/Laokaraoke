@@ -13,7 +13,7 @@ function updateVisitorCount() {
 }
 
 const fullKaraokeToLao = {
-"ຄົນ": "khn",
+"ຊິບ": "zib",
  "ຄົນ": "khn",
   "khn": "ຄົນ",
         "ເສົາ": "sao",
@@ -23,8 +23,6 @@ const fullKaraokeToLao = {
 		"ໂກ": "ko",
 "ໂກ່": "koh",
 	"ລຸຍ": "Lui",
-	"ຊິບ": "zip",
-	"ສຸດ": "sout",
 "phai": "ໃຜ",
 "bard": "ບາດ",
 "ໂກ້": "koh",
@@ -124,7 +122,6 @@ const fullKaraokeToLao = {
         "ໂດຍ": "Doi",
         "ຫງຸດ": "ngout",
         "ຫງິດ": "ngit",
-        "ຊິ": "C",
         "ຝັນ": "fun",
         "ເດີ": "dr",
         "ອາບ": "arp",
@@ -6185,6 +6182,7 @@ const fullKaraokeToLao = {
   "pen": "ເປັນ",
   "z": "ແຊັດ",
   "c": "ຊິ",
+  "ຊິ": "C",
  "ເຮັດ": "h",
         "ຫຍັງ": "Y",
 		"ຍັງ": "y",
@@ -6321,4 +6319,3 @@ function copyOutput() {
           console.error("Failed to copy text:", err);
       });
 }
-
