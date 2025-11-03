@@ -20,7 +20,7 @@ const fullKaraokeToLao = {
 	"ເເອັດຕີ້": "Add Ty",
   "khn": "ຄົນ",
         "ເສົາ": "sao",
-	"ຂຽວ": "kiew",
+	"ຊາ": "za",
         "ໃສ": "Sai",
         "ໝູ່": "Mou",
 	"ໂອນ": "Aon",
@@ -6143,6 +6143,8 @@ const fullKaraokeToLao = {
 	"ບາກ": "Bark",
   "aok huk": "ອົກຫັກ",
 "Mou": "ໝູ່",
+	"ຂຽວ": "khiew",
+	"ຊາຂຽວ": "za khiew",
 "ດູດີ": "dou d",
 "ling": "ຫຼິງ",
 "lhg": "ເລື່ອງ",
@@ -6323,6 +6325,7 @@ function copyOutput() {
           console.error("Failed to copy text:", err);
       });
 }
+
 
 
 
