@@ -16,6 +16,8 @@ const fullKaraokeToLao = {
 "ຊິບ": "zib",
 	"ຊີບ": "zip",
  "ຄົນ": "khn",
+	"ແອັດ": "Add",
+	"ຕີ້": "Ty",
   "khn": "ຄົນ",
         "ເສົາ": "sao",
         "ໃສ": "Sai",
@@ -6320,4 +6322,5 @@ function copyOutput() {
           console.error("Failed to copy text:", err);
       });
 }
+
 
