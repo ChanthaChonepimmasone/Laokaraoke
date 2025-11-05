@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ບໍລິຈາກ - Lao Karaoke.com</title>
+  <meta name="description" content="ສະຫງວນຄວາມດີງກັບການບໍລິຈາກເພື່ອພັດທະນາ Lao Karaoke.com">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTIiIGZpbGw9IiMyYzUyODIiLz4KPHRleHQgeD0iMzIiIHk9IjM2IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkxBTyBLQVJBT0tFPC90ZXh0Pgo8L3N2Zz4K">
+  <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMzYiIGZpbGw9IiMyYzUyODIiLz4KPHRleHQgeD0iOTYiIHk9IjEwOCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj5MQU8gS0FSQU9LRTwvdGV4dD4KPC9zdmc+Cg==">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Open Graph / Facebook Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://chanthachonepimmasone.github.io/Laokaraoke/donate.html">
+  <meta property="og:title" content="ບໍລິຈາກ - Lao Karaoke.com">
+  <meta property="og:description" content="ສະຫງວນຄວາມດີງກັບການບໍລິຈາກເພື່ອພັດທະນາ Lao Karaoke.com">
+  <meta property="og:image" content="karaoke.jpg">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://chanthachonepimmasone.github.io/Laokaraoke/donate.html">
+  <meta name="twitter:title" content="ບໍລິຈາກ - Lao Karaoke.com">
+  <meta name="twitter:description" content="ສະຫງວນຄວາມດີງກັບການບໍລິຈາກເພື່ອພັດທະນາ Lao Karaoke.com">
+  <meta name="twitter:image" content="karaoke.jpg">
+
+  <link rel="canonical" href="https://chanthachonepimmasone.github.io/Laokaraoke/donate.html" />
+  <meta name="robots" content="index, follow">
+  
+  <style>
+    /* ตัวแปรสีแบบ Facebook */
+    :root {
+      --facebook-blue: #1877f2;
+      --facebook-dark-blue: #166fe5;
+      --facebook-green: #42b72a;
+      --facebook-dark-green: #36a420;
+      --facebook-gray-1: #f0f2f5;
+      --facebook-gray-2: #e4e6eb;
+      --facebook-gray-3: #d8dadf;
+      --facebook-gray-4: #65676b;
+      --facebook-gray-5: #4b4c4f;
+      --facebook-white: #ffffff;
+      --facebook-text: #1c1e21;
+      --facebook-text-light: #ffffff;
+      --facebook-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      --facebook-shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* พื้นฐาน */
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    body {
+      font-family: 'Saysettha OT', 'Noto Sans Lao', sans-serif;
+      background: var(--facebook-gray-1);
+      color: var(--facebook-text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* กำหนดฟอนต์ภาษาอังกฤษเป็น Times New Roman */
+    .direction-select,
+    button,
+    h1 {
+      font-family: 'Times New Roman', 'Saysettha OT', 'Noto Sans Lao', serif;
+    }
+
+    /* กำหนดเฉพาะภาษาลาวให้ใช้ Saysettha OT */
+    .lao-text {
+      font-family: 'Saysettha OT', 'Noto Sans Lao', sans-serif;
+    }
+
+    .container {
+      width: 100%;
+      padding: 16px;
+      margin: 0 auto;
+      flex: 1;
+      max-width: 500px;
+    }
+
+    /* เมนูบน */
+    .top-links {
+      background: var(--facebook-white);
+      color: var(--facebook-text);
+      padding: 10px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid var(--facebook-gray-2);
+    }
+
+    .top-links .footer-links {
+      display: flex;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      gap: 8px;
+      margin: 0;
+      padding: 4px 0;
+    }
+
+    .top-links .footer-links::-webkit-scrollbar {
+      display: none;
+    }
+
+    .top-links .footer-links a {
+      white-space: nowrap;
+      font-size: 0.85rem;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: var(--facebook-gray-1);
+      color: var(--facebook-gray-5);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: 1px solid var(--facebook-gray-2);
+    }
+
+    .top-links .footer-links a:hover {
+      background: var(--facebook-gray-2);
+      color: var(--facebook-text);
+    }
+
+    /* หัวข้อหลัก */
+    h1 {
+      color: var(--facebook-text-light);
+      text-align: center;
+      font-size: 1.4rem;
+      margin: 0 0 20px 0;
+      padding: 15px;
+      background: var(--facebook-blue);
+      border-radius: 8px;
+      box-shadow: var(--facebook-shadow);
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    h1:hover::after {
+      left: 100%;
+    }
+
+    /* เนื้อหาหน้า donate */
+    .donate-content {
+      background: var(--facebook-white);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: var(--facebook-shadow);
+      border: 1px solid var(--facebook-gray-2);
+    }
+
+    .donate-content h2 {
+      color: var(--facebook-blue);
+      margin-top: 0;
+      border-bottom: 1px solid var(--facebook-gray-2);
+      padding-bottom: 10px;
+    }
+
+    .donate-content p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .donate-methods {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .donate-method {
+      background: var(--facebook-gray-1);
+      border-radius: 8px;
+      padding: 15px;
+      border-left: 4px solid var(--facebook-blue);
+      transition: transform 0.2s ease;
+    }
+
+    .donate-method:hover {
+      transform: translateY(-2px);
+    }
+
+    .donate-method h3 {
+      margin-top: 0;
+      color: var(--facebook-blue);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .donate-method p {
+      margin: 10px 0;
+    }
+
+    .qr-code {
+      text-align: center;
+      margin: 15px 0;
+    }
+
+    .qr-code img {
+      max-width: 200px;
+      border-radius: 8px;
+      box-shadow: var(--facebook-shadow);
+      border: 1px solid var(--facebook-gray-2);
+    }
+
+    .account-info {
+      background: var(--facebook-white);
+      padding: 12px;
+      border-radius: 6px;
+      margin: 10px 0;
+      font-family: monospace;
+      font-size: 0.9rem;
+      text-align: center;
+      border: 1px solid var(--facebook-gray-2);
+    }
+
+    .copy-btn {
+      width: 100%;
+      background: var(--facebook-green);
+      color: var(--facebook-white);
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .copy-btn:hover {
+      background: var(--facebook-dark-green);
+    }
+
+    .thank-you-message {
+      text-align: center;
+      margin-top: 30px;
+      padding: 20px;
+      background: var(--facebook-gray-1);
+      border-radius: 8px;
+      border-left: 4px solid var(--facebook-green);
+    }
+
+    .thank-you-message h3 {
+      color: var(--facebook-green);
+      margin-top: 0;
+    }
+
+    /* ส่วนท้าย */
+    footer {
+      background: var(--facebook-white);
+      color: var(--facebook-text);
+      padding: 20px 16px;
+      text-align: center;
+      margin-top: auto;
+      border-top: 1px solid var(--facebook-gray-2);
+    }
+
+    .footer-links {
+      margin: 15px 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .footer-links a {
+      color: var(--facebook-gray-4);
+      text-decoration: none;
+      font-size: 0.85rem;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: var(--facebook-gray-1);
+      transition: all 0.2s ease;
+      border: 1px solid var(--facebook-gray-2);
+    }
+
+    .footer-links a:hover {
+      background: var(--facebook-gray-2);
+      color: var(--facebook-text);
+    }
+
+    /* ไอคอนโซเชียล */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.1rem;
+      transition: all 0.2s ease;
+      box-shadow: var(--facebook-shadow);
+    }
+
+    .social-icon:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--facebook-shadow-hover);
+    }
+
+    .facebook {
+      background: var(--facebook-blue);
+    }
+
+    .whatsapp {
+      background: #25D366;
+    }
+
+    /* เพิ่มกฎ CSS สำหรับข้อความใน footer */
+    footer p {
+      color: var(--facebook-gray-4) !important;
+      margin: 10px 0;
+      font-size: 0.85rem;
+    }
+
+    /* Dark Mode Support */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --facebook-gray-1: #18191a;
+        --facebook-gray-2: #242526;
+        --facebook-gray-3: #3a3b3c;
+        --facebook-gray-4: #b0b3b8;
+        --facebook-gray-5: #e4e6eb;
+        --facebook-white: #242526;
+        --facebook-text: #e4e6eb;
+        --facebook-text-light: #e4e6eb;
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 480px) {
+      .container {
+        padding: 12px;
+      }
+      
+      h1 {
+        font-size: 1.2rem;
+        padding: 12px;
+      }
+      
+      .donate-methods {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-links">
+    <div class="footer-links">
+      <a href="index.html">ໜ້າຫຼັກ</a>
+      <a href="donate.html" style="background: var(--facebook-blue); color: white;">ບໍລິຈາກ</a>
+    </div>
+  </div>
+  
+  <div class="container">
+    <h1>ບໍລິຈາກເພື່ອສະໜັບສະໜູນ Lao Karaoke.com</h1>
+    
+    <div class="donate-content">
+      <h2>ຂໍຂອບໃຈສຳລັບການສະໜັບສະໜູນຂອງທ່ານ</h2>
+      <p>ການບໍລິຈາກຂອງທ່ານຈະຊ່ວຍໃຫ້ພວກເຮົາສາມາດພັດທະນາ ແລະ ປັບປຸງເວັບໄຊທ໌ Lao Karaoke.com ໄດ້ດີຂຶ້ນ. ທຸກໆ ການບໍລິຈາກຈະຖືກນຳໄປໃຊ້ເພື່ອ:</p>
+      
+      <ul>
+        <li>ພັດທະນາເປັນແອັບໃຫ້ໂຫລດໃນ play store ແລະ app stroe</li>
+        <li>ເພີ່ມຄຳສັບ ແລະ ກົດເກນການແປໃຫ້ຄົບຖ້ວນຂຶ້ນ</li>
+        <li>ປັບປຸງປະສົບການການໃຊ້ງານຂອງຜູ້ໃຊ້</li>
+        <li>ຮັກສາເຊີບເວີ ແລະ ຄ່າໃຊ້ຈ່າຍຕ່າງໆ</li>
+      </ul>
+      
+      <div class="donate-methods">
+        <div class="donate-method">
+          <h3><i class="fas fa-qrcode"></i> ສະເກນ QR Code</h3>
+          <p>ສະເກນ QR Code ດ້ານລຸ່ມນີ້ເພື່ອບໍລິຈາກຜ່ານ LAPNet QR Transfer</p>
+          <div class="qr-code">
+            <!-- ใส่ QR Code จริงที่นี่ -->
+            <img src="WhatsApp Image 2025-11-05 at 21.53.18_c8026349.jpg" alt="QR Code ສຳລັບການບໍລິຈາກ" width="200">
+          </div>
+          <p><strong>LAO QR - LAPNet QR Transfer</strong></p>
+          <p><strong>CHANTHAJONE PHIMMASONE MR</strong></p>
+        </div>
+        
+        <div class="donate-method">
+          <h3><i class="fas fa-university"></i> ໂອນຜ່ານທະນາຄານ</h3>
+          <p>ທ່ານສາມາດໂອນເງິນຜ່ານບັນຊີທະນາຄານຕາມລາຍລະອຽດດ້ານລຸ່ມນີ້:</p>
+          <div class="account-info">
+            <p><strong></strong>1601214706718</p>
+          </div>
+          <button class="copy-btn" onclick="copyAccountInfo()">
+            <i class="fas fa-copy"></i> ຄັດລອກເລກບັນຊີ
+          </button>
+        </div>
+      
+      <div class="thank-you-message">
+        <h3><i class="fas fa-heart"></i> ຂໍຂອບໃຈທີ່ສຸດ!</h3>
+        <p>ການສະໜັບສະໜູນຂອງທ່ານມີຄວາມໝາຍຫຼາຍຕໍ່ພວກເຮົາ. ຂໍຂອບໃຈສຳລັບການຊ່ວຍເຫຼືອທີ່ຈະຮັກສາເວັບໄຊທ໌ນີ້ໃຫ້ດຳເນີນຕໍ່ໄປໄດ້.</p>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    <p style="color: var(--facebook-gray-4) !important;">&copy;ສະຫງວນສິດ ພັດທະນາໂດຍ: ທ.ຈັນທະຈອນ ພິມມະສອນ</p>
+  </footer>
+
+  <script>
+    function copyAccountInfo() {
+      const accountInfo = "ຊື່ທະນາຄານ: BANQUE POUR LE COMMERCE EXTERIEUR LAO PUBLIC (BCEL)\nຊື່ຜູ້ຖືບັນຊີ: CHANTHAJONE PHIMMASONE MR\nເລກບັນຊີ: 160-12-xxxxx718\nສະກຸນເງິນ: LAK (ກີບ)";
+      
+      navigator.clipboard.writeText(accountInfo)
+        .then(() => {
+          alert("ຄັດລອກລາຍລະອຽດບັນຊີແລ້ວ!");
+        })
+        .catch(err => {
+          console.error("Failed to copy text:", err);
+        });
+    }
+    
+    function copyPhoneNumber() {
+      const phoneNumber = "+856 20 2998 8148";
+      
+      navigator.clipboard.writeText(phoneNumber)
+        .then(() => {
+          alert("ຄັດລອກເບີໂທລະສັບແລ້ວ!");
+        })
+        .catch(err => {
+          console.error("Failed to copy text:", err);
+        });
+    }
+  </script>
+</body>
+</html>
