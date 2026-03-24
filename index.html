@@ -1309,52 +1309,79 @@ let direction    = 'lao-to-karaoke';
 let selectedPlan = 'monthly';
 let currentPage  = 'home';
 
+// ══ CACHE — ປ້ອງກັນ Firestore Reads ຊ້ຳ ══════════════════════════════════
+let _userDocCacheUid   = null;  // uid ທີ່ cache ໄວ້
+let _userDocCacheData  = null;  // ຂໍ້ມູນທີ່ cache ໄວ້
+let _writeTimer        = null;  // debounce timer ສຳລັບ Write
+
+// Debounced write — ລໍຖ້າ 3 ວິ ກ່ອນ Write Firestore ເພື່ອຫຼຸດ Writes
+function _scheduleWrite(uid, data) {
+  if (_writeTimer) clearTimeout(_writeTimer);
+  _writeTimer = setTimeout(async () => {
+    try {
+      await db.collection('users').doc(uid).set(data, { merge: true });
+    } catch(e) { console.warn('scheduleWrite error:', e); }
+  }, 3000);
+}
+
 // ══ FIRESTORE USAGE (for logged-in users) ══════════════════════════════════
 // Firestore schema: users/{uid} = { isPremium, usageCount, lastReset, premiumUntil? }
 
 async function loadUserDoc(uid) {
+  // ✅ ຖ້າ Cache ມີຢູ່ແລ້ວສຳລັບ user ນີ້ — ໃຊ້ Cache ເລີຍ, ບໍ່ Read Firestore
+  if (_userDocCacheUid === uid && _userDocCacheData !== null) {
+    _applyUserDoc(uid, _userDocCacheData);
+    return;
+  }
   try {
-    const doc = await db.collection('users').doc(uid).get();
+    const doc = await db.collection('users').doc(uid).get(); // 1 Read ຕໍ່ Session
     if (doc.exists) {
       const d = doc.data();
-      // isPremium field (direct boolean OR premiumUntil date)
-      if (d.isPremium === true) {
-        isPremium = true;
-      }
-      if (d.premiumUntil) {
-        const until = d.premiumUntil.toDate ? d.premiumUntil.toDate() : new Date(d.premiumUntil);
-        if (until > new Date()) { isPremium = true; premiumUntil = until; }
-        else { isPremium = false; }
-      }
-      // Usage — reset daily
-      const today = new Date().toDateString();
-      const lastReset = d.lastReset || '';
-      if (lastReset !== today) {
-        firestoreUsage = 0;
-        // Reset in Firestore
-        await db.collection('users').doc(uid).set(
-          { usageCount: 0, lastReset: today },
-          { merge: true }
-        );
-      } else {
-        firestoreUsage = d.usageCount || 0;
-      }
+      _userDocCacheUid  = uid;
+      _userDocCacheData = d;
+      _applyUserDoc(uid, d);
     } else {
-      // New user — create doc
+      // New user — create doc (1 Write)
       const today = new Date().toDateString();
-      await db.collection('users').doc(uid).set({
+      const newData = {
         isPremium: false,
         usageCount: 0,
         lastReset: today,
         email: currentUser.email || '',
         displayName: currentUser.displayName || '',
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
-      });
+      };
+      await db.collection('users').doc(uid).set(newData);
+      _userDocCacheUid  = uid;
+      _userDocCacheData = newData;
       firestoreUsage = 0;
     }
   } catch(e) {
     console.warn('Firestore loadUserDoc error:', e);
     firestoreUsage = 0;
+  }
+}
+
+// ແຍກ logic ອອກມາ — ໃຊ້ຮ່ວມກັນໄດ້ທັງ Cache ແລະ Fresh read
+function _applyUserDoc(uid, d) {
+  isPremium = false;
+  if (d.isPremium === true) isPremium = true;
+  if (d.premiumUntil) {
+    const until = d.premiumUntil.toDate ? d.premiumUntil.toDate() : new Date(d.premiumUntil);
+    if (until > new Date()) { isPremium = true; premiumUntil = until; }
+    else { isPremium = false; }
+  }
+  // Usage — reset daily
+  const today = new Date().toDateString();
+  const lastReset = d.lastReset || '';
+  if (lastReset !== today) {
+    firestoreUsage = 0;
+    // ອັບເດດ Cache
+    _userDocCacheData = Object.assign({}, _userDocCacheData, { usageCount: 0, lastReset: today });
+    // Debounced write — ບໍ່ Write ທັນທີ
+    _scheduleWrite(uid, { usageCount: 0, lastReset: today });
+  } else {
+    firestoreUsage = d.usageCount || 0;
   }
 }
 
@@ -1374,12 +1401,17 @@ async function incUsage() {
   if (isPremium) return;
   if (currentUser) {
     firestoreUsage = Math.min(firestoreUsage + 1, 999);
-    try {
-      await db.collection('users').doc(currentUser.uid).set(
-        { usageCount: firestoreUsage, lastReset: new Date().toDateString() },
-        { merge: true }
-      );
-    } catch(e) { console.warn('incUsage error:', e); }
+    // ✅ ອັບເດດ Cache ທັນທີ — Write Firestore ແບບ Debounce (ລໍ 3 ວິ)
+    if (_userDocCacheData) {
+      _userDocCacheData = Object.assign({}, _userDocCacheData, {
+        usageCount: firestoreUsage,
+        lastReset: new Date().toDateString()
+      });
+    }
+    _scheduleWrite(currentUser.uid, {
+      usageCount: firestoreUsage,
+      lastReset: new Date().toDateString()
+    });
   } else {
     const uk = 'lk_usage';
     localStorage.setItem(uk, String(getUsage() + 1));
@@ -1421,8 +1453,15 @@ auth.onAuthStateChanged(async user => {
   premiumUntil = null;
   firestoreUsage = 0;
 
+  // ✅ Clear cache ເມື່ອ user ປ່ຽນ ຫຼື Logout
+  if (!user || (user && user.uid !== _userDocCacheUid)) {
+    _userDocCacheUid  = null;
+    _userDocCacheData = null;
+    if (_writeTimer) { clearTimeout(_writeTimer); _writeTimer = null; }
+  }
+
   if (user) {
-    // Load Firestore doc (sets isPremium, firestoreUsage)
+    // Load Firestore doc — ໃຊ້ Cache ຖ້າມີ, ຖ້າບໍ່ Read 1 ຄັ້ງ/Session
     await loadUserDoc(user.uid);
   }
 
