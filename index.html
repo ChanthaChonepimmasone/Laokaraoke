@@ -905,7 +905,88 @@
       .settings-item { padding: 12px 16px; }
     }
 
-  </style>
+  
+    /* ══ PREMIUM APPROVED POPUP ══════════════════════════════ */
+    #premium-notif-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.65);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+      animation: fadeIn .3s ease;
+    }
+    #premium-notif-overlay.open { display: flex; }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+    .pn-card {
+      background: var(--card-bg, #1a1a2e);
+      border: 1px solid #f5c842;
+      border-radius: 24px;
+      padding: 40px 32px 32px;
+      max-width: 340px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 0 60px rgba(245,200,66,.25);
+      animation: popIn .4s cubic-bezier(.34,1.56,.64,1);
+      position: relative;
+    }
+    @keyframes popIn {
+      from { opacity:0; transform:scale(.7); }
+      to   { opacity:1; transform:scale(1); }
+    }
+    .pn-crown {
+      font-size: 3.5rem;
+      margin-bottom: 12px;
+      display: block;
+      animation: bounce 1s ease infinite alternate;
+    }
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-8px); }
+    }
+    .pn-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #f5c842;
+      margin-bottom: 8px;
+    }
+    .pn-sub {
+      font-size: .9rem;
+      color: #ccc;
+      margin-bottom: 6px;
+      line-height: 1.6;
+    }
+    .pn-until {
+      font-size: .78rem;
+      color: #888;
+      margin-bottom: 24px;
+      font-family: monospace;
+    }
+    .pn-btn {
+      background: linear-gradient(135deg, #f5c842, #e6a817);
+      color: #000;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 32px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      transition: opacity .2s;
+    }
+    .pn-btn:hover { opacity: .88; }
+    .pn-confetti {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+</style>
 </head>
 <body>
 
@@ -1463,6 +1544,9 @@ auth.onAuthStateChanged(async user => {
   if (user) {
     // Load Firestore doc — ໃຊ້ Cache ຖ້າມີ, ຖ້າບໍ່ Read 1 ຄັ້ງ/Session
     await loadUserDoc(user.uid);
+    startPremiumListener(user.uid); // ✅ ຟັງ approval realtime
+  } else {
+    stopPremiumListener(); // logout → ຢຸດ listener
   }
 
   updateNavUI(user);
@@ -1784,6 +1868,143 @@ function sendViaWhatsApp() {
   document.getElementById('pm-success').style.display = 'block';
   const btn = document.getElementById('btn-wa-send');
   btn.disabled = true; btn.textContent = '✅ ສົ່ງແລ້ວ — ລໍຖ້າ Admin';
+}
+
+
+// ══ PREMIUM REALTIME LISTENER ═════════════════════════════════════════════════
+let _premiumListenerUnsub = null;
+let _prevIsPremium        = false; // ສະຖານະກ່ອນໜ້າ
+
+function startPremiumListener(uid) {
+  // ຍົກເລີກ listener ເກົ່າ
+  if (_premiumListenerUnsub) { _premiumListenerUnsub(); _premiumListenerUnsub = null; }
+
+  _prevIsPremium = isPremium; // snapshot ຄ່າຕອນ start
+
+  _premiumListenerUnsub = db.collection('users').doc(uid)
+    .onSnapshot(snap => {
+      if (!snap.exists) return;
+      const d = snap.data();
+
+      // ກວດວ່າ isPremium ປ່ຽນຈາກ false → true
+      const nowPremium = d.isPremium === true && (
+        !d.premiumUntil || (d.premiumUntil.toDate ? d.premiumUntil.toDate() : new Date(d.premiumUntil)) > new Date()
+      );
+
+      if (!_prevIsPremium && nowPremium) {
+        // 🎉 Admin ຫາກໍ່ Approve!
+        const until = d.premiumUntil
+          ? (d.premiumUntil.toDate ? d.premiumUntil.toDate() : new Date(d.premiumUntil))
+          : null;
+        showPremiumNotif(d.planLabel || '', until);
+
+        // ອັບເດດ state ໃນ app
+        isPremium    = true;
+        premiumUntil = until;
+        _userDocCacheData = Object.assign({}, _userDocCacheData, d);
+        updateNavUI(currentUser);
+        renderUsageBar();
+        if (currentPage === 'profile') renderProfilePage();
+      }
+
+      _prevIsPremium = nowPremium;
+    }, err => {
+      console.warn('Premium listener error:', err.message);
+    });
+}
+
+function stopPremiumListener() {
+  if (_premiumListenerUnsub) { _premiumListenerUnsub(); _premiumListenerUnsub = null; }
+  _prevIsPremium = false;
+}
+
+// ══ POPUP ═════════════════════════════════════════════════════════════════════
+function showPremiumNotif(planLabel, until) {
+  const sub   = document.getElementById('pn-sub');
+  const untilEl = document.getElementById('pn-until');
+
+  sub.textContent = planLabel
+    ? 'ແຜນ ' + planLabel + ' ໄດ້ຖືກ Activate ແລ້ວ 🎉'
+    : 'ບັນຊີຂອງທ່ານໄດ້ຮັບການ Upgrade ເປັນ Premium ແລ້ວ 🎉';
+
+  if (until) {
+    untilEl.textContent = '⏳ ໃຊ້ໄດ້ຮອດ: ' + until.toLocaleDateString('lo-LA', {
+      year: 'numeric', month: 'long', day: 'numeric'
+    });
+  } else {
+    untilEl.textContent = '';
+  }
+
+  document.getElementById('premium-notif-overlay').classList.add('open');
+  playApproveSound();
+  runConfetti();
+}
+
+function closePremiumNotif() {
+  document.getElementById('premium-notif-overlay').classList.remove('open');
+}
+
+// ── ສຽງ approve ───────────────────────────────────────────────────────────────
+function playApproveSound() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    // ດັງ 3 note: C5 → E5 → G5 (chord ຊະນະ)
+    [[523, 0], [659, 0.18], [784, 0.36], [1047, 0.54]].forEach(([freq, t]) => {
+      const osc  = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0, ctx.currentTime + t);
+      gain.gain.linearRampToValueAtTime(0.2, ctx.currentTime + t + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + t + 0.5);
+      osc.start(ctx.currentTime + t);
+      osc.stop(ctx.currentTime + t + 0.6);
+    });
+  } catch(e) {}
+}
+
+// ── Confetti ──────────────────────────────────────────────────────────────────
+function runConfetti() {
+  const canvas = document.getElementById('pn-confetti');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width  = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+
+  const pieces = Array.from({ length: 60 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * -canvas.height,
+    r: 4 + Math.random() * 6,
+    d: 1.5 + Math.random() * 2.5,
+    color: ['#f5c842','#ff6b6b','#51cf66','#339af0','#cc5de8','#ff922b'][Math.floor(Math.random()*6)],
+    tilt: Math.random() * 10 - 5,
+    tiltSpeed: 0.1 + Math.random() * 0.15,
+    tiltAngle: 0,
+  }));
+
+  let frame;
+  let elapsed = 0;
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    pieces.forEach(p => {
+      p.tiltAngle += p.tiltSpeed;
+      p.y += p.d;
+      p.tilt = Math.sin(p.tiltAngle) * 12;
+      if (p.y > canvas.height) { p.y = -10; p.x = Math.random() * canvas.width; }
+      ctx.beginPath();
+      ctx.lineWidth = p.r;
+      ctx.strokeStyle = p.color;
+      ctx.moveTo(p.x + p.tilt + p.r / 2, p.y);
+      ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 2);
+      ctx.stroke();
+    });
+    elapsed++;
+    if (elapsed < 180) frame = requestAnimationFrame(draw); // ~3 ວິ
+    else ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+  if (frame) cancelAnimationFrame(frame);
+  draw();
 }
 
 // ══ TELEGRAM NOTIFICATION (ສົ່ງຫາ Admin ທຸກຄັ້ງທີ່ລູກຄ້າສົ່ງ Slip) ════════════
@@ -3490,5 +3711,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 </script>
+
+<!-- ══ PREMIUM APPROVED POPUP ══════════════════════════════════════════════ -->
+<div id="premium-notif-overlay">
+  <div class="pn-card">
+    <canvas class="pn-confetti" id="pn-confetti"></canvas>
+    <span class="pn-crown">👑</span>
+    <div class="pn-title">ຍິນດີດ້ວຍ! ທ່ານໄດ້ Premium!</div>
+    <div class="pn-sub" id="pn-sub">ບັນຊີຂອງທ່ານໄດ້ຮັບການ Upgrade ເປັນ Premium ແລ້ວ 🎉</div>
+    <div class="pn-until" id="pn-until"></div>
+    <button class="pn-btn" onclick="closePremiumNotif()">✨ ເລີ່ມໃຊ້ Premium ເລີຍ!</button>
+  </div>
+</div>
+
 </body>
 </html>
