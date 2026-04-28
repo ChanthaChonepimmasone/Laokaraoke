@@ -1786,6 +1786,52 @@ function sendViaWhatsApp() {
   btn.disabled = true; btn.textContent = '✅ ສົ່ງແລ້ວ — ລໍຖ້າ Admin';
 }
 
+// ══ TELEGRAM NOTIFICATION (ສົ່ງຫາ Admin ທຸກຄັ້ງທີ່ລູກຄ້າສົ່ງ Slip) ════════════
+const _TG_TOKEN = '8678240592:AAHW7arW9UVDB9tkVHSnEeL9zSiRctEPEqk';
+const _TG_CHAT  = '7158297924';
+
+async function sendTelegramFromClient(userData, planData, source) {
+  const name  = userData.displayName || userData.email || 'ລູກຄ້າ';
+  const email = userData.email || '—';
+  const uid   = userData.uid   || '—';
+  const plan  = planData.label + ' (' + (source === 'whatsapp' ? 'WhatsApp' : 'Direct') + ')';
+  const price = Number(planData.price).toLocaleString() + ' ກີບ';
+  const time  = new Date().toLocaleString('th-TH', {
+    year: 'numeric', month: 'short', day: 'numeric',
+    hour: '2-digit', minute: '2-digit'
+  });
+
+  const sourceIcon = source === 'whatsapp' ? '💬 WhatsApp' : '📱 Direct';
+
+  const msg = [
+    '🔔 *ມີ Slip ການໂອນໃໝ່!*',
+    '',
+    '👤 *ຊື່:*  ' + name,
+    '📧 *Email:*  ' + email,
+    '🆔 *UID:*  `' + uid + '`',
+    '👑 *ແຜນ:*  ' + planData.label,
+    '💰 *ລາຄາ:*  ' + price,
+    '📤 *ຊ່ອງທາງ:*  ' + sourceIcon,
+    '🕐 *ເວລາ:*  ' + time,
+    '',
+    '📋 ກະລຸນາເຂົ້າ Admin Dashboard ເພື່ອກວດສອບ ແລະ ອະນຸມັດ',
+  ].join('\n');
+
+  try {
+    await fetch('https://api.telegram.org/bot' + _TG_TOKEN + '/sendMessage', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id:    _TG_CHAT,
+        text:       msg,
+        parse_mode: 'Markdown',
+      }),
+    });
+  } catch(e) {
+    console.warn('Telegram notify failed:', e.message);
+  }
+}
+
 async function saveToFirestore(source='direct') {
   if (!currentUser) return;
   try {
@@ -1799,6 +1845,10 @@ async function saveToFirestore(source='direct') {
       requestedAt: firebase.firestore.FieldValue.serverTimestamp(),
       status: 'pending'
     });
+
+    // ✅ ແຈ້ງ Admin ຜ່ານ Telegram ທັນທີ
+    sendTelegramFromClient(currentUser, PLANS[selectedPlan], source);
+
   } catch(e) { console.warn('Firestore saveToFirestore:', e); }
 }
 
