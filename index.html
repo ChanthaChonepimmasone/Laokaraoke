@@ -1008,12 +1008,7 @@
         <div class="g-icon">G</div>
         <span id="wall-google-text">ເຂົ້າດ້ວຍ Google</span>
       </button>
-      <div class="divider-row">
-        <div class="divider-line"></div>
-        <span class="divider-text">ຫຼືໃຊ້ອີເມວ</span>
-        <div class="divider-line"></div>
-      </div>
-      <button class="btn-wall-email" onclick="openModal('login')">ເຂົ້າດ້ວຍ Email / ລົງທະບຽນ</button>
+
     </div>
   </div>
 </div>
@@ -1924,8 +1919,8 @@ function showPremiumNotif(planLabel, until) {
   const untilEl = document.getElementById('pn-until');
 
   sub.textContent = planLabel
-    ? 'ແຜນ ' + planLabel + ' ໄດ້ຖືກ Activate ແລ້ວ 🎉'
-    : 'ບັນຊີຂອງທ່ານໄດ້ຮັບການ Upgrade ເປັນ Premium ແລ້ວ 🎉';
+    ? '✅ ແຜນ ' + planLabel + ' ໄດ້ຖືກ Activate ແລ້ວ'
+    : '✅ ບັນຊີຂອງທ່ານ Upgrade ເປັນ Premium ແລ້ວ';
 
   if (until) {
     untilEl.textContent = '⏳ ໃຊ້ໄດ້ຮອດ: ' + until.toLocaleDateString('lo-LA', {
@@ -3717,8 +3712,8 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="pn-card">
     <canvas class="pn-confetti" id="pn-confetti"></canvas>
     <span class="pn-crown">👑</span>
-    <div class="pn-title">ຍິນດີດ້ວຍ! ທ່ານໄດ້ Premium!</div>
-    <div class="pn-sub" id="pn-sub">ບັນຊີຂອງທ່ານໄດ້ຮັບການ Upgrade ເປັນ Premium ແລ້ວ 🎉</div>
+    <div class="pn-title">ອັບເກດ Premium ສຳເລັດ</div>
+    <div class="pn-sub" id="pn-sub"></div>
     <div class="pn-until" id="pn-until"></div>
     <button class="pn-btn" onclick="closePremiumNotif()">✨ ເລີ່ມໃຊ້ Premium ເລີຍ!</button>
   </div>
