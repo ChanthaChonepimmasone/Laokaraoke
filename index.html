@@ -1874,7 +1874,7 @@ function sendViaWhatsApp() {
     `• ຈຳນວນ: ${plan.priceStr} ກີບ\n` +
     `• ວັນທີ: ${now.toLocaleDateString('lo-LA')}\n` +
     `• ເວລາ: ${now.toLocaleTimeString('lo-LA')}\n\n` +
-    `✅ ໂອນຜ່ານ BCEL One ແລ້ວ — Slip ຄັດຕໍ່ message ນີ້ 🙏`
+    `✅ ໂອນຜ່ານ BCEL One ແລ້ວ`
   );
   window.open(`https://wa.me/${WHATSAPP_NUM}?text=${msg}`, '_blank');
   saveToFirestore('whatsapp');
