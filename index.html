@@ -1145,7 +1145,7 @@
 
       <!-- Features -->
       <ul class="pm-features">
-        <li class="pm-feature"><div class="pm-check">✓</div> ແປພາສາບໍ່ຈຳກັດ — ບໍ່ມີໂຄຕ້າ 20 ຄັ້ງ/ວັນ</li>
+        <li class="pm-feature"><div class="pm-check">✓</div> ແປພາສາບໍ່ຈຳກັດ — ບໍ່ມີໂຄຕ້າ 5 ຄັ້ງ/ວັນ</li>
         <li class="pm-feature"><div class="pm-check">✓</div> ບໍ່ມີໂຄສະນາ — ໃຊ້ງານສະອາດ</li>
         <li class="pm-feature"><div class="pm-check">✓</div> ຊ່ວຍເຫຼືອດ່ວນ ພາຍໃນ 24 ຊົ່ວໂມງ</li>
         <li class="pm-feature"><div class="pm-check">✓</div> Premium Badge ໃນໂປຣໄຟລ໌</li>
@@ -1244,7 +1244,7 @@
       <span>⚡</span>
       <div class="usage-banner-inner">
         <div class="usage-bar-row">
-          <span>ໃຊ້ວັນນີ້: <strong id="usage-count">0</strong> / 20 ຄັ້ງ</span>
+          <span>ໃຊ້ວັນນີ້: <strong id="usage-count">0</strong> / 5 ຄັ້ງ</span>
           <span id="usage-pct">0%</span>
         </div>
         <div class="usage-bar-track">
@@ -1255,7 +1255,7 @@
 
     <!-- Limit reached -->
     <div class="limit-banner" id="limit-banner">
-      <p>🔒 ໃຊ້ຄົບ 20 ຄັ້ງສຳລັບວັນນີ້ — ອັບເກຣດ Premium ເພື່ອໃຊ້ບໍ່ຈຳກັດ</p>
+      <p>🔒 ໃຊ້ຄົບ 5 ຄັ້ງສຳລັບວັນນີ້ — ອັບເກຣດ Premium ເພື່ອໃຊ້ບໍ່ຈຳກັດ</p>
       <button class="btn-upgrade-limit" onclick="openPremiumModal()">👑 ອັບເກຣດ Premium</button>
     </div>
 
@@ -1345,7 +1345,7 @@
         <div class="p-usage-wrap">
           <div class="p-usage-row">
             <span style="color:var(--text-muted)">ໃຊ້ວັນນີ້</span>
-            <strong id="p-usage-text">0 / 20 ຄັ້ງ</strong>
+            <strong id="p-usage-text">0 / 5 ຄັ້ງ</strong>
           </div>
           <div class="p-usage-track">
             <div class="p-usage-fill" id="p-usage-fill" style="width:0%"></div>
@@ -1436,7 +1436,7 @@ const auth = firebase.auth();
 const db   = firebase.firestore();
 
 // ══ CONSTANTS ══════════════════════════════════════════════════════════════
-const FREE_LIMIT   = 20;
+const FREE_LIMIT   = 5;
 const WHATSAPP_NUM = '2029988148';
 const PLANS = {
   monthly:   { label:'1 ເດືອນ', price:7000,  priceStr:'7,000',  pill:'💰 7,000 ກີບ / ເດືອນ' },
