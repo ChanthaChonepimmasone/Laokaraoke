@@ -1,0 +1,2392 @@
+
+<!DOCTYPE html>
+<html lang="lo">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,
+      initial-scale=1.0,
+      maximum-scale=1.0,
+      user-scalable=no">
+
+<meta name="theme-color" content="#007aff">
+
+<title>iCable Laos - ສາຍສາກ iPhone</title>
+
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:
+        Arial,
+        "Noto Sans Lao",
+        "Phetsarath OT",
+        sans-serif;
+
+    background:#f5f5f7;
+
+    color:#111;
+
+    padding-bottom:75px;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    background:rgba(255,255,255,.96);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid #e5e5e5;
+
+    padding:12px 16px;
+
+}
+
+
+.header-top{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+
+.logo{
+
+    font-size:25px;
+
+    font-weight:800;
+
+    letter-spacing:-1px;
+
+}
+
+
+.logo span{
+
+    color:#007aff;
+
+}
+
+
+.cart{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    background:#f1f1f1;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:21px;
+
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.search-box{
+
+    position:relative;
+
+    margin-top:12px;
+
+}
+
+
+.search-box input{
+
+    width:100%;
+
+    height:46px;
+
+    border:none;
+
+    outline:none;
+
+    background:#f1f1f1;
+
+    border-radius:14px;
+
+    padding:
+
+        0 15px 0 43px;
+
+    font-size:15px;
+
+}
+
+
+.search-box input:focus{
+
+    background:#e9e9e9;
+
+}
+
+
+.search-icon{
+
+    position:absolute;
+
+    left:14px;
+
+    top:12px;
+
+    font-size:18px;
+
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+
+    margin:16px;
+
+    padding:27px 21px;
+
+    border-radius:25px;
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            #007aff,
+
+            #005bea
+
+        );
+
+    color:white;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+.hero small{
+
+    font-size:13px;
+
+    opacity:.85;
+
+}
+
+
+.hero h1{
+
+    font-size:30px;
+
+    line-height:1.3;
+
+    margin:9px 0;
+
+}
+
+
+.hero p{
+
+    font-size:14px;
+
+    line-height:1.7;
+
+    max-width:300px;
+
+    opacity:.9;
+
+}
+
+
+.hero-btn{
+
+    display:inline-flex;
+
+    margin-top:18px;
+
+    padding:12px 20px;
+
+    border-radius:25px;
+
+    background:white;
+
+    color:#007aff;
+
+    text-decoration:none;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+}
+
+
+.hero-cable{
+
+    position:absolute;
+
+    right:-75px;
+
+    bottom:-85px;
+
+    width:210px;
+
+    height:210px;
+
+    border:18px solid rgba(255,255,255,.16);
+
+    border-radius:50%;
+
+}
+
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+.section{
+
+    padding:
+
+        8px 16px 25px;
+
+}
+
+
+.section-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin:
+
+        10px 0 15px;
+
+}
+
+
+.section-header h2{
+
+    font-size:21px;
+
+}
+
+
+.section-header a{
+
+    color:#007aff;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+}
+
+
+/* =====================================================
+   CATEGORY
+===================================================== */
+
+.categories{
+
+    display:flex;
+
+    gap:9px;
+
+    overflow-x:auto;
+
+    padding-bottom:5px;
+
+    scrollbar-width:none;
+
+}
+
+
+.categories::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+.category{
+
+    flex:0 0 auto;
+
+    padding:
+
+        10px 16px;
+
+    border-radius:22px;
+
+    background:white;
+
+    border:1px solid #e5e5e5;
+
+    font-size:13px;
+
+    cursor:pointer;
+
+}
+
+
+.category.active{
+
+    background:#007aff;
+
+    color:white;
+
+    border-color:#007aff;
+
+}
+
+
+/* =====================================================
+   PRODUCT GRID
+===================================================== */
+
+.products{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(2,1fr);
+
+    gap:12px;
+
+}
+
+
+.product{
+
+    background:white;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:
+
+        0 3px 15px
+
+        rgba(0,0,0,.05);
+
+    transition:.2s;
+
+}
+
+
+.product:active{
+
+    transform:scale(.98);
+
+}
+
+
+/* =====================================================
+   PRODUCT IMAGE
+===================================================== */
+
+.product-image{
+
+    height:145px;
+
+    background:#f7f7f8;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    position:relative;
+
+}
+
+
+/* ສາຍຈຳລອງ */
+
+.fake-cable{
+
+    width:120px;
+
+    height:75px;
+
+    border:
+
+        7px solid #222;
+
+    border-top:none;
+
+    border-radius:
+
+        0 0 75px 75px;
+
+    position:relative;
+
+}
+
+
+.fake-cable:before{
+
+    content:"";
+
+    position:absolute;
+
+    width:32px;
+
+    height:14px;
+
+    background:#ddd;
+
+    right:-27px;
+
+    bottom:-9px;
+
+    border-radius:4px;
+
+}
+
+
+.fake-cable:after{
+
+    content:"";
+
+    position:absolute;
+
+    width:32px;
+
+    height:14px;
+
+    background:#ddd;
+
+    left:-27px;
+
+    top:-8px;
+
+    border-radius:4px;
+
+}
+
+
+/* =====================================================
+   PRODUCT INFO
+===================================================== */
+
+.product-info{
+
+    padding:12px;
+
+}
+
+
+.badge{
+
+    display:inline-block;
+
+    background:#eaf3ff;
+
+    color:#007aff;
+
+    font-size:10px;
+
+    padding:
+
+        4px 7px;
+
+    border-radius:6px;
+
+    margin-bottom:7px;
+
+}
+
+
+.product h3{
+
+    font-size:15px;
+
+    line-height:1.4;
+
+    min-height:42px;
+
+}
+
+
+.rating{
+
+    color:#ffae00;
+
+    font-size:12px;
+
+    margin:6px 0;
+
+}
+
+
+.product-desc{
+
+    color:#777;
+
+    font-size:11px;
+
+    line-height:1.5;
+
+    min-height:34px;
+
+}
+
+
+.price-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:10px;
+
+}
+
+
+.price{
+
+    font-size:16px;
+
+    font-weight:800;
+
+}
+
+
+.buy{
+
+    width:37px;
+
+    height:37px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#007aff;
+
+    color:white;
+
+    font-size:21px;
+
+    cursor:pointer;
+
+}
+
+
+.buy:active{
+
+    transform:scale(.9);
+
+}
+
+
+/* =====================================================
+   FEATURES
+===================================================== */
+
+.features{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(2,1fr);
+
+    gap:10px;
+
+}
+
+
+.feature{
+
+    background:white;
+
+    padding:18px 13px;
+
+    border-radius:17px;
+
+}
+
+
+.feature-icon{
+
+    font-size:28px;
+
+    margin-bottom:8px;
+
+}
+
+
+.feature h3{
+
+    font-size:14px;
+
+}
+
+
+.feature p{
+
+    color:#777;
+
+    font-size:11px;
+
+    line-height:1.5;
+
+    margin-top:5px;
+
+}
+
+
+/* =====================================================
+   COMPARISON
+===================================================== */
+
+.compare-box{
+
+    background:white;
+
+    border-radius:18px;
+
+    overflow-x:auto;
+
+}
+
+
+.compare-box table{
+
+    width:650px;
+
+    border-collapse:collapse;
+
+}
+
+
+.compare-box th,
+.compare-box td{
+
+    padding:
+
+        13px 10px;
+
+    text-align:center;
+
+    font-size:12px;
+
+    border-bottom:
+
+        1px solid #eee;
+
+}
+
+
+.compare-box th{
+
+    background:#007aff;
+
+    color:white;
+
+}
+
+
+.good{
+
+    color:#13a15b;
+
+    font-weight:bold;
+
+}
+
+
+/* =====================================================
+   CTA
+===================================================== */
+
+.cta{
+
+    margin:
+
+        10px 16px 25px;
+
+    padding:
+
+        26px 20px;
+
+    background:#111;
+
+    color:white;
+
+    border-radius:23px;
+
+    text-align:center;
+
+}
+
+
+.cta h2{
+
+    font-size:21px;
+
+}
+
+
+.cta p{
+
+    color:#aaa;
+
+    font-size:13px;
+
+    line-height:1.6;
+
+    margin-top:7px;
+
+}
+
+
+.cta-btn{
+
+    display:inline-block;
+
+    margin-top:16px;
+
+    padding:
+
+        12px 25px;
+
+    background:#25D366;
+
+    color:white;
+
+    border-radius:25px;
+
+    text-decoration:none;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    text-align:center;
+
+    padding:20px;
+
+    color:#999;
+
+    font-size:11px;
+
+}
+
+
+footer strong{
+
+    color:#555;
+
+    font-size:14px;
+
+}
+
+
+/* =====================================================
+   BOTTOM NAV
+===================================================== */
+
+.bottom-nav{
+
+    position:fixed;
+
+    bottom:0;
+
+    left:0;
+
+    right:0;
+
+    height:68px;
+
+    background:
+
+        rgba(255,255,255,.97);
+
+    backdrop-filter:blur(18px);
+
+    border-top:
+
+        1px solid #ddd;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-around;
+
+    z-index:2000;
+
+}
+
+
+.bottom-nav a{
+
+    text-decoration:none;
+
+    color:#777;
+
+    text-align:center;
+
+    font-size:10px;
+
+}
+
+
+.bottom-nav a span{
+
+    display:block;
+
+    font-size:21px;
+
+    margin-bottom:3px;
+
+}
+
+
+.bottom-nav a.active{
+
+    color:#007aff;
+
+}
+
+
+/* =====================================================
+   NO RESULT
+===================================================== */
+
+.no-result{
+
+    display:none;
+
+    text-align:center;
+
+    padding:35px 10px;
+
+    color:#888;
+
+    grid-column:
+
+        1 / -1;
+
+}
+
+
+/* =====================================================
+   TABLET / DESKTOP
+===================================================== */
+
+@media(min-width:700px){
+
+    body{
+
+        max-width:1100px;
+
+        margin:auto;
+
+        padding-bottom:0;
+
+    }
+
+
+    .bottom-nav{
+
+        display:none;
+
+    }
+
+
+    .hero{
+
+        padding:45px;
+
+    }
+
+
+    .hero h1{
+
+        font-size:42px;
+
+    }
+
+
+    .products{
+
+        grid-template-columns:
+
+            repeat(4,1fr);
+
+    }
+
+
+    .features{
+
+        grid-template-columns:
+
+            repeat(4,1fr);
+
+    }
+
+
+    .product-image{
+
+        height:190px;
+
+    }
+
+}
+
+
+/* =====================================================
+   LARGE DESKTOP
+===================================================== */
+
+@media(min-width:1100px){
+
+    body{
+
+        background:#eeeeef;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="header-top">
+
+        <div class="logo">
+
+            i<span>Cable</span>
+
+        </div>
+
+
+        <div class="cart">
+
+            🛒
+
+        </div>
+
+    </div>
+
+
+    <div class="search-box">
+
+        <span class="search-icon">
+
+            🔍
+
+        </span>
+
+        <input
+            type="text"
+            id="search"
+            placeholder="ຄົ້ນຫາສາຍສາກ..."
+            oninput="searchProducts()"
+        >
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <small>
+
+        iPhone Accessories
+
+    </small>
+
+
+    <h1>
+
+        ເລືອກສາຍສາກ<br>
+
+        <span>
+
+            iPhone
+
+        </span>
+
+        ໃຫ້ຖືກຮຸ່ນ
+
+    </h1>
+
+
+    <p>
+
+        ຄົ້ນຫາ ແລະ ປຽບທຽບ
+        ສາຍສາກ iPhone
+        ໄດ້ງ່າຍໆ
+
+    </p>
+
+
+    <a
+        href="#products"
+        class="hero-btn">
+
+        ເບິ່ງສິນຄ້າ →
+
+    </a>
+
+
+    <div class="hero-cable"></div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CATEGORY
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-header">
+
+        <h2>
+
+            ເລືອກປະເພດ
+
+        </h2>
+
+    </div>
+
+
+    <div class="categories">
+
+        <button
+            class="category active"
+            onclick="filterProducts('all',this)">
+
+            ທັງໝົດ
+
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterProducts('lightning',this)">
+
+            Lightning
+
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterProducts('usbc',this)">
+
+            USB-C
+
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterProducts('fast',this)">
+
+            Fast Charge
+
+        </button>
+
+
+        <button
+            class="category"
+            onclick="filterProducts('premium',this)">
+
+            Premium
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PRODUCTS
+===================================================== -->
+
+<section
+    class="section"
+    id="products">
+
+
+    <div class="section-header">
+
+        <h2>
+
+            🔥 ສິນຄ້າແນະນຳ
+
+        </h2>
+
+
+        <a href="#products">
+
+            ທັງໝົດ
+
+        </a>
+
+    </div>
+
+
+
+    <div
+        class="products"
+        id="productList">
+
+
+        <!-- PRODUCT 1 -->
+
+        <div
+            class="product"
+            data-name="USB-C to Lightning"
+            data-category="lightning">
+
+            <div class="product-image">
+
+                <div class="fake-cable"></div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <span class="badge">
+
+                    Best Seller
+
+                </span>
+
+
+                <h3>
+
+                    USB-C to Lightning
+
+                </h3>
+
+
+                <div class="rating">
+
+                    ★★★★★
+
+                </div>
+
+
+                <p class="product-desc">
+
+                    ສຳລັບ iPhone ຮຸ່ນ
+                    Lightning
+
+                </p>
+
+
+                <div class="price-row">
+
+                    <div class="price">
+
+                        150,000 ₭
+
+                    </div>
+
+
+                    <button
+                        class="buy"
+                        onclick="buyProduct(
+                            'USB-C to Lightning',
+                            '150,000 ₭'
+                        )">
+
+                        +
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCT 2 -->
+
+        <div
+            class="product"
+            data-name="USB-C to USB-C 60W"
+            data-category="usbc fast">
+
+            <div class="product-image">
+
+                <div class="fake-cable"></div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <span class="badge">
+
+                    Fast Charge
+
+                </span>
+
+
+                <h3>
+
+                    USB-C to USB-C 60W
+
+                </h3>
+
+
+                <div class="rating">
+
+                    ★★★★★
+
+                </div>
+
+
+                <p class="product-desc">
+
+                    PD Fast Charging
+                    ສຳລັບ iPhone ລຸ້ນໃໝ່
+
+                </p>
+
+
+                <div class="price-row">
+
+                    <div class="price">
+
+                        180,000 ₭
+
+                    </div>
+
+
+                    <button
+                        class="buy"
+                        onclick="buyProduct(
+                            'USB-C to USB-C 60W',
+                            '180,000 ₭'
+                        )">
+
+                        +
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCT 3 -->
+
+        <div
+            class="product"
+            data-name="Braided Premium Cable"
+            data-category="premium fast">
+
+            <div class="product-image">
+
+                <div class="fake-cable"></div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <span class="badge">
+
+                    Premium
+
+                </span>
+
+
+                <h3>
+
+                    Braided Premium Cable
+
+                </h3>
+
+
+                <div class="rating">
+
+                    ★★★★★
+
+                </div>
+
+
+                <p class="product-desc">
+
+                    ສາຍຖັກທົນທານ
+                    ສວຍງາມ
+
+                </p>
+
+
+                <div class="price-row">
+
+                    <div class="price">
+
+                        220,000 ₭
+
+                    </div>
+
+
+                    <button
+                        class="buy"
+                        onclick="buyProduct(
+                            'Braided Premium Cable',
+                            '220,000 ₭'
+                        )">
+
+                        +
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCT 4 -->
+
+        <div
+            class="product"
+            data-name="Premium Charging Cable"
+            data-category="premium">
+
+            <div class="product-image">
+
+                <div class="fake-cable"></div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <span class="badge">
+
+                    Recommended
+
+                </span>
+
+
+                <h3>
+
+                    Premium Charging Cable
+
+                </h3>
+
+
+                <div class="rating">
+
+                    ★★★★★
+
+                </div>
+
+
+                <p class="product-desc">
+
+                    ສຳລັບການສາກ
+                    ປະຈຳວັນ
+
+                </p>
+
+
+                <div class="price-row">
+
+                    <div class="price">
+
+                        199,000 ₭
+
+                    </div>
+
+
+                    <button
+                        class="buy"
+                        onclick="buyProduct(
+                            'Premium Charging Cable',
+                            '199,000 ₭'
+                        )">
+
+                        +
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCT 5 -->
+
+        <div
+            class="product"
+            data-name="Lightning Fast Cable"
+            data-category="lightning fast">
+
+            <div class="product-image">
+
+                <div class="fake-cable"></div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <span class="badge">
+
+                    Fast Charge
+
+                </span>
+
+
+                <h3>
+
+                    Lightning Fast Cable
+
+                </h3>
+
+
+                <div class="rating">
+
+                    ★★★★☆
+
+                </div>
+
+
+                <p class="product-desc">
+
+                    ສາຍ Lightning
+                    ສຳລັບສາກໄວ
+
+                </p>
+
+
+                <div class="price-row">
+
+                    <div class="price">
+
+                        130,000 ₭
+
+                    </div>
+
+
+                    <button
+                        class="buy"
+                        onclick="buyProduct(
+                            'Lightning Fast Cable',
+                            '130,000 ₭'
+                        )">
+
+                        +
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCT 6 -->
+
+        <div
+            class="product"
+            data-name="USB-C PD 100W"
+            data-category="usbc fast">
+
+            <div class="product-image">
+
+                <div class="fake-cable"></div>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <span class="badge">
+
+                    100W PD
+
+                </span>
+
+
+                <h3>
+
+                    USB-C PD 100W
+
+                </h3>
+
+
+                <div class="rating">
+
+                    ★★★★★
+
+                </div>
+
+
+                <p class="product-desc">
+
+                    ຮອງຮັບ Power Delivery
+                    ເຖິງ 100W
+
+                </p>
+
+
+                <div class="price-row">
+
+                    <div class="price">
+
+                        250,000 ₭
+
+                    </div>
+
+
+                    <button
+                        class="buy"
+                        onclick="buyProduct(
+                            'USB-C PD 100W',
+                            '250,000 ₭'
+                        )">
+
+                        +
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- NO RESULT -->
+
+        <div
+            class="no-result"
+            id="noResult">
+
+            🔍<br><br>
+
+            ບໍ່ພົບສິນຄ້າ
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FEATURES
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-header">
+
+        <h2>
+
+            ✨ ເປັນຫຍັງຕ້ອງເລືອກ?
+
+        </h2>
+
+    </div>
+
+
+    <div class="features">
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+
+                ⚡
+
+            </div>
+
+            <h3>
+
+                Fast Charging
+
+            </h3>
+
+            <p>
+
+                ຮອງຮັບການສາກໄວ
+
+            </p>
+
+        </div>
+
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+
+                🛡️
+
+            </div>
+
+            <h3>
+
+                ປອດໄພ
+
+            </h3>
+
+            <p>
+
+                ເໝາະສຳລັບການໃຊ້ງານ
+
+            </p>
+
+        </div>
+
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+
+                💪
+
+            </div>
+
+            <h3>
+
+                ທົນທານ
+
+            </h3>
+
+            <p>
+
+                ວັດສະດຸຄຸນນະພາບ
+
+            </p>
+
+        </div>
+
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+
+                🚚
+
+            </div>
+
+            <h3>
+
+                ຈັດສົ່ງ
+
+            </h3>
+
+            <p>
+
+                ຈັດສົ່ງເຖິງລູກຄ້າ
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     COMPARISON
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-header">
+
+        <h2>
+
+            📊 ປຽບທຽບສາຍສາກ
+
+        </h2>
+
+    </div>
+
+
+    <div class="compare-box">
+
+        <table>
+
+            <tr>
+
+                <th>
+                    ຄຸນສົມບັດ
+                </th>
+
+                <th>
+                    Lightning
+                </th>
+
+                <th>
+                    USB-C
+                </th>
+
+                <th>
+                    Premium
+                </th>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Fast Charge
+                </td>
+
+                <td class="good">
+                    ✓
+                </td>
+
+                <td class="good">
+                    ✓
+                </td>
+
+                <td class="good">
+                    ✓
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Data Transfer
+                </td>
+
+                <td class="good">
+                    ✓
+                </td>
+
+                <td class="good">
+                    ✓
+                </td>
+
+                <td class="good">
+                    ✓
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    Power Delivery
+                </td>
+
+                <td>
+                    ✓
+                </td>
+
+                <td class="good">
+                    ✓
+                </td>
+
+                <td class="good">
+                    ✓
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    ຄວາມທົນທານ
+                </td>
+
+                <td>
+                    ★★★★
+                </td>
+
+                <td>
+                    ★★★★
+                </td>
+
+                <td>
+                    ★★★★★
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     WHATSAPP CTA
+===================================================== -->
+
+<div class="cta">
+
+    <h2>
+
+        ຕ້ອງການສັ່ງຊື້?
+
+    </h2>
+
+
+    <p>
+
+        ກົດປຸ່ມດ້ານລຸ່ມ
+        ແລ້ວຕິດຕໍ່ຜ່ານ WhatsApp
+
+    </p>
+
+
+    <a
+        href="https://wa.me/85656477479"
+        target="_blank"
+        class="cta-btn">
+
+        💬 ສັ່ງຊື້ຜ່ານ WhatsApp
+
+    </a>
+
+</div>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer id="contact">
+
+    <strong>
+
+        iCable Laos
+
+    </strong>
+
+
+    <p>
+
+        ເວັບແນະນຳສາຍສາກ iPhone
+
+    </p>
+
+
+    <p>
+
+        WhatsApp:
+        +856 20 56477479
+
+    </p>
+
+
+    <p>
+
+        © 2026 iCable Laos
+
+    </p>
+
+</footer>
+
+
+
+<!-- =====================================================
+     BOTTOM NAVIGATION
+===================================================== -->
+
+<nav class="bottom-nav">
+
+
+    <a
+        href="#"
+        class="active">
+
+        <span>
+            🏠
+        </span>
+
+        ໜ້າຫຼັກ
+
+    </a>
+
+
+    <a href="#products">
+
+        <span>
+            🛍️
+        </span>
+
+        ສິນຄ້າ
+
+    </a>
+
+
+    <a href="#products">
+
+        <span>
+            🔍
+        </span>
+
+        ຄົ້ນຫາ
+
+    </a>
+
+
+    <a href="#contact">
+
+        <span>
+            💬
+        </span>
+
+        WhatsApp
+
+    </a>
+
+
+</nav>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   WHATSAPP ORDER
+===================================================== */
+
+function buyProduct(name, price){
+
+    /*
+       WhatsApp number
+
+       ຮູບແບບ:
+       Country Code + Phone Number
+
+       Laos = 856
+
+       ເບີ:
+       20 56477479
+
+       ລວມ:
+       8562056477479
+
+    */
+
+    const phone = "8562056477479";
+
+
+    /* Message */
+
+    const message =
+
+        "ສະບາຍດີ 👋" +
+
+        "\n\n" +
+
+        "🛍️ ຂ້ອຍຕ້ອງການສັ່ງຊື້" +
+
+        "\n\n" +
+
+        "📦 ສິນຄ້າ: " +
+
+        name +
+
+        "\n" +
+
+        "💰 ລາຄາ: " +
+
+        price +
+
+        "\n\n" +
+
+        "ລົບກວນແຈ້ງສະຕັອກ " +
+
+        "ແລະ ຄ່າຈັດສົ່ງໃຫ້ແດ່ 🙏";
+
+
+    /* Encode */
+
+    const encodedMessage =
+
+        encodeURIComponent(message);
+
+
+    /* WhatsApp URL */
+
+    const url =
+
+        "https://wa.me/" +
+
+        phone +
+
+        "?text=" +
+
+        encodedMessage;
+
+
+    /* Open */
+
+    window.open(
+
+        url,
+
+        "_blank"
+
+    );
+
+}
+
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+function searchProducts(){
+
+    const input =
+
+        document
+
+        .getElementById("search")
+
+        .value
+
+        .toLowerCase()
+
+        .trim();
+
+
+    const products =
+
+        document
+
+        .querySelectorAll(".product");
+
+
+    let found = 0;
+
+
+    products.forEach(function(product){
+
+        const name =
+
+            product
+
+            .getAttribute("data-name")
+
+            .toLowerCase();
+
+
+        if(
+
+            name.includes(input)
+
+        ){
+
+            product.style.display = "";
+
+            found++;
+
+        }
+
+        else{
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+
+    const noResult =
+
+        document
+
+        .getElementById("noResult");
+
+
+    if(found === 0){
+
+        noResult.style.display = "block";
+
+    }
+
+    else{
+
+        noResult.style.display = "none";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+function filterProducts(category, button){
+
+    const products =
+
+        document
+
+        .querySelectorAll(".product");
+
+
+    const buttons =
+
+        document
+
+        .querySelectorAll(".category");
+
+
+    /* Remove active */
+
+    buttons.forEach(function(btn){
+
+        btn.classList.remove("active");
+
+    });
+
+
+    /* Active selected */
+
+    button.classList.add("active");
+
+
+    let found = 0;
+
+
+    products.forEach(function(product){
+
+        const productCategory =
+
+            product
+
+            .getAttribute("data-category");
+
+
+        if(
+
+            category === "all" ||
+
+            productCategory
+
+                .includes(category)
+
+        ){
+
+            product.style.display = "";
+
+            found++;
+
+        }
+
+        else{
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+
+    document
+
+        .getElementById("noResult")
+
+        .style.display =
+
+            found === 0
+
+            ? "block"
+
+            : "none";
+
+
+    /* Clear search */
+
+    document
+
+        .getElementById("search")
+
+        .value = "";
+
+}
+
+
+
+/* =====================================================
+   BOTTOM NAV ACTIVE
+===================================================== */
+
+const navLinks =
+
+    document
+
+    .querySelectorAll(".bottom-nav a");
+
+
+navLinks.forEach(function(link){
+
+    link.addEventListener(
+
+        "click",
+
+        function(){
+
+            navLinks.forEach(
+
+                function(item){
+
+                    item.classList
+
+                        .remove("active");
+
+                }
+
+            );
+
+
+            this.classList
+
+                .add("active");
+
+        }
+
+    );
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>
+```
