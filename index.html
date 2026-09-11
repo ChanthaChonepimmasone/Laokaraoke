@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ພາສາຄາລາໂອເກະແມ່ນຫຍັງ? ພ້ອມແຈກເທັກນິກວິທີສະກົດ ແລະ ວິທີແປ - Wongnai Lao</title>
+    <style>
+        /* CSS Reset & Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Lao', 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background: linear-gradient(135deg, #fff5f5 0%, #f4f8ff 48%, #f2fffb 100%);
+            padding: 20px;
+        }
+
+        /* Container & Article Layout */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255,255,255,.96);
+            padding: 42px;
+            border-radius: 24px;
+            box-shadow: 0 18px 55px rgba(45, 65, 120, 0.13);
+            border: 1px solid rgba(255,255,255,.8);
+            overflow: hidden;
+        }
+
+        /* Meta Data Styling */
+        .meta-category {
+            color: #ff6b6b;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #111111;
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+
+        .meta-author {
+            font-size: 0.9rem;
+            color: #777777;
+            border-bottom: 1px solid #eeeeee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* Content Elements */
+        h2 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-left: 5px solid #ff6b6b;
+            padding-left: 15px;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            color: #34495e;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-weight: 400;
+            color: #4a4a4a;
+        }
+
+        ul {
+            margin-bottom: 20px;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #111111;
+        }
+
+        /* Table Styling */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+            min-width: 500px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        tr:hover {
+            background-color: #fcfcfc;
+        }
+
+        /* Blockquote / Phrases Box */
+        .phrase-box {
+            background: #f0f7ff;
+            border-top: 4px solid #007bff;
+            padding: 20px;
+            border-radius: 0 0 8px 8px;
+            margin: 25px 0;
+        }
+
+        .phrase-item {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #d0e3ff;
+        }
+
+        .phrase-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .karaoke-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #0056b3;
+            font-size: 1.1rem;
+        }
+
+        /* Editor Note Box */
+        .editor-note {
+            background: #fff9e6;
+            border: 1px solid #ffeeba;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+
+        .editor-note h3 {
+            color: #856404;
+            margin-top: 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: #999999;
+        }
+
+        /* Colorful article enhancements */
+        .hero {
+            position: relative;
+            min-height: 300px;
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+            margin: -42px -42px 30px;
+            color: #fff;
+            background: linear-gradient(135deg, rgba(214,35,56,.92), rgba(94,55,180,.72)), url('https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1400&q=85') center/cover;
+            isolation: isolate;
+        }
+        .hero::after { content: '♫'; position: absolute; right: 35px; top: 15px; font-size: 8rem; line-height: 1; opacity: .16; transform: rotate(-12deg); z-index: -1; }
+        .hero-content { max-width: 720px; }
+        .hero .meta-category { color: #ffe8a3; margin-bottom: 12px; }
+        .hero h1 { color: #fff; font-size: clamp(1.8rem, 4vw, 2.8rem); text-shadow: 0 3px 18px rgba(0,0,0,.2); margin-bottom: 18px; }
+        .hero .meta-author { color: rgba(255,255,255,.88); border-bottom: 0; padding: 0; margin: 0; }
+        .intro-card { display: grid; grid-template-columns: 1.1fr .9fr; gap: 22px; align-items: stretch; margin: 25px 0 35px; }
+        .info-card { border-radius: 18px; padding: 24px; background: linear-gradient(135deg,#fff0f2,#fff8e8); border: 1px solid #ffe0e5; }
+        .info-card.blue { background: linear-gradient(135deg,#edf5ff,#f4efff); border-color: #dce8ff; }
+        .info-card h3 { margin-top: 0; color: #b4233b; }
+        .info-card.blue h3 { color: #4b46a8; }
+        .info-icon { font-size: 2.4rem; margin-bottom: 8px; }
+        .section-image { width: 100%; height: 190px; object-fit: cover; border-radius: 18px; margin: 8px 0 24px; box-shadow: 0 8px 24px rgba(30,50,100,.12); }
+        h2 { color: #273b80; border-left: 6px solid #ff5a6f; border-radius: 8px; background: linear-gradient(90deg,#fff0f2,transparent); padding: 10px 15px; }
+        h3 { color: #553c9a; }
+        table { border-radius: 14px; overflow: hidden; box-shadow: 0 4px 18px rgba(30,50,100,.06); }
+        th { background: linear-gradient(135deg,#5a67d8,#805ad5); color: #fff; }
+        tr:nth-child(even) td { background: #fafbff; }
+        tr:hover td { background: #fff2f4; }
+        .phrase-box { background: linear-gradient(135deg,#edf7ff,#f2edff); border-top: 4px solid #6c63d9; box-shadow: 0 8px 25px rgba(70,70,160,.08); }
+        .editor-note { background: linear-gradient(135deg,#fff9e8,#fff0f5); border-color: #ffd98a; }
+        footer { padding-top: 20px; border-top: 1px solid #edf0f7; }
+        @media (max-width: 700px) { .intro-card { grid-template-columns: 1fr; } .hero { margin: -20px -20px 25px; padding: 24px; min-height: 280px; } }
+
+        /* Mobile Responsive adjustment */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.7rem;
+            }
+            h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="hero">
+            <div class="hero-content">
+                <div class="meta-category">ໄລຟ໌ສະໄຕລ໌ / ເຕັກໂນໂລຊີ & ໄອທີ</div>
+                <h1>ພາສາຄາລາໂອເກະແມ່ນຫຍັງ? ພ້ອມແຈກເທັກນິກວິທີສະກົດ ແລະ ວິທີແປ ທີ່ສາຍແຊັດຕ້ອງຮູ້!</h1>
+                <div class="meta-author">ຂຽນໂດຍ: <strong>Wongnai Lao Team</strong> &nbsp;|&nbsp; ອັບເດດ: 11 ກັນຍາ 2026</div>
+            </div>
+        </header>
+
+        <div class="intro-card">
+            <div class="info-card">
+                <div class="info-icon">🎤</div>
+                <h3>ຮູ້ຈັກກັບ Lao Karaoke</h3>
+                <p>ຮູບແບບການພິມພາສາລາວດ້ວຍຕົວອັກສອນອັງກິດ ເພື່ອອ່ານຕາມສຽງໄດ້ງ່າຍ ແລະ ແຊັດໄດ້ວ່ອງໄວ.</p>
+            </div>
+            <div class="info-card blue">
+                <div class="info-icon">💬</div>
+                <h3>ເໝາະສຳລັບໃຜ?</h3>
+                <p>ຄົນທີ່ຢາກພິມລາວໃນເກມ, ແຊັດກັບໝູ່ ຫຼື ຝຶກອ່ານສຽງລາວແບບສະບາຍໆ.</p>
+            </div>
+        </div>
+
+        <!-- Section 1 -->
+        <h2>ພາສາຄາລາໂອເກະ (Lao Karaoke Language) ແມ່ນຫຍັງ?</h2>
+        <p><strong>ພາສາຄາລາໂອເກະ</strong> ຄື ການພິມຂໍ້ຄວາມພາສາລາວ ໂດຍການໃຊ້ຕົວອັກສອນພາສາອັງກິດ (Latin/Roman Alphabet) ຖອດສຽງອອກມາ ເຊິ່ງຈະເນັ້ນການສະກົດຕາມສຽງເວົ້າ ໂດຍບໍ່ໄດ້ຄຳນຶງເຖິງຄວາມໝາຍຂອງຄຳສັບນັ້ນໃນພາສາອັງກິດເລີຍ.</p>
+        <p><strong>ທີ່ມາຂອງຊື່:</strong> ຍ້ອນມັນມີຮູບແບບຄືກັນກັບຕົວໜັງສືຊັບໄຕເຕີລ (Subtitle) ທີ່ຂຶ້ນຢູ່ທາງລຸ່ມໜ້າຈໍເວລາພວກເຮົາໄປຮ້ອງເພງຢູ່ຮ້ານຄາລາໂອເກະ ເພື່ອໃຫ້ຄົນຕ່າງຊາດ ຫຼື ຄົນທີ່ຍັງອ່ານຕົວອັກສອນລາວບໍ່ອອກ ສາມາດຮ້ອງຕາມໄດ້ງ່າຍນັ້ນເອງ!</p>
+
+        <img class="section-image" loading="lazy" alt="ໝູ່ເພື່ອນກຳລັງແຊັດກັນ" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80">
+
+        <!-- Section 2 -->
+        <h2>ເປັນຫຍັງຄົນລາວຈຶ່ງນິຍົມພິມພາສາຄາລາໂອເກະ?</h2>
+        <ul>
+            <li><strong>ຂໍ້ຈຳກັດດ້ານເຕັກໂນໂລຊີໃນອະດີດ:</strong> ໃນຍຸກທີ່ໂທລະສັບມືຖື ແລະ ລະບົບ SMS ເຂົ້າມາໃນລາວໃໝ່ໆ, ຕົວເຄື່ອງຍັງບໍ່ທັນຮອງຮັບຟອນຕ໌ພາສາລາວ. ໄວຮຸ່ນໃນຍຸກນັ້ນຈຶ່ງເລີ່ມໃຊ້ຕົວອັງກິດພິມແທນ ແລະ ກາຍເປັນຄວາມຊິນເຄີຍມາຈົນເຖິງປັດຈຸບັນ.</li>
+            <li><strong>ຂີ້ຄ້ານກົດປ່ຽນແປ້ນພິມ (Keyboard):</strong> ເວລາທີ່ກຳລັງພິມວຽກ ຫຼື ຫຼິ້ນເກມເປັນພາສາອັງກິດຢູ່, ແລ້ວຢາກແຊັດຕອບໝູ່ເປັນພາສາລາວແບບໄວໆ ໂດຍບໍ່ຢາກກົດສະຫຼັບພາສາໄປມາ.</li>
+            <li><strong>ປ້ອງກັນບໍ່ໃຫ້ຄົນຕ່າງຊາດເອົາໄປແປ:</strong> ເວລາພິມຄອມເມັ້ນ ຫຼື ຄຸຍກັນໃນເກມອອນລາຍ, ການພິມຄາລາໂອເກະຈະຊ່ວຍປ້ອງກັນບໍ່ໃຫ້ຄົນຕ່າງຊາດກົດປຸ່ມ "Translate (ແປພາສາ)" ເຂົ້າໃຈໄດ້.</li>
+        </ul>
+
+        <img class="section-image" loading="lazy" alt="ແປ້ນພິມຄອມພິວເຕີສຳລັບພິມຄາລາໂອເກະ" src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?auto=format&fit=crop&w=1200&q=80">
+
+        <!-- Section 3 -->
+        <h2>ວິທີສະກົດພາສາຄາລາໂອເກະສະໄຕລ໌ລາວ (Lao Karaoke Guide)</h2>
+        <p>ການສະກົດພາສາຄາລາໂອເກະ <strong>ບໍ່ມີກົດເກນຕາຍຕົວ</strong>. ມັນຂຶ້ນຢູ່ກັບຄວາມຖນັດ ແລະ ການອອກສຽງຂອງແຕ່ລະຄົນ. ແຕ່ເພື່ອໃຫ້ສື່ສານກັນເຂົ້າໃຈງ່າຍ, ຄົນລາວສ່ວນໃຫຍ່ຈະມີຫຼັກການທຽບພະຍັນຊະນະ ແລະ ສະຫຼະ ດັ່ງນີ້:</p>
+
+        <h3>1. ຕາຕະລາງທຽບພະຍັນຊະນະທີ່ນິຍົມໃຊ້:</h3>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ພະຍັນຊະນະລາວ</th>
+                        <th>ຕົວອັກສອນອັງກິດ (ຄາລາໂອເກະ)</th>
+                        <th>ຕົວຢ່າງຄຳສັບ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>ກ</strong></td><td>k / g</td><td>kin (ກິນ)</td></tr>
+                    <tr><td><strong>ຂ / ຄ</strong></td><td>kh / c</td><td>khop chai / cop chai (ຂອບໃຈ)</td></tr>
+                    <tr><td><strong>ງ</strong></td><td>ng</td><td>ngor (ງໍ) / ngor ngern (ງົງ)</td></tr>
+                    <tr><td><strong>ຈ</strong></td><td>ch / j</td><td>jao / chao (ເຈົ້າ)</td></tr>
+                    <tr><td><strong>ຊ / ສ</strong></td><td>s</td><td>sabai dee (ສະບາຍດີ)</td></tr>
+                    <tr><td><strong>ຍ</strong></td><td>gn / ny / y</td><td>yark (ຢາກ) / nyung (ຍັງ)</td></tr>
+                    <tr><td><strong>ດ</strong></td><td>d</td><td>dai (ໄດ້)</td></tr>
+                    <tr><td><strong>ຕ</strong></td><td>t</td><td>dta / ta (ຕາ)</td></tr>
+                    <tr><td><strong>ທ / ຖ</strong></td><td>th / t</td><td>thanoo (ທະນູ)</td></tr>
+                    <tr><td><strong>ນ</strong></td><td>n</td><td>non (ນອນ)</td></tr>
+                    <tr><td><strong>ບ</strong></td><td>b</td><td>bor (ບໍ່)</td></tr>
+                    <tr><td><strong>ປ</strong></td><td>p / bp</td><td>bpen / pen (ເປັນ)</td></tr>
+                    <tr><td><strong>ຜ / ພ</strong></td><td>ph / p</td><td>phou (ພູ) / pai (ໄປ)</td></tr>
+                    <tr><td><strong>ຟ / ຝ</strong></td><td>f</td><td>fany (ຝັນ) / fai (ໄຟ)</td></tr>
+                    <tr><td><strong>ມ</strong></td><td>m</td><td>ma (ມາ)</td></tr>
+                    <tr><td><strong>ລ / ຣ</strong></td><td>l / r</td><td>lai (ຫຼາຍ)</td></tr>
+                    <tr><td><strong>ວ</strong></td><td>v / w</td><td>vang vieng (ວັງວຽງ) / wa (ວ່າ)</td></tr>
+                    <tr><td><strong>ຫ / ຮ</strong></td><td>h</td><td>huck / hak (ຮັກ)</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>2. ຕາຕະລາງທຽບສະຫຼະທົ່ວໄປ:</h3>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ສະຫຼະລາວ</th>
+                        <th>ຕົວອັກສອນອັງກິດ (ຄາລາໂອເກະ)</th>
+                        <th>ຕົວຢ່າງຄຳສັບ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>xາ (ສະຫຼະອາ)</strong></td><td>a / aa</td><td>ma (ມາ) / baa (ບ້າ)</td></tr>
+                    <tr><td><strong>xິ / xີ (ສະຫຼະອິ/ອີ)</strong></td><td>i / ee</td><td>mee (ມີ) / siri (ສິຣິ)</td></tr>
+                    <tr><td><strong>xຶ / xື (ສະຫຼະອຶ/ອື)</strong></td><td>u / ue / uu</td><td>nung (ໜຶ່ງ) / muer (ມື້)</td></tr>
+                    <tr><td><strong>xຸ / xູ (ສະຫຼະອຸ/ອູ)</strong></td><td>u / oo</td><td>doo (ດູ) / thuk (ທຸກ)</td></tr>
+                    <tr><td><strong>ເxະ / ເx (ສະຫຼະເອະ/ເອ)</strong></td><td>e / ae</td><td>tae (ແທ້) / bpen (ເປັນ)</td></tr>
+                    <tr><td><strong>ໂxະ / ໂx (ສະຫຼະໂອະ/ໂອ)</strong></td><td>o / oh</td><td>toh (ໂຕະ) / khon (ຄົນ)</td></tr>
+                    <tr><td><strong>ໄx / ໃx (ສະຫຼະໄອ)</strong></td><td>ai</td><td>pai (ໄປ) / jai (ใจ)</td></tr>
+                    <tr><td><strong>xຳ (ສະຫຼະອຳ)</strong></td><td>am</td><td>nam (ນ້ຳ) / tam (ຕຳ)</td></tr>
+                </tbody>
+            </table>
+        </div>
+
