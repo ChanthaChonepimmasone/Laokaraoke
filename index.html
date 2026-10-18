@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EasyCV Laos — ສ້າງ CV ງ່າຍໆ</title>
+<meta name="description" content="ເລືອກແບບ CV, ປ້ອນຂໍ້ມູນ ແລະດາວໂຫຼດ PDF ໄດ້ທັນທີ">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@400;700&family=Noto+Serif+Lao:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><a class="logo" href="#home">📄 EasyCV Laos</a>
+<nav aria-label="ເມນູຫຼັກ"><a href="#home">Home</a><a href="#templates">Templates</a><a href="#how">How It Works</a><a href="#faq">FAQ</a></nav></header>
+
+<div id="landing">
+<section id="home" class="wrap hero"><h1>ສ້າງ CV ມືອາຊີບ ງ່າຍໆ ພາຍໃນ 5 ນາທີ</h1><p>ເລືອກແບບ CV, ປ້ອນຂໍ້ມູນ ແລະ ດາວໂຫຼດ PDF ໄດ້ທັນທີ</p>
+<button class="btn" id="start" type="button">ສ້າງ CV ຂອງຂ້ອຍ</button> <a class="btn o" href="#templates">ເບິ່ງແບບ CV</a></section>
+<section id="templates" class="wrap"><h2>ແບບ CV</h2><div class="gal" id="gal"></div></section>
+<section id="how" class="wrap"><h2>ວິທີໃຊ້ງານ</h2><div class="steps3">
+<div class="card"><b>1. ເລືອກແບບ</b><p>ເລືອກຈາກຫຼາຍແບບ. ປ່ຽນໄດ້ທຸກເວລາ ຂໍ້ມູນບໍ່ຫາຍ.</p></div>
+<div class="card"><b>2. ປ້ອນຂໍ້ມູນ</b><p>ແຕະຂໍ້ຄວາມໃນ CV ເພື່ອແກ້ໄຂ ແລະເພີ່ມຮູບໄດ້ທັນທີ.</p></div>
+<div class="card"><b>3. ດາວໂຫຼດ / ແບ່ງປັນ</b><p>ດາວໂຫຼດ PDF A4 ຫຼືແບ່ງປັນຜ່ານ WhatsApp.</p></div></div></section>
+<section id="faq" class="wrap"><h2>FAQ</h2>
+<details><summary>ຂໍ້ມູນຂອງຂ້ອຍຖືກເກັບຢູ່ໃສ?</summary><p>ໃນ Browser ຂອງທ່ານເທົ່ານັ້ນ (LocalStorage) ບໍ່ມີການອັບໂຫຼດ CV ໄປ Server.</p></details>
+<details><summary>ຕ້ອງຈ່າຍເງິນບໍ?</summary><p>ໃນເວີຊັນ MVP ນີ້ ທຸກແບບໃຊ້ໄດ້ຟຣີ. ປ້າຍ Premium ເປັນພຽງສັນຍາລັກສຳລັບອະນາຄົດ.</p></details>
+<details><summary>PDF ຄັດລອກຂໍ້ຄວາມໄດ້ບໍ?</summary><p>ບໍ່ໄດ້ — PDF ຖືກສ້າງຈາກຮູບຂອງໜ້າ CV ເພື່ອໃຫ້ຕົວອັກສອນລາວຖືກຕ້ອງ. ຖ້າຕ້ອງການ PDF ທີ່ຄັດລອກໄດ້ ໃຫ້ໃຊ້ປຸ່ມ "ພິມ / Save as PDF".</p></details></section>
+</div>
+
+<main id="editor" class="wrap" hidden>
+<div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><h2 style="margin:0">ສ້າງ CV</h2><button class="btn o" id="clear" type="button">ລ້າງຂໍ້ມູນທັງໝົດ</button></div>
+<div class="ed" id="ed" data-pane="form">
+<section class="fp" aria-label="ແບບຟອມ"><p class="err" id="stepErr" role="alert"></p><div id="stepBody"></div>
+<div class="nav2"><button class="btn o mob" id="toPv" type="button">ເບິ່ງ CV</button></div></section>
+<section class="pp" aria-label="ຕົວຢ່າງ CV"><button class="btn o mob" id="toForm" type="button" style="margin-bottom:8px">📷 ເພີ່ມ / ປ່ຽນຮູບ</button>
+<p class="sm">✏️ ແຕະຂໍ້ຄວາມໃນ CV ເພື່ອແກ້ໄຂໄດ້ເລີຍ</p><div class="strip" id="strip" role="group" aria-label="ປ່ຽນແບບ CV"></div><div class="pvbox" id="pvbox"><div id="pv"></div></div><p class="sm">ໜ້າຂາວ = A4 · ເສັ້ນແດງ = ຂອບແຕ່ລະໜ້າ (ບໍ່ຕິດໃນ PDF) <button class="btn o" id="zoom" type="button" style="min-height:36px;padding:2px 10px">🔍 ຂະຫຍາຍ 100%</button></p>
+<button class="btn" id="dl2" type="button" style="width:100%;margin-top:8px">⬇️ ດາວໂຫຼດ PDF</button></section></div>
+</main>
+
+<footer><button type="button" id="privacy">Privacy Policy</button> · <button type="button" id="contact">Contact</button><p>© EasyCV Laos — ຂໍ້ມູນຢູ່ໃນ Browser ຂອງທ່ານ</p></footer>
+
+<dialog id="dlgPrev" aria-label="Preview"><div id="prevBody" class="pvbox"></div><p><button class="btn" id="usePrev" type="button">ເລືອກແບບນີ້</button> <button class="btn o" data-close type="button">ປິດ</button></p></dialog>
+<dialog id="dlgDone" aria-label="ຜົນການສ້າງ PDF"><h3 id="doneT">PDF ພ້ອມແລ້ວ</h3><p id="doneNote" role="status"></p>
+<div style="display:grid;gap:8px"><button class="btn" id="bDl" type="button">1. Download PDF</button><button class="btn" id="bSh" type="button">2. Share PDF</button><button class="btn" id="bWa" type="button" style="background:#15803d;border-color:#15803d">3. Share via WhatsApp</button><button class="btn o" id="bPr" type="button">ພິມ / Save as PDF</button><button class="btn o" id="bEd" type="button">4. Edit CV</button><button class="btn o" id="bNew" type="button">5. Create Another CV</button></div></dialog>
+<dialog id="dlgInfo"><div id="infoBody"></div><p><button class="btn o" data-close type="button">ປິດ</button></p></dialog>
+<div class="toast" id="toast" role="status" hidden></div><div id="printhost" hidden></div>
+<!-- html2canvas 1.4.1 + jsPDF 2.5.1 (ສ້າງ PDF A4 ໃນເຄື່ອງ) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body></html>
